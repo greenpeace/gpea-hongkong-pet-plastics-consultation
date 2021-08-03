@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { ChakraProvider, Box, VStack, HStack, Grid, FormControl, FormLabel, Input, Center, Flex, Button, Select, FormErrorMessage} from '@chakra-ui/react';
 import { jsPDF } from "jspdf";
 import { Form, withFormik } from "formik";
@@ -7,8 +7,8 @@ import theme from './theme'
 import SEO from "./components/seo"
 import formContent from './content.json';
 import './notosans-regular-normal.js'
-import Axios from 'axios'
-// import { addfont } from './font'
+import './chs-normal.js'
+// import Axios from 'axios'
 
 const App = (props) =>{
   const { touched, errors, handleChange, handleBlur, handleSubmit, isSubmitting} = props;
@@ -16,6 +16,7 @@ const App = (props) =>{
   const mobileCountryCode = [{ label: "+852", value: "852" },{ label: "+853", value: "853" }];
   const space = 4;
   const labelStyle = { fontSize: "xs", color: "gray.400"};
+  // const inputEl = useRef(null);
 
   useEffect(() => {
     let optionYear = [];
@@ -28,6 +29,7 @@ const App = (props) =>{
       setBirthDateYear(optionYear);
     }
     fetchOptionYear(optionYear);
+    // console.log(inputEl.current.getContext('2d'))
   }, []);
 
   return (
@@ -170,6 +172,7 @@ const App = (props) =>{
               bg='#ff8100'
               _hover={{ bg: "campaign.climate" }}
               isLoading={isSubmitting}
+              // onClick={()=>console.log(inputEl.current.getContext('2d'))}
             >
               提交
             </Button>
@@ -182,15 +185,17 @@ const App = (props) =>{
             </VStack>
         </Grid>
       </Box>
+      {/* <canvas ref={inputEl} id="myCanvas" width={500} height={200}>您的浏览器不支持 HTML5 canvas 标签。</canvas> */}
       </HelmetProvider>
     </ChakraProvider>
   );
 }
 
+
 const ConsultationForm = withFormik({
   mapPropsToValues: () => ({
     Email: "",
-    FirstName: "",
+    FirstName: "中文名",
     LastName: "",
     MobileCountryCode: "852",
     MobilePhone: "",
@@ -249,20 +254,33 @@ const ConsultationForm = withFormik({
 
   handleSubmit: (values, { setSubmitting, props }) => {
 
-    const getHiddenFields = document.querySelectorAll(
-      'input[value][type="hidden"]:not([value=""])'
-    );
+    const canvansURL = props.dataURL
 
-    const hiddenFormValue = [...getHiddenFields].reduce(
-      (obj, e) => ({ ...obj, [e.name]: e.value }),
-      {}
-    )
+    // const canvans = props.inputEl
 
-    const birthdateValue = values.Birthdate ? `${values.Birthdate}-01-01` : "";
-    const formData = new FormData()
-    const doc = new jsPDF("p", "mm", "a4");
+    // console.log('canvans-',canvans.toDataURL())
+
+    // let ctx = canvans.current.getContext('2d')
+
+    // ctx.font = "30px Arial";
+    // ctx.strokeText("我們",10,50);
+
+    // const getHiddenFields = document.querySelectorAll(
+    //   'input[value][type="hidden"]:not([value=""])'
+    // );
+
+    // const hiddenFormValue = [...getHiddenFields].reduce(
+    //   (obj, e) => ({ ...obj, [e.name]: e.value }),
+    //   {}
+    // )
+
+    // const birthdateValue = values.Birthdate ? `${values.Birthdate}-01-01` : "";
+    // const formData = new FormData()
+    const doc = new jsPDF();
     const width = doc.internal.pageSize.getWidth();
     const height = doc.internal.pageSize.getHeight();
+    
+    console.log('canvansURL-',canvansURL)
 
     //PAGE 1
     // doc.addImage('assets/p27.png', 'PNG', 0, 0, width, height);
@@ -309,11 +327,33 @@ const ConsultationForm = withFormik({
 
     // doc.addPage()
     doc.addImage('assets/p30.png', 'PNG', 0, 0, width, height);
-    console.log('doc.getFontList()-',doc.getFontList())
+    
+    // doc.setFont('chs', 'normal')
+    // doc.text("А ну чики брики и в дамки!", 10, 10);
+    // doc.text("简体中文、繁體体中文、English", 10, 15);
+    // doc.text(`將壓縮檔內的字型.除了Mono字型以外的,都放進去你的手機`, 10, 20);
 
-    // doc.text(100, 110, '我');
 
-    // const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf'});
+    // doc.setFont('NotoSans-Regular', 'normal')
+    // doc.text("А ну чики брики и в дамки!", 10, 25);
+    // doc.text("简体中文、繁體体中文、English", 10, 30);
+    // doc.text(`將壓縮檔內的字型.除了Mono字型以外的,都放進去你的手機`, 10, 35);
+
+    // doc.text(20, 20, '简体中文、繁體体中文、English、ジャパン、한국어');
+
+    doc.addImage(canvansURL, 'PNG', 99, 56);
+
+    const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf; charset=utf-8'});
+
+    // const fileURL = URL.createObjectURL(uploadPDF);
+    // const link = document.createElement('a');
+    // link.href = fileURL;
+    // link.download = "FileName" + new Date() + ".pdf";
+    // link.click();
+
+    // console.log('uploadPDF-',uploadPDF)
+
+  // console.log('inputEl.current-', canvas.toDataURL())
 
     window.open(doc.output('bloburl'), '_blank');
 
@@ -342,4 +382,30 @@ const ConsultationForm = withFormik({
   displayName: "ConsultationForm",
 })(App);
 
-export default ConsultationForm;
+const FormikWrapper = () => {
+  const inputEl = useRef(null);
+  const [dataURL, setDataURL] = useState("");
+  useEffect(() => {
+    const canvas = document.getElementById('myCanvas')
+    var ctx = canvas.getContext("2d");
+    ctx.font = "lighter 11px NotoSans-Regular";
+    ctx.fillText("第一階段相關措施簡易，現時大部分餐廳亦已推行此類措施， 堂食不提供即棄膠餐具，第一階段應推前至2023年實施，加快走塑步伐。",0,10);
+    if(inputEl){
+      setTimeout(function(){ 
+        // console.log('demo2-',demo2)
+        // console.log(canvas.toDataURL())
+        setDataURL(canvas.toDataURL())
+
+       }, 1000);
+      // console.log(inputEl.toDataURL())
+    }
+  }, [document.getElementById('myCanvas')]);
+  return (
+    <>
+    <canvas ref={inputEl} id="myCanvas" style={{display: 'none'}}></canvas>
+    <ConsultationForm inputEl={inputEl} dataURL={dataURL}/>
+  </>);
+};
+
+
+export default FormikWrapper;
