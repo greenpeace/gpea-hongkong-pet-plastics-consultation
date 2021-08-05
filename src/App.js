@@ -138,6 +138,7 @@ const ConsultationForm = withFormik({
   handleSubmit: (values, { setSubmitting, props }) => {
 
     const canvansURL = props.dataURL
+    const p30ContentTwo = props.p30ContentTwo
 
     const getHiddenFields = document.querySelectorAll(
       'input[value][type="hidden"]:not([value=""])'
@@ -196,7 +197,9 @@ const ConsultationForm = withFormik({
 
     doc.addImage(canvansURL, 'PNG', 100, 193);
 
-    // doc.text(100, 210, '第一階段相關措施簡易，現時大部分餐廳亦已推行此類措施， 堂食不提供即棄膠餐具，第一階段應推前至2023年實施，加快走塑步伐。');
+    doc.addImage('assets/tick.png', 'PNG', 66, 239, 5, 5);
+
+    doc.addImage(p30ContentTwo, 'PNG', 100, 225);
 
     // doc.addPage()
     // doc.addImage('assets/p30.png', 'PNG', 0, 0, width, height);
@@ -244,8 +247,9 @@ const ConsultationForm = withFormik({
 const FormikWrapper = () => {
   const inputEl = useRef(null);
   const [dataURL, setDataURL] = useState("");
+  const [p30ContentTwo, setP30ContentTwo] = useState("");
 
-  function wrapText(context, text, x, y, maxWidth, lineHeight) {
+  const wrapText = (context, text, x, y, maxWidth, lineHeight) => {
     var words = text.split(' ');
     var line = '';
 
@@ -267,25 +271,31 @@ const FormikWrapper = () => {
 
   useEffect(() => {
     const canvas = document.getElementById('p30ContentOne')
+    const canvasP30ContentTwo = document.getElementById('p30ContentTwo')
     var ctx = canvas.getContext("2d");
-    var text = `第一階段相關措施簡易，現時大部分餐廳亦已推行此類措施， 堂食不提供即棄膠餐具，第一階段應推前至2023年實施，加快走塑步伐。`
-
-    ctx.font = '7.5pt NotoSans-Regular';
+    ctx.font = '6pt NotoSans-Regular';
     ctx.fillStyle = '#000';
 
-    wrapText(ctx, text, 0, 60, 500, 16);
+    var ctx2 = canvasP30ContentTwo.getContext("2d");
+    ctx2.font = '6pt NotoSans-Regular';
+    ctx2.fillStyle = '#000';
+
+    wrapText(ctx, `第一階段相關措施簡易，現時大部分餐廳亦已推行此類措施， 堂食不提供即棄膠餐具，第一階段應推前至2023年實施，加快走塑步伐。`, 0, 60, 400, 16);
+    wrapText(ctx2, `在疫情下，食肆外賣大增，署方居然未有訂立實施第二階段的確實時間表， 期望政府勿再虛耗光陰。署方須承諾第二階推前至2025年實施，在減廢路上急起直追。`, 0, 60, 500, 16);
 
     if(inputEl){
       setTimeout(function(){ 
         setDataURL(canvas.toDataURL())
+        setP30ContentTwo(canvasP30ContentTwo.toDataURL())
        }, 500);
       // console.log(inputEl.toDataURL())
     }
-  }, [document.getElementById('p30ContentOne')]);
+  }, [document.getElementById('p30ContentOne'), document.getElementById('p30ContentTwo')]);
   return (
     <>
     <canvas ref={inputEl} id="p30ContentOne" width="500px" style={{display: 'none'}}></canvas>
-    <ConsultationForm inputEl={inputEl} dataURL={dataURL}/>
+    <canvas id="p30ContentTwo" width="500px" style={{display: 'none'}}></canvas>
+    <ConsultationForm dataURL={dataURL} p30ContentTwo={p30ContentTwo}/>
   </>);
 };
 
