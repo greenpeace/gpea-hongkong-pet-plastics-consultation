@@ -107,6 +107,78 @@ const App = (props) =>{
   );
 }
 
+const FormikWrapper = () => {
+  const inputEl = useRef(null);
+  const [p29ContentOne, setP29ContentOne] = useState("");
+  const [p29ContentTwo, setP29ContentTwo] = useState("");
+  const [p30ContentOne, setP30ContentOne] = useState("");
+  const [p30ContentTwo, setP30ContentTwo] = useState("");
+
+  const wrapText = (context, text, x, y, maxWidth, lineHeight) => {
+    var words = text.split(' ');
+    var line = '';
+
+    for(var n = 0; n < words.length; n++) {
+      var testLine = line + words[n] + ' ';
+      var metrics = context.measureText(testLine);
+      var testWidth = metrics.width;
+      if (testWidth > maxWidth && n > 0) {
+        context.fillText(line, x, y);
+        line = words[n] + ' ';
+        y += lineHeight;
+      }
+      else {
+        line = testLine;
+      }
+    }
+    context.fillText(line, x, y);
+  }
+
+  useEffect(() => {
+    const canvasP29ContentOne = document.getElementById('p29ContentOne')
+    const canvasP29ContentTwo = document.getElementById('p29ContentTwo')
+    const canvasP30ContentOne = document.getElementById('p30ContentOne')
+    const canvasP30ContentTwo = document.getElementById('p30ContentTwo')
+
+    let ctx = canvasP29ContentOne.getContext("2d");
+    ctx.font = '6pt NotoSans-Regular';
+    ctx.fillStyle = '#666';
+
+    let ctx2 = canvasP29ContentTwo.getContext("2d");
+    ctx2.font = '6pt NotoSans-Regular';
+    ctx2.fillStyle = '#666';
+
+    let ctx3 = canvasP30ContentOne.getContext("2d");
+    ctx3.font = '6pt NotoSans-Regular';
+    ctx3.fillStyle = '#666';
+    
+    let ctx4 = canvasP30ContentTwo.getContext("2d");
+    ctx4.font = '8pt NotoSans-Regular';
+    ctx4.fillStyle = '#666';
+
+    wrapText(ctx, `第一階段相關措施簡易，現時大部分餐廳亦已推行此類措施， 堂食不提供即棄膠餐具，第一階段應推前至2023年實施，加快走塑步伐。`, 0, 60, 400, 12);
+    wrapText(ctx2, `在疫情下，食肆外賣大增，署方居然未有訂立實施第二階段的確實時間表， 期望政府勿再虛耗光陰。署方須承諾第二階推前至2025年實施，在減廢路上急起直追。`, 0, 60, 500, 12);
+    wrapText(ctx3, `署方須同時管制餐飲業處所外預先包裝的食品所附帶的即棄膠餐具，未來積極禁止此類食品， 附帶即棄餐具。政府應密切留意並適時作出措施避免餐飲業界，進一步拓展餐飲業處所外預 先包裝食品的業務，以真正杜絕膠餐具生產及使用。`, 0, 60, 500, 12);
+    wrapText(ctx4, `署方須同時訂立「可重用餐具社區配套時間表」，提供配套措施鼓勵飲食業界及市民使用可重用餐具、 推動租借可重用餐具的社區普及化，避免因管制即棄塑膠餐具而增加其他即棄餐具(如:紙、竹)的垃圾量， 達至真正源頭減廢。`, 0, 60, 500, 16);
+
+    if(inputEl){
+      setTimeout(function(){ 
+        setP29ContentOne(canvasP29ContentOne.toDataURL())
+        setP29ContentTwo(canvasP29ContentTwo.toDataURL())
+        setP30ContentOne(canvasP30ContentOne.toDataURL())
+        setP30ContentTwo(canvasP30ContentTwo.toDataURL())
+       }, 500);
+    }
+  }, [document.getElementById('p29ContentOne')]);
+  return (
+    <Box ref={inputEl}>
+    <canvas id="p29ContentOne" width="500px" style={{display: 'none'}}></canvas>
+    <canvas id="p29ContentTwo" width="500px" style={{display: 'none'}}></canvas>
+    <canvas id="p30ContentOne" width="500px" style={{display: 'none'}}></canvas>
+    <canvas id="p30ContentTwo" width="500px" style={{display: 'none'}}></canvas>
+    <ConsultationForm p29ContentOne={p29ContentOne} p29ContentTwo={p29ContentTwo} p30ContentOne={p30ContentOne} p30ContentTwo={p30ContentTwo}/>
+  </Box>);
+};
 
 const ConsultationForm = withFormik({
   mapPropsToValues: () => ({
@@ -137,7 +209,9 @@ const ConsultationForm = withFormik({
 
   handleSubmit: (values, { setSubmitting, props }) => {
 
-    const canvansURL = props.dataURL
+    const p29ContentOne = props.p29ContentOne
+    const p29ContentTwo = props.p29ContentTwo
+    const p30ContentOne = props.p30ContentOne
     const p30ContentTwo = props.p30ContentTwo
 
     const getHiddenFields = document.querySelectorAll(
@@ -155,33 +229,33 @@ const ConsultationForm = withFormik({
     const height = doc.internal.pageSize.getHeight();
 
     //PAGE 1
-    // doc.addImage('assets/p27.jpg', 'JPEG', 0, 0, width, height);
-    // doc.setFontSize(15)
-    // doc.text(45, 115, values.Email)
+    doc.addImage('assets/p27.jpg', 'JPEG', 0, 0, width, height);
+    doc.setFontSize(15)
+    doc.text(45, 115, values.Email)
 
-    // doc.addImage('assets/tick.png', 'PNG', 25, 101, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 60, 142, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 76, 177, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 76, 187, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 76, 197, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 76, 208, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 76, 219, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 76, 230, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 76, 240, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 76, 251, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 76, 261, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 25, 101, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 60, 142, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 76, 177, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 76, 187, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 76, 197, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 76, 208, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 76, 219, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 76, 230, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 76, 240, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 76, 251, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 76, 261, 5, 5);
 
     //PAGE 2
-    // doc.addPage()
-    // doc.addImage('assets/p28.png', 'PNG', 0, 0, width, height);
-    // doc.addImage('assets/tick.png', 'PNG', 27, 50, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 27, 89, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 27, 133, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 27, 172, 5, 5);
-    // doc.addImage('assets/tick.png', 'PNG', 27, 215, 5, 5);
+    doc.addPage()
+    doc.addImage('assets/p28.png', 'PNG', 0, 0, width, height);
+    doc.addImage('assets/tick.png', 'PNG', 27, 50, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 27, 89, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 27, 133, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 27, 172, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 27, 215, 5, 5);
 
     //PAGE 3
-    // doc.addPage()
+    doc.addPage()
     doc.addImage('assets/p29.png', 'PNG', 0, 0, width, height);
     doc.addImage('assets/tick.png', 'PNG', 76, 55, 5, 5);
     doc.addImage('assets/tick.png', 'PNG', 76, 64, 5, 5);
@@ -195,14 +269,20 @@ const ConsultationForm = withFormik({
     doc.addImage('assets/tick.png', 'PNG', 76, 148, 5, 5);
     doc.addImage('assets/tick.png', 'PNG', 66, 207, 5, 5);
 
-    doc.addImage(canvansURL, 'PNG', 100, 193);
+    doc.addImage(p29ContentOne, 'PNG', 100, 194);
 
     doc.addImage('assets/tick.png', 'PNG', 66, 239, 5, 5);
 
-    doc.addImage(p30ContentTwo, 'PNG', 100, 225);
+    doc.addImage(p29ContentTwo, 'PNG', 100, 225);
 
-    // doc.addPage()
-    // doc.addImage('assets/p30.png', 'PNG', 0, 0, width, height);
+    //PAGE 4
+    doc.addPage()
+    doc.addImage('assets/p30.png', 'PNG', 0, 0, width, height);
+    doc.addImage('assets/tick.png', 'PNG', 25, 57, 5, 5);
+    doc.addImage('assets/tick.png', 'PNG', 66, 80, 5, 5);
+
+    doc.addImage(p30ContentOne, 'PNG', 100, 65);
+    doc.addImage(p30ContentTwo, 'PNG', 30, 110);
 
     const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf; charset=utf-8'});
 
@@ -214,9 +294,11 @@ const ConsultationForm = withFormik({
 
     // console.log('uploadPDF-',uploadPDF)
 
-  // console.log('inputEl.current-', canvas.toDataURL())
+    // console.log('inputEl.current-', canvas.toDataURL())
 
-    window.open(doc.output('bloburl'), '_blank');
+    doc.save()
+
+    // window.open(doc.output('bloburl'), '_blank');
 
     // formData.append("file", uploadPDF)
     // formData.append("upload_preset", "r7ksxsfb")
@@ -243,61 +325,5 @@ const ConsultationForm = withFormik({
 
   displayName: "ConsultationForm",
 })(App);
-
-const FormikWrapper = () => {
-  const inputEl = useRef(null);
-  const [dataURL, setDataURL] = useState("");
-  const [p30ContentTwo, setP30ContentTwo] = useState("");
-
-  const wrapText = (context, text, x, y, maxWidth, lineHeight) => {
-    var words = text.split(' ');
-    var line = '';
-
-    for(var n = 0; n < words.length; n++) {
-      var testLine = line + words[n] + ' ';
-      var metrics = context.measureText(testLine);
-      var testWidth = metrics.width;
-      if (testWidth > maxWidth && n > 0) {
-        context.fillText(line, x, y);
-        line = words[n] + ' ';
-        y += lineHeight;
-      }
-      else {
-        line = testLine;
-      }
-    }
-    context.fillText(line, x, y);
-  }
-
-  useEffect(() => {
-    const canvas = document.getElementById('p30ContentOne')
-    const canvasP30ContentTwo = document.getElementById('p30ContentTwo')
-    var ctx = canvas.getContext("2d");
-    ctx.font = '6pt NotoSans-Regular';
-    ctx.fillStyle = '#000';
-
-    var ctx2 = canvasP30ContentTwo.getContext("2d");
-    ctx2.font = '6pt NotoSans-Regular';
-    ctx2.fillStyle = '#000';
-
-    wrapText(ctx, `第一階段相關措施簡易，現時大部分餐廳亦已推行此類措施， 堂食不提供即棄膠餐具，第一階段應推前至2023年實施，加快走塑步伐。`, 0, 60, 400, 16);
-    wrapText(ctx2, `在疫情下，食肆外賣大增，署方居然未有訂立實施第二階段的確實時間表， 期望政府勿再虛耗光陰。署方須承諾第二階推前至2025年實施，在減廢路上急起直追。`, 0, 60, 500, 16);
-
-    if(inputEl){
-      setTimeout(function(){ 
-        setDataURL(canvas.toDataURL())
-        setP30ContentTwo(canvasP30ContentTwo.toDataURL())
-       }, 500);
-      // console.log(inputEl.toDataURL())
-    }
-  }, [document.getElementById('p30ContentOne'), document.getElementById('p30ContentTwo')]);
-  return (
-    <>
-    <canvas ref={inputEl} id="p30ContentOne" width="500px" style={{display: 'none'}}></canvas>
-    <canvas id="p30ContentTwo" width="500px" style={{display: 'none'}}></canvas>
-    <ConsultationForm dataURL={dataURL} p30ContentTwo={p30ContentTwo}/>
-  </>);
-};
-
 
 export default FormikWrapper;
