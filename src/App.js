@@ -18,8 +18,15 @@ const App = (props) =>{
     <ChakraProvider theme={theme}>
       <HelmetProvider>
       <SEO/>
-      <Box fontSize="xl">
-        <Grid minH="100vh" p={3}>
+      <Box fontSize="xl" bgColor="#D7EEF3" py={10}>
+        <Flex flexDirection={{base: 'column', sm: 'row'}}>
+          <Box flex={1}>
+            <Center h={`100%`}>
+              MAIN VISUAL
+            </Center>
+          </Box>
+          <Box flex={1} mx={10}>
+          <Grid p={3} bgColor={'#FFF'} borderRadius={8} p={6}>
           <VStack spacing={8}>
             <Center h={'100%'}>
             <VStack spacing={4}>
@@ -102,6 +109,8 @@ const App = (props) =>{
               </Center> 
             </VStack>
         </Grid>
+          </Box>
+        </Flex>
       </Box>
       </HelmetProvider>
     </ChakraProvider>
@@ -231,57 +240,57 @@ const ConsultationForm = withFormik({
     const height = doc.internal.pageSize.getHeight();
 
     //PAGE 1
-    doc.addImage('assets/p27.jpg', 'JPEG', 0, 0, width, height);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/p27.jpg`, 'JPEG', 0, 0, width, height);
     doc.setFontSize(15)
     doc.text(45, 115, values.Email)
 
-    doc.addImage('assets/tick.png', 'PNG', 25, 101, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 60, 142, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 177, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 187, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 197, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 208, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 219, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 230, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 240, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 251, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 261, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 101, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 60, 142, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 177, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 187, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 197, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 208, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 219, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 230, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 240, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 251, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 261, 5, 5);
 
     //PAGE 2
     doc.addPage()
-    doc.addImage('assets/p28.png', 'PNG', 0, 0, width, height);
-    doc.addImage('assets/tick.png', 'PNG', 27, 50, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 27, 89, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 27, 133, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 27, 172, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 27, 215, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/p28.png`, 'PNG', 0, 0, width, height);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 27, 50, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 27, 89, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 27, 133, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 27, 172, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 27, 215, 5, 5);
 
     //PAGE 3
     doc.addPage()
-    doc.addImage('assets/p29.png', 'PNG', 0, 0, width, height);
-    doc.addImage('assets/tick.png', 'PNG', 76, 55, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 64, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 73, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 82, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 91, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/p29.png`, 'PNG', 0, 0, width, height);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 55, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 64, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 73, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 82, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 91, 5, 5);
 
-    doc.addImage('assets/tick.png', 'PNG', 76, 121, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 130, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 139, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 76, 148, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 66, 207, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 121, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 130, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 139, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 148, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 207, 5, 5);
 
     doc.addImage(p29ContentOne, 'PNG', 100, 194);
 
-    doc.addImage('assets/tick.png', 'PNG', 66, 239, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 239, 5, 5);
 
     doc.addImage(p29ContentTwo, 'PNG', 100, 225);
 
     //PAGE 4
     doc.addPage()
-    doc.addImage('assets/p30.png', 'PNG', 0, 0, width, height);
-    doc.addImage('assets/tick.png', 'PNG', 25, 57, 5, 5);
-    doc.addImage('assets/tick.png', 'PNG', 66, 80, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/p30.png`, 'PNG', 0, 0, width, height);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 57, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 80, 5, 5);
 
     doc.addImage(p30ContentOne, 'PNG', 100, 65);
     doc.addImage(p30ContentTwo, 'PNG', 30, 110);
