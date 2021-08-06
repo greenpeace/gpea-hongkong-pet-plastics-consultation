@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
-import { ChakraProvider, Box, VStack, HStack, Grid, FormControl, FormLabel, Input, Center, Flex, Button, Select, FormErrorMessage} from '@chakra-ui/react';
+import { ChakraProvider, Box, VStack, HStack, Grid, FormControl, FormLabel, Input, Center, Flex, Button, FormErrorMessage} from '@chakra-ui/react';
 import { jsPDF } from "jspdf";
 import { Form, withFormik } from "formik";
 import { HelmetProvider } from 'react-helmet-async';
-import theme from './theme'
 import SEO from "./components/seo"
+import theme from './theme'
 import formContent from './content.json';
 import './notosans-regular-normal.js'
 import Axios from 'axios'
@@ -39,66 +39,64 @@ const App = (props) =>{
               </FormControl>
             </Box>
 
-          <HStack>
-            <Box flex={1} pb={space}>
-              <FormControl id='lastName' isInvalid={errors.LastName && touched.LastName}>
-                <FormLabel {...labelStyle}>
-                  {formContent.label_last_name}
-                </FormLabel>
-                <Input
-                  name='LastName'
-                  type='text'
-                  placeholder={formContent.label_last_name}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage color='red'>
-                  {errors.LastName}
-                </FormErrorMessage>
-              </FormControl>
-            </Box>
-            <Box flex='1' pb={space}>
-              <FormControl
-                id='firstName'
-                isInvalid={errors.FirstName && touched.FirstName}
-              >
-                <FormLabel {...labelStyle}>
-                  {formContent.label_first_name}
-                </FormLabel>
-                <Input
-                  name='FirstName'
-                  type='text'
-                  placeholder={formContent.label_first_name}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage color='red'>
-                  {errors.FirstName}
-                </FormErrorMessage>
-              </FormControl>
-            </Box>
-          </HStack>
+            <HStack>
+              <Box flex={1} pb={space}>
+                <FormControl id='lastName' isInvalid={errors.LastName && touched.LastName}>
+                  <FormLabel {...labelStyle}>
+                    {formContent.label_last_name}
+                  </FormLabel>
+                  <Input
+                    name='LastName'
+                    type='text'
+                    placeholder={formContent.label_last_name}
+                    onChange={handleChange}
+                  />
+                  <FormErrorMessage color='red'>
+                    {errors.LastName}
+                  </FormErrorMessage>
+                </FormControl>
+              </Box>
+              <Box flex='1' pb={space}>
+                <FormControl
+                  id='firstName'
+                  isInvalid={errors.FirstName && touched.FirstName}
+                >
+                  <FormLabel {...labelStyle}>
+                    {formContent.label_first_name}
+                  </FormLabel>
+                  <Input
+                    name='FirstName'
+                    type='text'
+                    placeholder={formContent.label_first_name}
+                    onChange={handleChange}
+                  />
+                  <FormErrorMessage color='red'>
+                    {errors.FirstName}
+                  </FormErrorMessage>
+                </FormControl>
+              </Box>
+            </HStack>
 
-          <Box flex='1' pt={3} pb={3}>
-            <Button
-              w='100%'
-              type='submit'
-              height='48px'
-              borderRadius='8'
-              fontSize='xl'
-              color='#FFF'
-              letterSpacing={4}
-              bg='#ff8100'
-              _hover={{ bg: "campaign.climate" }}
-              isLoading={isSubmitting}
-              // onClick={()=>console.log(inputEl.current.getContext('2d'))}
-            >
-              提交
-            </Button>
-          </Box>
-        </Flex>
+            <Box flex='1' pt={3} pb={3}>
+              <Button
+                w='100%'
+                type='submit'
+                height='48px'
+                borderRadius='8'
+                fontSize='xl'
+                color='#FFF'
+                letterSpacing={4}
+                bg='#ff8100'
+                _hover={{ bg: "campaign.climate" }}
+                isLoading={isSubmitting}
+              >
+                提交
+              </Button>
+            </Box>
+            </Flex>
               </Form>
               </VStack>
-              </Center>
-              
+              </Center> 
             </VStack>
         </Grid>
       </Box>
@@ -141,20 +139,22 @@ const FormikWrapper = () => {
     const canvasP30ContentTwo = document.getElementById('p30ContentTwo')
 
     let ctx = canvasP29ContentOne.getContext("2d");
+    // ctx.width = canvasP29ContentOne.getBoundingClientRect().width
+    // ctx.height = canvasP29ContentOne.getBoundingClientRect().height
     ctx.font = '6pt NotoSans-Regular';
-    ctx.fillStyle = '#666';
+    ctx.fillStyle = '#000';
 
     let ctx2 = canvasP29ContentTwo.getContext("2d");
     ctx2.font = '6pt NotoSans-Regular';
-    ctx2.fillStyle = '#666';
+    ctx2.fillStyle = '#000';
 
     let ctx3 = canvasP30ContentOne.getContext("2d");
     ctx3.font = '6pt NotoSans-Regular';
-    ctx3.fillStyle = '#666';
+    ctx3.fillStyle = '#000';
     
     let ctx4 = canvasP30ContentTwo.getContext("2d");
     ctx4.font = '8pt NotoSans-Regular';
-    ctx4.fillStyle = '#666';
+    ctx4.fillStyle = '#000';
 
     wrapText(ctx, `第一階段相關措施簡易，現時大部分餐廳亦已推行此類措施， 堂食不提供即棄膠餐具，第一階段應推前至2023年實施，加快走塑步伐。`, 0, 60, 400, 12);
     wrapText(ctx2, `在疫情下，食肆外賣大增，署方居然未有訂立實施第二階段的確實時間表， 期望政府勿再虛耗光陰。署方須承諾第二階推前至2025年實施，在減廢路上急起直追。`, 0, 60, 500, 12);
@@ -163,11 +163,11 @@ const FormikWrapper = () => {
 
     if(inputEl){
       setTimeout(function(){ 
-        setP29ContentOne(canvasP29ContentOne.toDataURL())
-        setP29ContentTwo(canvasP29ContentTwo.toDataURL())
-        setP30ContentOne(canvasP30ContentOne.toDataURL())
-        setP30ContentTwo(canvasP30ContentTwo.toDataURL())
-       }, 500);
+        setP29ContentOne(canvasP29ContentOne.toDataURL('image/png'))
+        setP29ContentTwo(canvasP29ContentTwo.toDataURL('image/png'))
+        setP30ContentOne(canvasP30ContentOne.toDataURL('image/png'))
+        setP30ContentTwo(canvasP30ContentTwo.toDataURL('image/png'))
+       }, 200);
     }
   }, [document.getElementById('p29ContentOne')]);
   return (
@@ -286,19 +286,7 @@ const ConsultationForm = withFormik({
 
     const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf; charset=utf-8'});
 
-    // const fileURL = URL.createObjectURL(uploadPDF);
-    // const link = document.createElement('a');
-    // link.href = fileURL;
-    // link.download = "FileName" + new Date() + ".pdf";
-    // link.click();
-
-    // console.log('uploadPDF-',uploadPDF)
-
-    // console.log('inputEl.current-', canvas.toDataURL())
-
-    doc.save()
-
-    // window.open(doc.output('bloburl'), '_blank');
+    window.open(doc.output('bloburl'), '_blank');
 
     // formData.append("file", uploadPDF)
     // formData.append("upload_preset", "r7ksxsfb")
@@ -307,13 +295,11 @@ const ConsultationForm = withFormik({
 
     // Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
     //   const {statusText, data} = res
-    //   console.log('statusText-',statusText)
     //   if(statusText==='OK'){
     //     setSubmitting(false)
     //     const submitData = {
     //       ...hiddenFormValue,
     //       ...values,
-    //       Birthdate: birthdateValue,
     //       pdfFile: data.url
     //     };
     //     // alert(JSON.stringify(submitData, null, 4))
