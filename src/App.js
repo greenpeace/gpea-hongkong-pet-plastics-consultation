@@ -34,6 +34,7 @@ const App = (props) =>{
                   placeholder={formContent.label_email}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  disabled={isSubmitting}
                 />
                 <FormErrorMessage color='red'>{errors.Email}</FormErrorMessage>
               </FormControl>
@@ -50,6 +51,7 @@ const App = (props) =>{
                     type='text'
                     placeholder={formContent.label_last_name}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                   />
                   <FormErrorMessage color='red'>
                     {errors.LastName}
@@ -69,6 +71,7 @@ const App = (props) =>{
                     type='text'
                     placeholder={formContent.label_first_name}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                   />
                   <FormErrorMessage color='red'>
                     {errors.FirstName}
@@ -139,8 +142,7 @@ const FormikWrapper = () => {
     const canvasP30ContentTwo = document.getElementById('p30ContentTwo')
 
     let ctx = canvasP29ContentOne.getContext("2d");
-    // ctx.width = canvasP29ContentOne.getBoundingClientRect().width
-    // ctx.height = canvasP29ContentOne.getBoundingClientRect().height
+    // ctx.scale(2, 2)
     ctx.font = '6pt NotoSans-Regular';
     ctx.fillStyle = '#000';
 
@@ -190,25 +192,25 @@ const ConsultationForm = withFormik({
   validate: (values) => {
     const errors = {};
 
-    // if (!values.Email) {
-    //   errors.Email = formContent.empty_data_alert;
-    // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
-    //   errors.Email = formContent.invalid_email_alert;
-    // }
+    if (!values.Email) {
+      errors.Email = formContent.empty_data_alert;
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
+      errors.Email = formContent.invalid_email_alert;
+    }
 
-    // if (!values.FirstName) {
-    //   errors.FirstName = formContent.empty_data_alert;
-    // }
+    if (!values.FirstName) {
+      errors.FirstName = formContent.empty_data_alert;
+    }
 
-    // if (!values.LastName) {
-    //   errors.LastName = formContent.empty_data_alert;
-    // }
+    if (!values.LastName) {
+      errors.LastName = formContent.empty_data_alert;
+    }
 
     return errors;
   },
 
   handleSubmit: (values, { setSubmitting, props }) => {
-
+    const md5 = require('md5');
     const p29ContentOne = props.p29ContentOne
     const p29ContentTwo = props.p29ContentTwo
     const p30ContentOne = props.p30ContentOne
@@ -286,27 +288,30 @@ const ConsultationForm = withFormik({
 
     const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf; charset=utf-8'});
 
-    window.open(doc.output('bloburl'), '_blank');
+    // PREVIEW 
+    // window.open(doc.output('bloburl'), '_blank');
 
-    // formData.append("file", uploadPDF)
-    // formData.append("upload_preset", "r7ksxsfb")
-    // formData.append("resource_type", "raw")
-    // formData.append("public_id", values.FirstName)
+    formData.append("file", uploadPDF)
+    formData.append("upload_preset", "r7ksxsfb")
+    formData.append("resource_type", "raw")
+    formData.append("public_id", md5(values.Email))
 
-    // Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
-    //   const {statusText, data} = res
-    //   if(statusText==='OK'){
-    //     setSubmitting(false)
-    //     const submitData = {
-    //       ...hiddenFormValue,
-    //       ...values,
-    //       pdfFile: data.url
-    //     };
-    //     // alert(JSON.stringify(submitData, null, 4))
-    //   } else {
-    //     alert('Something errors')
-    //   }
-    // })
+    // JSON.stringify(formData);
+
+    Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
+      const {statusText, data} = res
+      if(statusText==='OK'){
+        setSubmitting(false)
+        const submitData = {
+          ...hiddenFormValue,
+          ...values,
+          pdfFile: data.url
+        };
+        alert(JSON.stringify(submitData, null, 4))
+      } else {
+        alert('Something errors')
+      }
+    })
   },
 
   displayName: "ConsultationForm",
