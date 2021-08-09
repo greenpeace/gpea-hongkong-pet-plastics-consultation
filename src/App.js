@@ -8,7 +8,7 @@ import './notosans-regular-normal.js'
 
 const App = (props) =>{
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider resetCSS={true} theme={theme}>
       <HelmetProvider>
       <SEO/>
       <Box fontSize="xl" bgColor="#D7EEF3" py={10}>
@@ -35,7 +35,7 @@ const App = (props) =>{
                 <VStack spacing={4}>
                   <Form/>
                 </VStack>
-                </Center> 
+                </Center>
               </VStack>
             </Box>
           </Box>
