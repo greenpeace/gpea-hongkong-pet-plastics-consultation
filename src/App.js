@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import { ChakraProvider, Box, VStack, HStack, Grid, FormControl, FormLabel, Input, Center, Flex, Button, FormErrorMessage} from '@chakra-ui/react';
+import { ChakraProvider, Box, VStack, HStack, FormControl, FormLabel, Input, Center, Flex, Button, FormErrorMessage, Heading, Text} from '@chakra-ui/react';
 import { jsPDF } from "jspdf";
 import { Form, withFormik } from "formik";
 import { HelmetProvider } from 'react-helmet-async';
@@ -26,89 +26,99 @@ const App = (props) =>{
             </Center>
           </Box>
           <Box flex={1} mx={10}>
-          <Grid p={3} bgColor={'#FFF'} borderRadius={8} p={6}>
-          <VStack spacing={8}>
-            <Center h={'100%'}>
-            <VStack spacing={4}>
-            <Form onSubmit={handleSubmit}>
-            <Flex direction='column'>
-            <Box flex='1' pb={space}>
-              <FormControl id='email' isInvalid={errors.Email && touched.Email}>
-                <FormLabel {...labelStyle}>{formContent.label_email}</FormLabel>
-                <Input
-                  name='Email'
-                  type='email'
-                  placeholder={formContent.label_email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  disabled={isSubmitting}
-                />
-                <FormErrorMessage color='red'>{errors.Email}</FormErrorMessage>
-              </FormControl>
-            </Box>
-
-            <HStack>
-              <Box flex={1} pb={space}>
-                <FormControl id='lastName' isInvalid={errors.LastName && touched.LastName}>
-                  <FormLabel {...labelStyle}>
-                    {formContent.label_last_name}
-                  </FormLabel>
-                  <Input
-                    name='LastName'
-                    type='text'
-                    placeholder={formContent.label_last_name}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                  />
-                  <FormErrorMessage color='red'>
-                    {errors.LastName}
-                  </FormErrorMessage>
-                </FormControl>
-              </Box>
+          <Box bgColor={'#FFF'} borderRadius={8} mx={{base: 0, sm: 2}}>
+          <Box bgColor="orange" borderTopRadius={8} textAlign={'center'}>
+            <Heading
+              py={4}
+              fontWeight={600}
+              color="#FFF"
+              fontSize={{ base: 16, sm: 20, md: 24 }}
+              lineHeight={'110%'}>
+              加速香港禁膠餐具 3步完成
+            </Heading>
+          </Box>
+            <VStack spacing={8} py={6}>
+              <Center h={'100%'}>
+              <VStack spacing={4}>
+              <Form onSubmit={handleSubmit}>
+              <Flex direction='column'>
               <Box flex='1' pb={space}>
-                <FormControl
-                  id='firstName'
-                  isInvalid={errors.FirstName && touched.FirstName}
-                >
-                  <FormLabel {...labelStyle}>
-                    {formContent.label_first_name}
-                  </FormLabel>
+                <FormControl id='email' isInvalid={errors.Email && touched.Email}>
+                  <FormLabel {...labelStyle}>{formContent.label_email}</FormLabel>
                   <Input
-                    name='FirstName'
-                    type='text'
-                    placeholder={formContent.label_first_name}
+                    name='Email'
+                    type='email'
+                    placeholder={formContent.label_email}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     disabled={isSubmitting}
                   />
-                  <FormErrorMessage color='red'>
-                    {errors.FirstName}
-                  </FormErrorMessage>
+                  <FormErrorMessage color='red'>{errors.Email}</FormErrorMessage>
                 </FormControl>
               </Box>
-            </HStack>
 
-            <Box flex='1' pt={3} pb={3}>
-              <Button
-                w='100%'
-                type='submit'
-                height='48px'
-                borderRadius='8'
-                fontSize='xl'
-                color='#FFF'
-                letterSpacing={4}
-                bg='#ff8100'
-                _hover={{ bg: "campaign.climate" }}
-                isLoading={isSubmitting}
-              >
-                提交
-              </Button>
-            </Box>
-            </Flex>
-              </Form>
+              <HStack>
+                <Box flex={1} pb={space}>
+                  <FormControl id='lastName' isInvalid={errors.LastName && touched.LastName}>
+                    <FormLabel {...labelStyle}>
+                      {formContent.label_last_name}
+                    </FormLabel>
+                    <Input
+                      name='LastName'
+                      type='text'
+                      placeholder={formContent.label_last_name}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                    />
+                    <FormErrorMessage color='red'>
+                      {errors.LastName}
+                    </FormErrorMessage>
+                  </FormControl>
+                </Box>
+                <Box flex='1' pb={space}>
+                  <FormControl
+                    id='firstName'
+                    isInvalid={errors.FirstName && touched.FirstName}
+                  >
+                    <FormLabel {...labelStyle}>
+                      {formContent.label_first_name}
+                    </FormLabel>
+                    <Input
+                      name='FirstName'
+                      type='text'
+                      placeholder={formContent.label_first_name}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                    />
+                    <FormErrorMessage color='red'>
+                      {errors.FirstName}
+                    </FormErrorMessage>
+                  </FormControl>
+                </Box>
+              </HStack>
+
+              <Box flex='1' pt={3} pb={3}>
+                <Button
+                  w='100%'
+                  type='submit'
+                  height='48px'
+                  borderRadius='8'
+                  fontSize='xl'
+                  color='#FFF'
+                  letterSpacing={4}
+                  bg='#ff8100'
+                  _hover={{ bg: "campaign.climate" }}
+                  isLoading={isSubmitting}
+                >
+                  提交
+                </Button>
+              </Box>
+              </Flex>
+                </Form>
+                </VStack>
+                </Center> 
               </VStack>
-              </Center> 
-            </VStack>
-        </Grid>
+            </Box>
           </Box>
         </Flex>
       </Box>
@@ -198,7 +208,7 @@ const FormikWrapper = () => {
         setP30ContentTwo(canvasP30ContentTwo.toDataURL('image/png'))
        }, 200);
     }
-  }, [document.getElementById('p30ContentTwo')]);
+  }, []);
   return (
     <Box ref={inputEl}>
     <canvas id="p29ContentOne" style={{display: 'none'}}></canvas>

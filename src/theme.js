@@ -44,7 +44,7 @@ const theme = extendTheme({
       oceans: "#008fe2",
     },
   },
-  bg: {
+  bgColors: {
     darkblue: "#292f47",
     campaign: {
       arctic: "#62cbd7",
