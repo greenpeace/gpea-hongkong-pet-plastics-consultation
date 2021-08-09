@@ -15,7 +15,7 @@ const App = (props) =>{
   const labelStyle = { fontSize: "xs", color: "gray.400"};
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider resetCSS={true} theme={theme}>
       <HelmetProvider>
       <SEO/>
       <Box fontSize="xl" bgColor="#D7EEF3" py={10}>
@@ -116,7 +116,7 @@ const App = (props) =>{
               </Flex>
                 </Form>
                 </VStack>
-                </Center> 
+                </Center>
               </VStack>
             </Box>
           </Box>
@@ -189,7 +189,7 @@ const FormikWrapper = () => {
     ctx3.scale(2, 2)
     ctx3.font = '6pt NotoSans-Regular';
     ctx3.fillStyle = '#000';
-    
+
     let ctx4 = canvasP30ContentTwo.getContext("2d");
     ctx4.scale(2, 2)
     ctx4.font = '8pt NotoSans-Regular';
@@ -201,7 +201,7 @@ const FormikWrapper = () => {
     wrapText(ctx4, `署方須同時訂立「可重用餐具社區配套時間表」，提供配套措施鼓勵飲食業界及市民使用可重用餐具、 推動租借可重用餐具的社區普及化，避免因管制即棄塑膠餐具而增加其他即棄餐具(如:紙、竹)的垃圾量， 達至真正源頭減廢。`, 0, 60, 400, 16);
 
     if(inputEl){
-      setTimeout(function(){ 
+      setTimeout(function(){
         setP29ContentOne(canvasP29ContentOne.toDataURL('image/png'))
         setP29ContentTwo(canvasP29ContentTwo.toDataURL('image/png'))
         setP30ContentOne(canvasP30ContentOne.toDataURL('image/png'))
@@ -326,9 +326,6 @@ const ConsultationForm = withFormik({
 
     const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf; charset=utf-8'});
 
-    // PREVIEW 
-    // window.open(doc.output('bloburl'), '_blank');
-
     formData.append("file", uploadPDF)
     formData.append("upload_preset", "r7ksxsfb")
     formData.append("resource_type", "raw")
@@ -336,7 +333,13 @@ const ConsultationForm = withFormik({
 
     JSON.stringify(formData);
 
-    Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
+    let searchParams = new URLSearchParams(window.location.search);
+
+    // Browse with `?page=test` to preview the doc
+    if(searchParams.get("page") === "test") {
+    window.open(doc.output('bloburl'), '_blank');
+    } else {
+      Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
       const {statusText, data} = res
       if(statusText==='OK'){
         setSubmitting(false)
@@ -350,6 +353,7 @@ const ConsultationForm = withFormik({
         alert('Something errors')
       }
     })
+    }
   },
 
   displayName: "ConsultationForm",
