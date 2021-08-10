@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, HStack, FormControl, FormLabel, Input, Flex, Button, FormErrorMessage} from '@chakra-ui/react';
+import { Box, HStack, FormControl, FormLabel, Input, Flex, Button, FormErrorMessage, Center, Text, Checkbox, Image, Stack} from '@chakra-ui/react';
 import { jsPDF } from "jspdf";
 import { Form, withFormik } from "formik";
 import formContent from './content.json';
@@ -8,84 +8,198 @@ import Axios from 'axios'
 const FormWrapper = (props) =>{
   const { touched, errors, handleChange, handleBlur, handleSubmit, isSubmitting} = props;
   const space = 4;
-  const labelStyle = { fontSize: "xs", color: "gray.400"};
+  const labelStyle = { fontSize: "md", color: "gray.400"};
+  const leftBottomCorner = {
+    bottom: "0px",
+    left: "0px",
+    borderBottom: "20px solid #FFF",
+    borderRight: "50px solid transparent",
+  };
+  const rightBottomCorner = {
+    bottom: "0px",
+    right: "0px",
+    borderBottom: "20px solid #FFF",
+    borderLeft: "50px solid transparent",
+  };
+
+  const leftTopCorner = {
+    top: "-13px",
+    left: "0px",
+    borderBottom: "20px solid #CAE7F8",
+    borderRight: "50px solid transparent",
+  };
+  const rightTopCorner = {
+    top: "-13px",
+    right: "0px",
+    borderBottom: "20px solid #CAE7F8",
+    borderLeft: "50px solid transparent",
+  };
 
   return (
-    <Form onSubmit={handleSubmit}>
-    <Flex direction='column'>
-    <Box flex='1' pb={space}>
-      <FormControl id='email' isInvalid={errors.Email && touched.Email}>
-        <FormLabel {...labelStyle}>{formContent.label_email}</FormLabel>
-        <Input
-          name='Email'
-          type='email'
-          placeholder={formContent.label_email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          disabled={isSubmitting}
-        />
-        <FormErrorMessage color='red'>{errors.Email}</FormErrorMessage>
-      </FormControl>
-    </Box>
+    <Box>
+        {/** STEP 1 */}
+        <Stack direction={{base: 'row'}} spacing={2} px={2}>
+          <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'}>
+            <Text fontSize={48}>1</Text>
+            <Box pos='absolute' {...leftBottomCorner}></Box>
+            <Box pos='absolute' {...rightBottomCorner}></Box>
+          </Box>
+          <Box flex={1}>
+            <Form onSubmit={handleSubmit}>
+              <Box pb={space}>
+                <FormControl id='email' isInvalid={errors.Email && touched.Email}>
+                  <Flex>
+                    <Box minW={20}>
+                      <Center h="100%">
+                        <FormLabel {...labelStyle}>
+                          {formContent.label_email}
+                        </FormLabel>                
+                      </Center>
+                    </Box>
+                    <Box flex={1}>
+                    <Input
+                      name='Email'
+                      type='email'
+                      // placeholder={formContent.label_email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      disabled={isSubmitting}
+                      bgColor={'#E9E9E9'}
+                    />
+                    <FormErrorMessage color='red'>
+                      {errors.Email}
+                    </FormErrorMessage>            
+                    </Box>
+                  </Flex>
+                </FormControl>
+              </Box>
 
-    <HStack>
-      <Box flex={1} pb={space}>
-        <FormControl id='lastName' isInvalid={errors.LastName && touched.LastName}>
-          <FormLabel {...labelStyle}>
-            {formContent.label_last_name}
-          </FormLabel>
-          <Input
-            name='LastName'
-            type='text'
-            placeholder={formContent.label_last_name}
-            onChange={handleChange}
-            disabled={isSubmitting}
-          />
-          <FormErrorMessage color='red'>
-            {errors.LastName}
-          </FormErrorMessage>
-        </FormControl>
-      </Box>
-      <Box flex='1' pb={space}>
-        <FormControl
-          id='firstName'
-          isInvalid={errors.FirstName && touched.FirstName}
-        >
-          <FormLabel {...labelStyle}>
-            {formContent.label_first_name}
-          </FormLabel>
-          <Input
-            name='FirstName'
-            type='text'
-            placeholder={formContent.label_first_name}
-            onChange={handleChange}
-            disabled={isSubmitting}
-          />
-          <FormErrorMessage color='red'>
-            {errors.FirstName}
-          </FormErrorMessage>
-        </FormControl>
-      </Box>
-    </HStack>
+              <HStack>
+                <Box flex={1} pb={space}>
+                  <FormControl id='lastName' isInvalid={errors.LastName && touched.LastName}>
+                    <Flex>
+                      <Box minW={12}>
+                        <Center h="100%">
+                          <FormLabel {...labelStyle}>
+                            {formContent.label_last_name}
+                          </FormLabel>                
+                        </Center>
+                      </Box>
+                      <Box flex={1}>
+                      <Input
+                        name='LastName'
+                        type='text'
+                        // placeholder={formContent.label_last_name}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        bgColor={'#E9E9E9'}
+                      />
+                      <FormErrorMessage color='red'>
+                        {errors.LastName}
+                      </FormErrorMessage>            
+                      </Box>
+                    </Flex>
+                  </FormControl>
+                </Box>
 
-    <Box flex='1' pt={3} pb={3}>
-      <Button
-        w='100%'
-        type='submit'
-        height='48px'
-        borderRadius='8'
-        fontSize='xl'
-        color='#FFF'
-        letterSpacing={4}
-        bg='#ff8100'
-        _hover={{ bg: "campaign.climate" }}
-        isLoading={isSubmitting}
-      >
-        提交
-      </Button>
+                <Box flex={1} pb={space}>
+                  <FormControl id='firstName'
+                    isInvalid={errors.FirstName && touched.FirstName}>
+                    <Flex>
+                      <Box minW={12}>
+                        <Center h="100%">
+                          <FormLabel {...labelStyle}>
+                            {formContent.label_first_name}
+                          </FormLabel>                
+                        </Center>
+                      </Box>
+                      <Box flex={1}>
+                      <Input
+                        name='FirstName'
+                        type='text'
+                        // placeholder={formContent.label_first_name}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        bgColor={'#E9E9E9'}
+                      />
+                      <FormErrorMessage color='red'>
+                        {errors.FirstName}
+                      </FormErrorMessage>            
+                      </Box>
+                    </Flex>
+                  </FormControl>
+                </Box>
+
+                </HStack>
+
+                <Box py={2}>
+                  <Button
+                    w='100%'
+                    type='submit'
+                    height='48px'
+                    borderRadius='8'
+                    fontSize='xl'
+                    color='#FFF'
+                    letterSpacing={4}
+                    bg='#ff8100'
+                    _hover={{ bg: "campaign.climate" }}
+                    isLoading={isSubmitting}
+                  >
+                    提交聯絡資料
+                  </Button>
+                </Box>
+            </Form>
+            <Box>
+            <HStack align='flex-start'>
+              <Box pb={4}>
+                <FormControl id='optIn'>
+                  <Checkbox name='OptIn' onChange={handleChange}>
+                    <Text fontSize='xs' color='gray.500'>{formContent.form_remind}</Text>
+                  </Checkbox>
+                </FormControl>
+              </Box>
+            </HStack>
+            </Box>
+          </Box>
+        </Stack>
+        {/** STEP 2 */}
+        <Stack direction={{base: 'row'}} spacing={2} px={2}>
+          <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'} pb={6}>
+            <Text fontSize={48}>2</Text>
+            <Box pos='absolute' {...leftTopCorner}></Box>
+            <Box pos='absolute' {...rightTopCorner}></Box>
+            <Box pos='absolute' {...leftBottomCorner}></Box>
+            <Box pos='absolute' {...rightBottomCorner}></Box>
+          </Box>
+          <Box flex={1}>
+          <Stack spacing={2} direction={'row'}>
+            <Box maxW={'48px'}><Image src={`${process.env.PUBLIC_URL}/assets/icon_open.png`}/></Box>
+            <Box>
+              <Text color='gray.500' fontSize={16}>開啟你的電子郵箱，打開由綠色和平發出，附有意見書範本的電郵。</Text>
+            </Box>
+          </Stack>
+          </Box>
+        </Stack>
+
+        {/** STEP 3 */}
+        <Stack direction={{base: 'row'}} spacing={2}  px={2}>
+          <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'} pb={6}>
+            <Text fontSize={48}>3</Text>
+            <Box pos='absolute' {...leftTopCorner}></Box>
+            <Box pos='absolute' {...rightTopCorner}></Box>
+            <Box pos='absolute' {...leftBottomCorner}></Box>
+            <Box pos='absolute' {...rightBottomCorner}></Box>
+          </Box>
+          <Box flex={1}>
+          <Stack spacing={2} direction={'row'}>
+            <Box maxW={'48px'}><Image src={`${process.env.PUBLIC_URL}/assets/icon_forward.png`}/></Box>
+            <Box>
+              <Text color='gray.500' fontSize={16}>轉寄該電郵，在「收件人」一欄輸入<u>rdpt@epd.gov.hk</u>，按下發送，完成諮詢！</Text>
+            </Box>
+          </Stack>
+          </Box>
+        </Stack>
     </Box>
-    </Flex>
-  </Form>
   );
 }
 
