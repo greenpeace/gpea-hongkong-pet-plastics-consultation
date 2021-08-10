@@ -141,30 +141,29 @@ const ConsultationForm = withFormik({
     doc.setFontSize(15)
     doc.text(45, 115, values.Email)
 
-    {
       [{x:25,y:101},{x:60,y:142},{x:76,y:177},{x:76,y:187},{x:76,y:197},{x:76,y:208},{x:76,y:219},{x:76,y:230},{x:76,y:240},{x:76,y:251},{x:76,y:261}]
       .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
-    }
+
 
     /**
      * PAGE 2
      */
     doc.addPage()
     doc.addImage(`${process.env.PUBLIC_URL}/assets/p28.png`, 'PNG', 0, 0, width, height);
-    {
+
       [{x:27,y:50},{x:27,y:89},{x:27,y:133},{x:27,y:172},{x:27,y:215}]
       .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
-    }
+
 
     /**
      * PAGE 3
      */
     doc.addPage()
     doc.addImage(`${process.env.PUBLIC_URL}/assets/p29.png`, 'PNG', 0, 0, width, height);
-    {
+
       [{x:76,y:55},{x:76,y:64},{x:76,y:73},{x:76,y:82},{x:76,y:91},{x:76,y:121},{x:76,y:130},{x:76,y:139},{x:76,y:148}]
       .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
-    }
+
     doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 207, 5, 5);
     doc.addImage(p29ContentOne, 'PNG', 99, 194, 155, 40);
     doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 239, 5, 5);
@@ -183,7 +182,7 @@ const ConsultationForm = withFormik({
 
     const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf; charset=utf-8'});
 
-    // PREVIEW 
+    // PREVIEW
     // window.open(doc.output('bloburl'), '_blank');
 
     formData.append("file", uploadPDF)
