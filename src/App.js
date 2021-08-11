@@ -7,8 +7,9 @@ import {
   Flex,
   Heading,
   Image,
-  Stack
+  Stack,
 } from '@chakra-ui/react'
+import styled from '@emotion/styled'
 import { HelmetProvider } from 'react-helmet-async'
 import SEO from './components/seo'
 import theme from './theme'
@@ -18,10 +19,15 @@ import Countdown from './components/Countdown'
 import Testimonials from './components/Testimonials'
 import SplitWithImage from './components/SplitWithImage/SplitWithImage'
 import GridListWithHeading from './components/GridList/GridListWithHeading'
+import LargeWithLogoLeft from './components/Footer/LargeWithLogoLeft'
 import SmallWithSocial from './components/Footer/SmallWithSocial'
 
 import '@fontsource/noto-sans-tc'
 import './notosans-regular-normal.js'
+
+const Footer = styled.footer`
+  font-size: 0.85rem;
+`
 
 const App = (props) => {
   return (
@@ -32,12 +38,12 @@ const App = (props) => {
           <Flex flexDirection={{ base: 'column', sm: 'row' }}>
             <Box flex={1}>
               <Center h={`100%`} px={12}>
-                <Stack direction="column">
+                <Stack direction='column'>
                   <Image
                     src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`}
                   />
-                  <Countdown/>
-                </Stack> 
+                  <Countdown />
+                </Stack>
               </Center>
             </Box>
             <Box flex={1} mx={10}>
@@ -72,11 +78,14 @@ const App = (props) => {
           </Flex>
         </Box>
         <Box>
-          <Testimonials/>
+          <Testimonials />
         </Box>
         <SplitWithImage />
         <GridListWithHeading />
-        <SmallWithSocial />
+        <Footer>
+          <LargeWithLogoLeft />
+          <SmallWithSocial />
+        </Footer>
       </HelmetProvider>
     </ChakraProvider>
   )
