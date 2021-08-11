@@ -1,12 +1,12 @@
-import React from 'react';
-import { Box, HStack, FormControl, FormLabel, Input, Flex, Button, FormErrorMessage, Center, Text, Checkbox, Image, Stack} from '@chakra-ui/react';
+import React, {useEffect} from 'react';
+import { Box, HStack, FormControl, FormLabel, Input, Flex, Button, FormErrorMessage, Center, Text, Checkbox, Image, Stack, Skeleton, SkeletonCircle, SkeletonText} from '@chakra-ui/react';
 import { jsPDF } from "jspdf";
 import { Form, withFormik } from "formik";
 import formContent from './content.json';
 import Axios from 'axios'
 
 const FormWrapper = (props) =>{
-  const { touched, errors, handleChange, handleBlur, handleSubmit, isSubmitting} = props;
+  const { touched, errors, handleChange, handleBlur, handleSubmit, isSubmitting, status} = props;
   const space = 4;
   const labelStyle = { fontSize: "md", color: "gray.400"};
   const leftBottomCorner = {
@@ -35,131 +35,149 @@ const FormWrapper = (props) =>{
     borderLeft: "50px solid transparent",
   };
 
+  useEffect(() => {
+    if(status){
+      console.log('status-',status)
+    }
+  }, [status]);
+
   return (
     <Box px={2} py={4}>
         {/** STEP 1 */}
         <Stack direction={{base: 'row'}} spacing={2} px={2}>
           <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'}>
-            <Text fontSize={48}>1</Text>
+            {status === 'submitted' ? <Box py={4}><Image src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-04.png`}/></Box> : <Text fontSize={48}>1</Text>}
             <Box pos='absolute' {...leftBottomCorner}></Box>
             <Box pos='absolute' {...rightBottomCorner}></Box>
           </Box>
           <Box flex={1}>
-            <Form onSubmit={handleSubmit}>
-              <Box pb={space}>
-                <FormControl id='email' isInvalid={errors.Email && touched.Email}>
+          {status === 'submitted' ? <Box><Text color='gray.500' fontSize={{base: 16}}>接下來，您將會收到電郵附上意見書文件範本，轉寄郵件即可完成諮詢。</Text></Box>
+          :
+          isSubmitting ? 
+          <Stack>
+            <Skeleton height="20px" />
+            <Skeleton height="20px" />
+            <Skeleton height="20px" />
+          <Box>
+            <Text fontSize='xs' color='gray.500'>請耐心稍候，我們正在處理您的資料</Text>
+          </Box>
+          </Stack> : (
+          <Form onSubmit={handleSubmit}>
+            <Box pb={space}>
+              <FormControl id='email' isInvalid={errors.Email && touched.Email}>
+                <Flex>
+                  <Box minW={20}>
+                    <Center h="100%">
+                      <FormLabel {...labelStyle}>
+                        {formContent.label_email}
+                      </FormLabel>                
+                    </Center>
+                  </Box>
+                  <Box flex={1}>
+                  <Input
+                    name='Email'
+                    type='email'
+                    // placeholder={formContent.label_email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    disabled={isSubmitting}
+                    bgColor={'#E9E9E9'}
+                  />
+                  <FormErrorMessage color='red'>
+                    {errors.Email}
+                  </FormErrorMessage>            
+                  </Box>
+                </Flex>
+              </FormControl>
+            </Box>
+
+            <HStack>
+              <Box flex={1} pb={space}>
+                <FormControl id='lastName' isInvalid={errors.LastName && touched.LastName}>
                   <Flex>
-                    <Box minW={20}>
+                    <Box minW={12}>
                       <Center h="100%">
                         <FormLabel {...labelStyle}>
-                          {formContent.label_email}
+                          {formContent.label_last_name}
                         </FormLabel>                
                       </Center>
                     </Box>
                     <Box flex={1}>
                     <Input
-                      name='Email'
-                      type='email'
-                      // placeholder={formContent.label_email}
+                      name='LastName'
+                      type='text'
+                      // placeholder={formContent.label_last_name}
                       onChange={handleChange}
-                      onBlur={handleBlur}
                       disabled={isSubmitting}
                       bgColor={'#E9E9E9'}
                     />
                     <FormErrorMessage color='red'>
-                      {errors.Email}
+                      {errors.LastName}
                     </FormErrorMessage>            
                     </Box>
                   </Flex>
                 </FormControl>
               </Box>
 
-              <HStack>
-                <Box flex={1} pb={space}>
-                  <FormControl id='lastName' isInvalid={errors.LastName && touched.LastName}>
-                    <Flex>
-                      <Box minW={12}>
-                        <Center h="100%">
-                          <FormLabel {...labelStyle}>
-                            {formContent.label_last_name}
-                          </FormLabel>                
-                        </Center>
-                      </Box>
-                      <Box flex={1}>
-                      <Input
-                        name='LastName'
-                        type='text'
-                        // placeholder={formContent.label_last_name}
-                        onChange={handleChange}
-                        disabled={isSubmitting}
-                        bgColor={'#E9E9E9'}
-                      />
-                      <FormErrorMessage color='red'>
-                        {errors.LastName}
-                      </FormErrorMessage>            
-                      </Box>
-                    </Flex>
-                  </FormControl>
-                </Box>
-
-                <Box flex={1} pb={space}>
-                  <FormControl id='firstName'
-                    isInvalid={errors.FirstName && touched.FirstName}>
-                    <Flex>
-                      <Box minW={12}>
-                        <Center h="100%">
-                          <FormLabel {...labelStyle}>
-                            {formContent.label_first_name}
-                          </FormLabel>                
-                        </Center>
-                      </Box>
-                      <Box flex={1}>
-                      <Input
-                        name='FirstName'
-                        type='text'
-                        // placeholder={formContent.label_first_name}
-                        onChange={handleChange}
-                        disabled={isSubmitting}
-                        bgColor={'#E9E9E9'}
-                      />
-                      <FormErrorMessage color='red'>
-                        {errors.FirstName}
-                      </FormErrorMessage>            
-                      </Box>
-                    </Flex>
-                  </FormControl>
-                </Box>
-
-                </HStack>
-
-                <Box py={2}>
-                  <Button
-                    w='100%'
-                    type='submit'
-                    height='48px'
-                    borderRadius='8'
-                    fontSize='xl'
-                    color='#FFF'
-                    letterSpacing={4}
-                    bg='#ff8100'
-                    _hover={{ bg: "campaign.climate" }}
-                    isLoading={isSubmitting}
-                  >
-                    提交聯絡資料
-                  </Button>
-                </Box>
-            </Form>
-            <Box>
-            <HStack align='flex-start'>
-              <Box pb={4}>
-                <FormControl id='optIn'>
-                  <Checkbox name='OptIn' onChange={handleChange}>
-                    <Text fontSize='xs' color='gray.500'>{formContent.form_remind}</Text>
-                  </Checkbox>
+              <Box flex={1} pb={space}>
+                <FormControl id='firstName'
+                  isInvalid={errors.FirstName && touched.FirstName}>
+                  <Flex>
+                    <Box minW={12}>
+                      <Center h="100%">
+                        <FormLabel {...labelStyle}>
+                          {formContent.label_first_name}
+                        </FormLabel>                
+                      </Center>
+                    </Box>
+                    <Box flex={1}>
+                    <Input
+                      name='FirstName'
+                      type='text'
+                      // placeholder={formContent.label_first_name}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                      bgColor={'#E9E9E9'}
+                    />
+                    <FormErrorMessage color='red'>
+                      {errors.FirstName}
+                    </FormErrorMessage>            
+                    </Box>
+                  </Flex>
                 </FormControl>
               </Box>
-            </HStack>
-            </Box>
+
+              </HStack>
+
+              <Box py={2}>
+                <Button
+                  w='100%'
+                  type='submit'
+                  height='48px'
+                  borderRadius='8'
+                  fontSize='xl'
+                  color='#FFF'
+                  letterSpacing={4}
+                  bg='#ff8100'
+                  _hover={{ bg: "campaign.climate" }}
+                  isLoading={isSubmitting}
+                >
+                  提交聯絡資料
+                </Button>
+              </Box>
+              <Box>
+                <HStack align='flex-start'>
+                  <Box pb={4}>
+                    <FormControl id='optIn'>
+                      <Checkbox name='OptIn' onChange={handleChange}>
+                        <Text fontSize='xs' color='gray.500'>{formContent.form_remind}</Text>
+                      </Checkbox>
+                    </FormControl>
+                  </Box>
+                </HStack>
+                </Box>
+          </Form>
+          )}
           </Box>
         </Stack>
         {/** STEP 2 */}
@@ -195,7 +213,7 @@ const FormWrapper = (props) =>{
             <Box maxW={'64px'}><Image src={`${process.env.PUBLIC_URL}/assets/icon_forward.png`}/></Box>
             <Box>
               <Text color='gray.500' fontSize={{base: 16}}>轉寄該電郵，在「收件人」一欄輸入<u>rdpt@epd.gov.hk</u>，按下發送，完成諮詢！</Text>
-              <Box><Text color='gray.500' fontSize={16}><sup>**</sup>如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘</Text></Box>
+              <Box><Text color='gray.500' fontSize={12}><sup>**</sup>如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘</Text></Box>
             </Box>
           </Stack>
           </Box>
@@ -215,24 +233,30 @@ const ConsultationForm = withFormik({
   validate: (values) => {
     const errors = {};
 
-    if (!values.Email) {
-      errors.Email = formContent.empty_data_alert;
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
-      errors.Email = formContent.invalid_email_alert;
-    }
+    // if (!values.Email) {
+    //   errors.Email = formContent.empty_data_alert;
+    // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
+    //   errors.Email = formContent.invalid_email_alert;
+    // }
 
-    if (!values.FirstName) {
-      errors.FirstName = formContent.empty_data_alert;
-    }
+    // if (!values.FirstName) {
+    //   errors.FirstName = formContent.empty_data_alert;
+    // }
 
-    if (!values.LastName) {
-      errors.LastName = formContent.empty_data_alert;
-    }
+    // if (!values.LastName) {
+    //   errors.LastName = formContent.empty_data_alert;
+    // }
 
     return errors;
   },
 
-  handleSubmit: (values, { setSubmitting, props }) => {
+  handleSubmit: (values, { setSubmitting, setStatus, props }) => {
+    setStatus('processing')
+    setTimeout(() => {
+      alert('Fake submit');
+      setSubmitting(false)
+      setStatus('submitted')
+    }, 3000);
     const md5 = require('md5');
     const {p29ContentOne, p29ContentTwo, p30ContentOne, p30ContentTwo} = props
 
@@ -297,11 +321,6 @@ const ConsultationForm = withFormik({
     doc.addImage(p30ContentTwo, 'PNG', 30, 110, 155, 50);
 
     const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf; charset=utf-8'});
-
-    setTimeout(() => {
-      alert('OK');
-      setSubmitting(false)
-    }, 5000);
 
     // PREVIEW
     // window.open(doc.output('bloburl'), '_blank');
