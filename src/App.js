@@ -33,7 +33,8 @@ const App = (props) => {
               </Center>
             </Box>
             <Box flex={1} mx={10}>
-              <Box bgColor={'#FFF'} borderRadius={8} mx={{ base: 0, sm: 2 }}>
+            <Center>
+              <Box bgColor={'#FFF'} borderRadius={8} mx={{ base: 0, sm: 2 }} maxW={'640px'}>
                 <Box bgColor='orange' borderTopRadius={8} textAlign={'center'}>
                   <Heading
                     py={4}
@@ -46,9 +47,10 @@ const App = (props) => {
                   </Heading>
                 </Box>
                 <Box w={'100%'}>
-                <Form />
+                  <Form />
                 </Box>
               </Box>
+              </Center>
             </Box>
           </Flex>
         </Box>

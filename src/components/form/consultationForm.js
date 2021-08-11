@@ -36,7 +36,7 @@ const FormWrapper = (props) =>{
   };
 
   return (
-    <Box>
+    <Box px={2} py={4}>
         {/** STEP 1 */}
         <Stack direction={{base: 'row'}} spacing={2} px={2}>
           <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'}>
@@ -165,17 +165,17 @@ const FormWrapper = (props) =>{
         {/** STEP 2 */}
         <Stack direction={{base: 'row'}} spacing={2} px={2}>
           <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'} pb={6}>
-            <Text fontSize={48}>2</Text>
+            <Text fontSize={48} py={2}>2</Text>
             <Box pos='absolute' {...leftTopCorner}></Box>
             <Box pos='absolute' {...rightTopCorner}></Box>
             <Box pos='absolute' {...leftBottomCorner}></Box>
             <Box pos='absolute' {...rightBottomCorner}></Box>
           </Box>
-          <Box flex={1}>
+          <Box flex={1} alignSelf="center">
           <Stack spacing={2} direction={'row'}>
-            <Box maxW={'48px'}><Image src={`${process.env.PUBLIC_URL}/assets/icon_open.png`}/></Box>
+            <Box maxW={'64px'}><Image src={`${process.env.PUBLIC_URL}/assets/icon_open.png`}/></Box>
             <Box>
-              <Text color='gray.500' fontSize={16}>開啟你的電子郵箱，打開由綠色和平發出，附有意見書範本的電郵。</Text>
+              <Text color='gray.500' fontSize={{base: 16}}>開啟你的電子郵箱，打開由綠色和平發出，附有意見書範本的電郵。</Text>
             </Box>
           </Stack>
           </Box>
@@ -184,17 +184,18 @@ const FormWrapper = (props) =>{
         {/** STEP 3 */}
         <Stack direction={{base: 'row'}} spacing={2}  px={2}>
           <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'} pb={6}>
-            <Text fontSize={48}>3</Text>
+            <Text fontSize={48} py={2}>3</Text>
             <Box pos='absolute' {...leftTopCorner}></Box>
             <Box pos='absolute' {...rightTopCorner}></Box>
             <Box pos='absolute' {...leftBottomCorner}></Box>
             <Box pos='absolute' {...rightBottomCorner}></Box>
           </Box>
-          <Box flex={1}>
+          <Box flex={1} alignSelf="center">
           <Stack spacing={2} direction={'row'}>
-            <Box maxW={'48px'}><Image src={`${process.env.PUBLIC_URL}/assets/icon_forward.png`}/></Box>
+            <Box maxW={'64px'}><Image src={`${process.env.PUBLIC_URL}/assets/icon_forward.png`}/></Box>
             <Box>
-              <Text color='gray.500' fontSize={16}>轉寄該電郵，在「收件人」一欄輸入<u>rdpt@epd.gov.hk</u>，按下發送，完成諮詢！</Text>
+              <Text color='gray.500' fontSize={{base: 16}}>轉寄該電郵，在「收件人」一欄輸入<u>rdpt@epd.gov.hk</u>，按下發送，完成諮詢！</Text>
+              <Box><Text color='gray.500' fontSize={16}><sup>**</sup>如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘</Text></Box>
             </Box>
           </Stack>
           </Box>
@@ -207,7 +208,8 @@ const ConsultationForm = withFormik({
   mapPropsToValues: () => ({
     Email: "",
     FirstName: "",
-    LastName: ""
+    LastName: "",
+    OptIn: false
   }),
 
   validate: (values) => {
@@ -296,30 +298,35 @@ const ConsultationForm = withFormik({
 
     const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf; charset=utf-8'});
 
+    setTimeout(() => {
+      alert('OK');
+      setSubmitting(false)
+    }, 5000);
+
     // PREVIEW
     // window.open(doc.output('bloburl'), '_blank');
 
-    formData.append("file", uploadPDF)
-    formData.append("upload_preset", "r7ksxsfb")
-    formData.append("resource_type", "raw")
-    formData.append("public_id", md5(values.Email))
+    // formData.append("file", uploadPDF)
+    // formData.append("upload_preset", "r7ksxsfb")
+    // formData.append("resource_type", "raw")
+    // formData.append("public_id", md5(values.Email))
 
-    JSON.stringify(formData);
+    // JSON.stringify(formData);
 
-    Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
-      const {statusText, data} = res
-      if(statusText==='OK'){
-        setSubmitting(false)
-        const submitData = {
-          ...hiddenFormValue,
-          ...values,
-          pdfFile: data.url
-        };
-        alert(JSON.stringify(submitData, null, 4))
-      } else {
-        alert('Something errors')
-      }
-    })
+    // Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
+    //   const {statusText, data} = res
+    //   if(statusText==='OK'){
+    //     setSubmitting(false)
+    //     const submitData = {
+    //       ...hiddenFormValue,
+    //       ...values,
+    //       pdfFile: data.url
+    //     };
+    //     alert(JSON.stringify(submitData, null, 4))
+    //   } else {
+    //     alert('Something errors')
+    //   }
+    // })
   },
 
   displayName: "ConsultationForm",
