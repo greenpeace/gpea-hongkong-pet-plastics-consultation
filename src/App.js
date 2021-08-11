@@ -7,11 +7,13 @@ import {
   Flex,
   Heading,
   Image,
+  Stack
 } from '@chakra-ui/react'
 import { HelmetProvider } from 'react-helmet-async'
 import SEO from './components/seo'
 import theme from './theme'
 import Form from './components/form'
+import Countdown from './components/Countdown'
 
 import SplitWithImage from './components/SplitWithImage/SplitWithImage'
 import GridListWithHeading from './components/GridList/GridListWithHeading'
@@ -29,9 +31,12 @@ const App = (props) => {
           <Flex flexDirection={{ base: 'column', sm: 'row' }}>
             <Box flex={1}>
               <Center h={`100%`} px={12}>
-                <Image
-                  src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`}
-                />
+                <Stack direction="column">
+                  <Image
+                    src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`}
+                  />
+                  <Countdown/>
+                </Stack> 
               </Center>
             </Box>
             <Box flex={1} mx={10}>
