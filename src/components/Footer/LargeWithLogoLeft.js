@@ -62,9 +62,21 @@ export default function LargeWithLogoLeft() {
           </Stack>
           <Stack align={'flex-start'} spacing={2}>
             <ListHeader>關於綠色和平</ListHeader>
-            <Link href={'#'}>首頁</Link>
-            <Link href={'#'}>私隱政策與個人資料收集聲明</Link>
-            <Link href={'#'}>捐助支持</Link>
+            <Link href={'http://www.greenpeace.org/hongkong/'}>首頁</Link>
+            <Link
+              href={
+                'https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/'
+              }
+            >
+              私隱政策與個人資料收集聲明
+            </Link>
+            <Link
+              href={
+                'https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK'
+              }
+            >
+              捐助支持
+            </Link>
           </Stack>
           {/* <Stack align={'flex-start'}>
             <ListHeader>追蹤我們</ListHeader>
