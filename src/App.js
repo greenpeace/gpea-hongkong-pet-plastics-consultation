@@ -8,6 +8,7 @@ import {
   Heading,
   Image,
 } from '@chakra-ui/react'
+import styled from '@emotion/styled'
 import { HelmetProvider } from 'react-helmet-async'
 import SEO from './components/seo'
 import theme from './theme'
@@ -15,10 +16,15 @@ import Form from './components/form'
 
 import SplitWithImage from './components/SplitWithImage/SplitWithImage'
 import GridListWithHeading from './components/GridList/GridListWithHeading'
+import LargeWithLogoLeft from './components/Footer/LargeWithLogoLeft'
 import SmallWithSocial from './components/Footer/SmallWithSocial'
 
 import '@fontsource/noto-sans-tc'
 import './notosans-regular-normal.js'
+
+const Footer = styled.footer`
+  font-size: 0.85rem;
+`
 
 const App = (props) => {
   return (
@@ -65,9 +71,16 @@ const App = (props) => {
             </Box>
           </Flex>
         </Box>
-        <SplitWithImage />
-        <GridListWithHeading />
-        <SmallWithSocial />
+        <section>
+          <SplitWithImage />
+        </section>
+        <section>
+          <GridListWithHeading />
+        </section>
+        <Footer>
+          <LargeWithLogoLeft />
+          <SmallWithSocial />
+        </Footer>
       </HelmetProvider>
     </ChakraProvider>
   )
