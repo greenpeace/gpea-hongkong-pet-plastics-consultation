@@ -41,7 +41,7 @@ const SocialButton = ({ children, label, href }) => {
 
 export default function LargeWithLogoLeft() {
   return (
-    <Box bg={'gray.900'} color={'gray.100'}>
+    <Box bg={'gray.800'} color={'gray.100'}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid
           templateColumns={{ sm: '1fr', md: '1fr auto auto' }}
@@ -55,7 +55,7 @@ export default function LargeWithLogoLeft() {
                 alt='logo'
               />
             </Box>
-            <Text fontSize={'sm'} maxWidth={'400px'}>
+            <Text fontSize={'sm'} maxWidth={'480px'}>
               綠色和平是獨立的國際環保組織，通過科學研究、政策倡議及和平行動，揭露全球環境問題並提出相應解決方案。
               我們從不接受任何政府、企業或政治團體的資助，只接受個人的直接捐款，以維持公正獨立。
             </Text>
