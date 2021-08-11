@@ -13,8 +13,9 @@ import { HelmetProvider } from 'react-helmet-async'
 import SEO from './components/seo'
 import theme from './theme'
 import Form from './components/form'
-import Countdown from './components/Countdown'
 
+import Countdown from './components/Countdown'
+import Testimonials from './components/Testimonials'
 import SplitWithImage from './components/SplitWithImage/SplitWithImage'
 import GridListWithHeading from './components/GridList/GridListWithHeading'
 import SmallWithSocial from './components/Footer/SmallWithSocial'
@@ -69,6 +70,9 @@ const App = (props) => {
               </Center>
             </Box>
           </Flex>
+        </Box>
+        <Box>
+          <Testimonials/>
         </Box>
         <SplitWithImage />
         <GridListWithHeading />
