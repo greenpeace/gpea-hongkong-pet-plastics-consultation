@@ -6,8 +6,8 @@ export default function Countdown() {
   const [countDown, setCountDown] = useState('Count')
   const renderLayout = (count, unit) => {
     return (
-      <HStack align='center' alignItems='baseline' fontWeight={700}>
-        <Text fontSize={36}>{count}</Text>
+      <HStack align='center'>
+        <Text fontSize='md'>{count}</Text>
         <Text fontSize='md'>{unit}</Text>
       </HStack>
     )
@@ -30,7 +30,7 @@ export default function Countdown() {
       let seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
       setCountDown(
-        <HStack spacing={'12px'}>
+        <HStack>
           <Box>{renderLayout(days, '日')}</Box>
           <Box>{renderLayout(hours, '小時')}</Box>
           <Box>{renderLayout(minutes, '分')}</Box>
@@ -49,11 +49,12 @@ export default function Countdown() {
   return (
     <Stack
       direction={{ base: 'column', sm: 'row' }}
-      align={{ base: 'left', sm: 'center' }}
-      alignItems='baseline'
-      color='gray.500'
-      bgColor='#FFF'
-      borderRadius={8}
+      align={'center'}
+      color='gray.700'
+      bgColor='gray.50'
+      borderRadius={'3xl'}
+      px={4}
+      py={2}
     >
       <Text>最後：</Text>
       {countDown}

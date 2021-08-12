@@ -62,7 +62,7 @@ const upload_folder = function (settings, localDir) {
   var ftps = new FTPS(settings)
 
   console.info(
-    `Sync from \`${localDir}\` to \`${settings.protocol}://${settings.username}@${settings.host}:${settings.remoteDir}\``
+    `Sync from \`${localDir}\` to \`${settings.protocol}://${settings.username}@${settings.host}:${settings.remoteDir}\``,
   )
 
   return ftps

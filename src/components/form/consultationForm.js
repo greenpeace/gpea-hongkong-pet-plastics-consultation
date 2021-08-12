@@ -8,10 +8,8 @@ import {
   Flex,
   Button,
   FormErrorMessage,
-  Center,
   Text,
   Checkbox,
-  Image,
   Stack,
   Skeleton,
   SkeletonCircle,
@@ -34,10 +32,10 @@ const FormWrapper = (props) => {
     isSubmitting,
     status,
   } = props
-  const space = 4 
+  const space = 4
   const labelStyle = {
-    fontSize: 'md',
-    color: '#000',
+    fontSize: 'sm',
+    color: 'gray.700',
     fontFamily: 'Noto Sans TC',
   }
   const tagStyle = {
@@ -53,7 +51,7 @@ const FormWrapper = (props) => {
     onBlur: handleBlur,
     disabled: isSubmitting,
     bgColor: '#FFFFFF',
-    borderRadius: 0,
+    borderRadius: 4,
     height: '48px',
   }
   const leftBottomCorner = {
@@ -89,120 +87,106 @@ const FormWrapper = (props) => {
   }, [status])
 
   return (
-    <Box>
-      {status !== 'submitted' && (
-        <Box px={4} pb={12}>
-          <Text fontSize={'36px'} fontWeight={500}>
-            加速香港禁膠餐具{' '}
-            <Text as={'span'} fontSize={'72px'} fontWeight={700}>
-              <i>3</i>{' '}
+    <Stack
+      rounded={'xl'}
+      p={{ base: 4, sm: 6, md: 8 }}
+      spacing={{ base: 8 }}
+      maxW={{ lg: 'lg' }}
+    >
+      <Stack spacing={4}>
+        {status !== 'submitted' && (
+          <Box>
+            <Text fontSize={'2xl'} fontWeight={500} lineHeight={'200%'}>
+              加速香港禁膠餐具
+              <Text
+                as={'span'}
+                color={'#ff8100'}
+                px={4}
+                fontSize={'4xl'}
+                fontWeight={700}
+              >
+                <i>3</i>
+              </Text>
+              步完成
             </Text>
-            步完成
-          </Text>
-          <Text>急需你參與「管制即棄膠餐具計劃」公眾諮詢</Text>
-        </Box>
-      )}
-      <Box px={2} py={4}>
-        {/** STEP 1 */}
-        <Stack direction={{ base: 'row' }} spacing={2} px={2}>
-          {/* <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'}>
+            <Text fontSize={'xl'}>
+              急需你參與「管制即棄膠餐具計劃」公眾諮詢
+            </Text>
+          </Box>
+        )}
+        <Box>
+          {/** STEP 1 */}
+          <Stack direction={{ base: 'row' }} spacing={2}>
+            {/* <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'}>
             {status === 'submitted' ? <Box py={4}><Image src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-04.png`}/></Box> : <Text fontSize={48}>1</Text>}
             <Box pos='absolute' {...leftBottomCorner}></Box>
             <Box pos='absolute' {...rightBottomCorner}></Box>
           </Box> */}
-          <Box flex={1}>
-            {status === 'submitted' ? (
-              <Box>
-                <Stack spacing={4} direction={'column'}>
-                  <Box flex={1} alignSelf='center'>
-                    <Stack spacing={2} direction={'column'}>
-                      <Box>
-                        <Text color='gray.500' fontSize={{ base: 16 }}>
-                          開啟你的電子郵箱，打開由綠色和平發出，附有意見書範本的電郵。
-                        </Text>
-                      </Box>
-                      <Box>
-                        <Text color='gray.500' fontSize={{ base: 16 }}>
-                          轉寄該電郵，在「收件人」一欄輸入<u>rdpt@epd.gov.hk</u>
-                          ，按下發送，完成諮詢！
-                        </Text>
+            <Box flex={1}>
+              {status === 'submitted' ? (
+                <Box>
+                  <Stack spacing={4} direction={'column'}>
+                    <Box flex={1} alignSelf='center'>
+                      <Stack spacing={2} direction={'column'}>
                         <Box>
-                          <Text color='gray.500' fontSize={12}>
-                            <sup>**</sup>
-                            如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘
+                          <Text color='gray.500' fontSize={{ base: 16 }}>
+                            開啟你的電子郵箱，打開由綠色和平發出，附有意見書範本的電郵。
                           </Text>
                         </Box>
-                      </Box>
-                    </Stack>
+                        <Box>
+                          <Text color='gray.500' fontSize={{ base: 16 }}>
+                            轉寄該電郵，在「收件人」一欄輸入
+                            <u>rdpt@epd.gov.hk</u>
+                            ，按下發送，完成諮詢！
+                          </Text>
+                          <Box>
+                            <Text color='gray.500' fontSize={12}>
+                              <sup>**</sup>
+                              如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘
+                            </Text>
+                          </Box>
+                        </Box>
+                      </Stack>
+                    </Box>
+                  </Stack>
+
+                  {/* <Text color='gray.500' fontSize={{base: 16}}>接下來，您將會收到電郵附上意見書文件範本，轉寄郵件即可完成諮詢。</Text> */}
+                </Box>
+              ) : isSubmitting ? (
+                <Stack maxW={'640px'} w={'100%'}>
+                  <Skeleton height='20px' w={'100%'} />
+                  <Skeleton height='20px' />
+                  <Skeleton height='20px' />
+                  <Box>
+                    <Text fontSize='xs' color='gray.500'>
+                      請耐心稍候，我們正在處理您的資料
+                    </Text>
                   </Box>
                 </Stack>
-
-                {/* <Text color='gray.500' fontSize={{base: 16}}>接下來，您將會收到電郵附上意見書文件範本，轉寄郵件即可完成諮詢。</Text> */}
-              </Box>
-            ) : isSubmitting ? (
-              <Stack maxW={'640px'} w={'100%'}>
-                <Skeleton height='20px' w={'100%'} />
-                <Skeleton height='20px' />
-                <Skeleton height='20px' />
-                <Box>
-                  <Text fontSize='xs' color='gray.500'>
-                    請耐心稍候，我們正在處理您的資料
-                  </Text>
-                </Box>
-              </Stack>
-            ) : (
-              <Form onSubmit={handleSubmit}>
-                <Box pb={space}>
-                  <FormControl
-                    id='email'
-                    isInvalid={errors.Email && touched.Email}
-                  >
-                    <Flex>
-                      <Box flex={1}>
-                        <Box minW={20}>
-                          <FormLabel {...labelStyle}>
-                            {formContent.label_email}
-                          </FormLabel>
-                        </Box>
-                        <InputGroup>
-                          <Input
-                            name='Email'
-                            type='email'
-                            placeholder={formContent.label_email}
-                            {...inputProps}
-                          />
-                          <FormErrorMessage>
-                            <InputRightElement w={'auto'} mr={2} pt={2}>
-                              <Box {...tagStyle}>{errors.Email}</Box>
-                            </InputRightElement>
-                          </FormErrorMessage>
-                        </InputGroup>
-                      </Box>
-                    </Flex>
-                  </FormControl>
-                </Box>
-
-                <HStack>
-                  <Box flex={1} pb={space}>
+              ) : (
+                <Form onSubmit={handleSubmit}>
+                  <Box pb={space}>
                     <FormControl
-                      id='lastName'
-                      isInvalid={errors.LastName && touched.LastName}
+                      id='email'
+                      isInvalid={errors.Email && touched.Email}
                     >
                       <Flex>
                         <Box flex={1}>
-                          <FormLabel {...labelStyle}>
-                            {formContent.label_last_name}
-                          </FormLabel>
+                          <Box minW={20}>
+                            <FormLabel {...labelStyle}>
+                              {formContent.label_email}
+                            </FormLabel>
+                          </Box>
                           <InputGroup>
                             <Input
-                              name='LastName'
-                              type='text'
-                              placeholder={formContent.label_last_name}
+                              name='Email'
+                              type='email'
+                              placeholder={formContent.label_email}
                               {...inputProps}
                             />
                             <FormErrorMessage>
                               <InputRightElement w={'auto'} mr={2} pt={2}>
-                                <Box {...tagStyle}>{errors.LastName}</Box>
+                                <Box {...tagStyle}>{errors.Email}</Box>
                               </InputRightElement>
                             </FormErrorMessage>
                           </InputGroup>
@@ -211,81 +195,114 @@ const FormWrapper = (props) => {
                     </FormControl>
                   </Box>
 
-                  <Box flex={1} pb={space}>
-                    <FormControl
-                      id='firstName'
-                      isInvalid={errors.FirstName && touched.FirstName}
-                    >
-                      <Flex>
-                        {/* <Box minW={12}>
+                  <HStack>
+                    <Box flex={1} pb={space}>
+                      <FormControl
+                        id='lastName'
+                        isInvalid={errors.LastName && touched.LastName}
+                      >
+                        <Flex>
+                          <Box flex={1}>
+                            <FormLabel {...labelStyle}>
+                              {formContent.label_last_name}
+                            </FormLabel>
+                            <InputGroup>
+                              <Input
+                                name='LastName'
+                                type='text'
+                                placeholder={formContent.label_last_name}
+                                {...inputProps}
+                              />
+                              <FormErrorMessage>
+                                <InputRightElement w={'auto'} mr={2} pt={2}>
+                                  <Box {...tagStyle}>{errors.LastName}</Box>
+                                </InputRightElement>
+                              </FormErrorMessage>
+                            </InputGroup>
+                          </Box>
+                        </Flex>
+                      </FormControl>
+                    </Box>
+
+                    <Box flex={1} pb={space}>
+                      <FormControl
+                        id='firstName'
+                        isInvalid={errors.FirstName && touched.FirstName}
+                      >
+                        <Flex>
+                          {/* <Box minW={12}>
                       <Center h="100%">
                         <FormLabel {...labelStyle}>
                           {formContent.label_first_name}
                         </FormLabel>
                       </Center>
                     </Box> */}
-                        <Box flex={1}>
-                          <FormLabel {...labelStyle}>
-                            {formContent.label_first_name}
-                          </FormLabel>
-                          <InputGroup>
-                            <Input
-                              name='FirstName'
-                              type='text'
-                              placeholder={formContent.label_first_name}
-                              {...inputProps}
-                            />
-                            <FormErrorMessage>
-                              <InputRightElement w={'auto'} mr={2} pt={2}>
-                                <Box {...tagStyle}>{errors.FirstName}</Box>
-                              </InputRightElement>
-                            </FormErrorMessage>
-                          </InputGroup>
-                        </Box>
-                      </Flex>
-                    </FormControl>
-                  </Box>
-                </HStack>
+                          <Box flex={1}>
+                            <FormLabel {...labelStyle}>
+                              {formContent.label_first_name}
+                            </FormLabel>
+                            <InputGroup>
+                              <Input
+                                name='FirstName'
+                                type='text'
+                                placeholder={formContent.label_first_name}
+                                {...inputProps}
+                              />
+                              <FormErrorMessage>
+                                <InputRightElement w={'auto'} mr={2} pt={2}>
+                                  <Box {...tagStyle}>{errors.FirstName}</Box>
+                                </InputRightElement>
+                              </FormErrorMessage>
+                            </InputGroup>
+                          </Box>
+                        </Flex>
+                      </FormControl>
+                    </Box>
+                  </HStack>
 
-                <Box py={4}>
-                  <Button
-                    w='100%'
-                    type='submit'
-                    height='48px'
-                    borderRadius='8'
-                    fontSize='xl'
-                    color='#FFF'
-                    letterSpacing={4}
-                    bg='#ff8100'
-                    _hover={{ bg: 'campaign.climate' }}
-                    isLoading={isSubmitting}
-                  >
-                    提交聯絡資料
-                  </Button>
-                </Box>
-
-                <Box>
-                  <Stack spacing={10} direction='row' alignItems={'flex-start'}>
-                    <Checkbox
-                      id={'OptIn'}
-                      name={'OptIn'}
-                      colorScheme='whatsapp'
-                      alignItems={'flex-start'}
-                      onChange={handleChange}
-                      defaultChecked
+                  <Box py={4}>
+                    <Button
+                      w='100%'
+                      type='submit'
+                      height='48px'
+                      borderRadius='8'
+                      fontSize='xl'
+                      color='#FFF'
+                      letterSpacing={4}
+                      bg='#ff8100'
+                      _hover={{ bg: 'campaign.climate' }}
+                      isLoading={isSubmitting}
                     >
-                      <Text fontSize='sm' color='gray.500'>
-                        {formContent.form_remind}
-                      </Text>
-                    </Checkbox>
-                  </Stack>
-                </Box>
-              </Form>
-            )}
-          </Box>
-        </Stack>
-        {/** STEP 2 */}
-        {/* <Stack direction={{base: 'row'}} spacing={2} px={2}>
+                      提交聯絡資料
+                    </Button>
+                  </Box>
+
+                  <Box py={4}>
+                    <Stack
+                      spacing={10}
+                      direction='row'
+                      alignItems={'flex-start'}
+                    >
+                      <Checkbox
+                        id={'OptIn'}
+                        name={'OptIn'}
+                        colorScheme='whatsapp'
+                        alignItems={'flex-start'}
+                        onChange={handleChange}
+                        defaultChecked
+                      >
+                        <Text fontSize='sm' color='gray.700'>
+                          {formContent.form_remind}
+                        </Text>
+                      </Checkbox>
+                    </Stack>
+                  </Box>
+                </Form>
+              )}
+            </Box>
+          </Stack>
+          {/** STEP 2 */}
+          {/* <Stack direction={{base: 'row'}} spacing={2} px={2}>
           <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'} pb={6}>
             <Text fontSize={48} py={2}>2</Text>
             <Box pos='absolute' {...leftTopCorner}></Box>
@@ -303,8 +320,8 @@ const FormWrapper = (props) => {
           </Box>
         </Stack> */}
 
-        {/** STEP 3 */}
-        {/* <Stack direction={{base: 'row'}} spacing={2}  px={2}>
+          {/** STEP 3 */}
+          {/* <Stack direction={{base: 'row'}} spacing={2}  px={2}>
           <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'} pb={6}>
             <Text fontSize={48} py={2}>3</Text>
             <Box pos='absolute' {...leftTopCorner}></Box>
@@ -322,8 +339,9 @@ const FormWrapper = (props) => {
           </Stack>
           </Box>
         </Stack> */}
-      </Box>
-    </Box>
+        </Box>
+      </Stack>
+    </Stack>
   )
 }
 

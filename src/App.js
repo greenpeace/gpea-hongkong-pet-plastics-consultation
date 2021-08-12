@@ -77,18 +77,19 @@ const App = (props) => {
                       py={{ base: 8, md: 12 }}
                       px={4}
                       position={'relative'}
+                      alignItems={'flex-start'}
                     >
                       <Countdown />
                       <Heading
                         fontWeight={'bold'}
-                        fontSize={{ base: '3xl', sm: '5xl' }}
+                        fontSize={{ base: '2xl', sm: '4xl' }}
                         lineHeight={'120%'}
                       >
                         <Text>急需您的參與</Text>
                         <Text color={'#ff8100'}>管制即棄膠餐具計劃</Text>
                         <Text>公眾諮詢</Text>
                       </Heading>
-                      <Text color={'gray.700'} lineHeight={'220%'}>
+                      <Text color={'gray.700'} lineHeight={'200%'}>
                         環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。
                         <br />
                         立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
@@ -139,9 +140,9 @@ const App = (props) => {
                 boundaryElement='.rightBlock'
                 hideOnBoundaryHit={false}
               >
-                <Box px={{ base: 0, sm: 20 }}>
+                <Stack alignItems={'center'}>
                   <Form />
-                </Box>
+                </Stack>
               </Sticky>
             </Box>
           </Grid>
@@ -150,7 +151,7 @@ const App = (props) => {
           <Testimonials />
         </Box>
         <SplitWithImage />
-        <GridListWithHeading />
+        {/* <GridListWithHeading /> */}
         <Footer>
           <LargeWithLogoLeft />
           <SmallWithSocial />
