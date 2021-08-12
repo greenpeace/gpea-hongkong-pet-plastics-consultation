@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import { Box, HStack, FormControl, FormLabel, Input, Flex, Button, FormErrorMessage, Center, Text, Checkbox, Image, Stack, Skeleton, SkeletonCircle, SkeletonText, InputRightElement, InputGroup} from '@chakra-ui/react';
+import React, {useEffect, useState} from 'react';
+import { Box, HStack, FormControl, FormLabel, Input, Flex, Button, FormErrorMessage, Center, Text, Checkbox, Image, Stack, Skeleton, SkeletonCircle, SkeletonText, InputRightElement, InputGroup, Divider} from '@chakra-ui/react';
 import { jsPDF } from "jspdf";
 import { Form, withFormik } from "formik";
 import formContent from './content.json';
@@ -7,6 +7,7 @@ import Axios from 'axios'
 
 const FormWrapper = (props) =>{
   const { touched, errors, handleChange, handleBlur, handleSubmit, isSubmitting, status} = props;
+  const [submittedStatus, setSubmittedStatus] = useState(status==='submitted');
   const space = 4;
   const labelStyle = { fontSize: "md", color: "#000", fontWeight: 500, fontFamily: 'Noto Sans TC'};
   const tagStyle = { borderRadius: 12, color: "#FFF", bgColor: '#e26969', fontSize: 12, px: 2, py: 1}
@@ -17,71 +18,30 @@ const FormWrapper = (props) =>{
     bgColor: '#FFFFFF',
     borderRadius: 0
   }
-  const leftBottomCorner = {
-    bottom: "0px",
-    left: "0px",
-    borderBottom: "20px solid #F5F5F5",
-    borderRight: "50px solid transparent",
-  };
-  const rightBottomCorner = {
-    bottom: "0px",
-    right: "0px",
-    borderBottom: "20px solid #F5F5F5",
-    borderLeft: "50px solid transparent",
-  };
-
-  const leftTopCorner = {
-    top: "-13px",
-    left: "0px",
-    borderBottom: "20px solid #CAE7F8",
-    borderRight: "50px solid transparent",
-  };
-  const rightTopCorner = {
-    top: "-13px",
-    right: "0px",
-    borderBottom: "20px solid #CAE7F8",
-    borderLeft: "50px solid transparent",
-  };
 
   useEffect(() => {
     if(status){
-      console.log('status-',status)
+      setSubmittedStatus(status==='submitted')
     }
   }, [status]);
 
   return (
     <Box>
-      {status !== 'submitted' && <Box px={4} pb={12}>
+      <Box px={4} pb={12}>
         <Text fontSize={'36px'} fontWeight={500}>加速香港禁膠餐具 <Text as={'span'} fontSize={'72px'} fontWeight={700}><i>3</i> </Text>步完成</Text> 
         <Text>急需你參與「管制即棄膠餐具計劃」公眾諮詢</Text>
-      </Box>}
+      </Box>
     <Box px={2} py={4}>
         {/** STEP 1 */}
-        <Stack direction={{base: 'row'}} spacing={2} px={2}>
-          {/* <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'}>
-            {status === 'submitted' ? <Box py={4}><Image src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-04.png`}/></Box> : <Text fontSize={48}>1</Text>}
-            <Box pos='absolute' {...leftBottomCorner}></Box>
-            <Box pos='absolute' {...rightBottomCorner}></Box>
-          </Box> */}
-          <Box flex={1}>
-          {status === 'submitted' ? <Box>
-          
-          <Stack spacing={4} direction={'column'}>
-          <Box flex={1} alignSelf="center">
-            <Stack spacing={2} direction={'column'}>
-              <Box>
-                <Text color='gray.500' fontSize={{base: 16}}>開啟你的電子郵箱，打開由綠色和平發出，附有意見書範本的電郵。</Text>
-              </Box>
-              <Box>
-                <Text color='gray.500' fontSize={{base: 16}}>轉寄該電郵，在「收件人」一欄輸入<u>rdpt@epd.gov.hk</u>，按下發送，完成諮詢！</Text>
-                <Box><Text color='gray.500' fontSize={12}><sup>**</sup>如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘</Text></Box>
-              </Box>
-            </Stack>
+        <Stack direction={{base: 'row'}} spacing={2} px={2} alignItems={'center'} pb={6}>
+          <Box w={{base: 16}} textAlign={'center'} pos={'relative'} alignSelf="flex-start">
+            <Box borderRadius={'50%'} bgColor={submittedStatus ? 'gray.200' : 'green.400'} w={'48px'}>
+              <Text fontFamily={'arial'} fontSize={'24px'} lineHeight={'48px'} color={'#FFF'}>1</Text>
+            </Box>
           </Box>
-          </Stack>
-          
-          {/* <Text color='gray.500' fontSize={{base: 16}}>接下來，您將會收到電郵附上意見書文件範本，轉寄郵件即可完成諮詢。</Text> */}
-          
+          <Box flex={1}>
+          {submittedStatus ? <Box>
+            <Text color='gray.500' fontSize={{base: 16}}>完成第一步</Text>   
           </Box>
           :
           isSubmitting ? 
@@ -214,43 +174,31 @@ const FormWrapper = (props) =>{
           </Box>
         </Stack>
         {/** STEP 2 */}
-        {/* <Stack direction={{base: 'row'}} spacing={2} px={2}>
-          <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'} pb={6}>
-            <Text fontSize={48} py={2}>2</Text>
-            <Box pos='absolute' {...leftTopCorner}></Box>
-            <Box pos='absolute' {...rightTopCorner}></Box>
-            <Box pos='absolute' {...leftBottomCorner}></Box>
-            <Box pos='absolute' {...rightBottomCorner}></Box>
-          </Box>
-          <Box flex={1} alignSelf="center">
-          <Stack spacing={2} direction={'row'}>
-            <Box maxW={'64px'}><Image src={`${process.env.PUBLIC_URL}/assets/icon_open.png`}/></Box>
-            <Box>
-              <Text color='gray.500' fontSize={{base: 16}}>開啟你的電子郵箱，打開由綠色和平發出，附有意見書範本的電郵。</Text>
+        <Stack direction={{base: 'row'}} spacing={2} px={2} alignItems={'center'} pb={6}>
+          <Box w={{base: 16}} textAlign={'center'} pos={'relative'}>
+            <Box bgColor={submittedStatus ? 'green.300' : 'gray.200'} borderRadius={'50%'} w={'48px'}>
+              <Text fontFamily={'arial'} fontSize={'24px'} lineHeight={'48px'} color={'#FFF'}>2</Text>
             </Box>
-          </Stack>
           </Box>
-        </Stack> */}
+          {submittedStatus ? <Box>
+            <Text color='gray.700' fontSize={{base: 16}}><Text as="span" color="#ff8100" fontWeight={500}>開啟你的電子郵箱</Text>，打開由綠色和平發出，附有意見書範本的電郵。</Text>
+          </Box> : <Divider orientation="horizontal"/> }
+        </Stack>
 
         {/** STEP 3 */}
-        {/* <Stack direction={{base: 'row'}} spacing={2}  px={2}>
-          <Box bgColor={'#CAE7F8'} w={{base: 16}} textAlign={'center'} color={'#FFF'} pos={'relative'} pb={6}>
-            <Text fontSize={48} py={2}>3</Text>
-            <Box pos='absolute' {...leftTopCorner}></Box>
-            <Box pos='absolute' {...rightTopCorner}></Box>
-            <Box pos='absolute' {...leftBottomCorner}></Box>
-            <Box pos='absolute' {...rightBottomCorner}></Box>
-          </Box>
-          <Box flex={1} alignSelf="center">
-          <Stack spacing={2} direction={'row'}>
-            <Box maxW={'64px'}><Image src={`${process.env.PUBLIC_URL}/assets/icon_forward.png`}/></Box>
-            <Box>
-              <Text color='gray.500' fontSize={{base: 16}}>轉寄該電郵，在「收件人」一欄輸入<u>rdpt@epd.gov.hk</u>，按下發送，完成諮詢！</Text>
-              <Box><Text color='gray.500' fontSize={12}><sup>**</sup>如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘</Text></Box>
+        <Stack direction={{base: 'row'}} spacing={2} px={2} alignItems={'center'}>
+          <Box w={{base: 16}} textAlign={'center'} pos={'relative'}>
+            <Box bgColor={submittedStatus ? 'green.400' : 'gray.200'} borderRadius={'50%'} w={'48px'}>
+              <Text fontFamily={'arial'} fontSize={'24px'} lineHeight={'48px'} color={'#FFF'}>3</Text>
             </Box>
-          </Stack>
           </Box>
-        </Stack> */}
+          {submittedStatus ? 
+            <Box>
+            <Text color='gray.700' fontSize={{base: 16}}><Text as="span" color="#ff8100" fontWeight={500}>轉寄該電郵</Text>，在「收件人」一欄輸入<u>rdpt@epd.gov.hk</u>，按下發送，完成諮詢！</Text>
+            <Box><Text color='gray.700' fontSize={12}><sup>**</sup>如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘</Text></Box>
+          </Box> :
+          <Divider orientation="horizontal"/> }
+        </Stack>
     </Box>
   </Box>
   );
@@ -287,7 +235,6 @@ const ConsultationForm = withFormik({
   handleSubmit: (values, { setSubmitting, setStatus, props }) => {
     setStatus('processing')
     setTimeout(() => {
-      alert('Fake submit');
       setSubmitting(false)
       setStatus('submitted')
     }, 3000);
