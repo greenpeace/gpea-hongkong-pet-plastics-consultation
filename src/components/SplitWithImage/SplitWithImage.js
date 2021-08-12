@@ -1,34 +1,24 @@
 import {
+  Box,
   Container,
   SimpleGrid,
-  Grid,
   Image,
   Flex,
   Heading,
   Text,
   Stack,
-  StackDivider,
-  useColorModeValue,
   ListItem,
   OrderedList,
   UnorderedList,
 } from '@chakra-ui/react'
 
-const Feature = ({ text, icon, iconBg }) => {
+const ImageWrapper = ({ children }) => {
   return (
-    <Stack direction={'row'} align={'center'}>
-      <Flex
-        w={8}
-        h={8}
-        align={'center'}
-        justify={'center'}
-        rounded={'full'}
-        bg={iconBg}
-      >
-        {icon}
-      </Flex>
-      <Text fontWeight={600}>{text}</Text>
-    </Stack>
+    <Box w='100%'>
+      <Box borderRadius='lg' overflow='hidden'>
+        {children}
+      </Box>
+    </Box>
   )
 }
 
@@ -51,12 +41,19 @@ export default function SplitWithImage() {
             </Stack>
           </Stack>
           <Flex>
-            <Image
-              rounded={'md'}
-              alt={'綠色和平的走塑訴求是？'}
-              src={`${process.env.PUBLIC_URL}/assets/images/GP0STPYWJ_High_res.jpg`}
-              objectFit={'cover'}
-            />
+            <ImageWrapper>
+              <Image
+                rounded={'md'}
+                alt={'綠色和平的走塑訴求是？'}
+                src={`${process.env.PUBLIC_URL}/assets/images/GP0STPYWJ_High_res.jpg`}
+                objectFit={'cover'}
+                transform='scale(1.0)'
+                transition='0.3s ease-in-out'
+                _hover={{
+                  transform: 'scale(1.05)',
+                }}
+              />
+            </ImageWrapper>
           </Flex>
         </SimpleGrid>
         <Stack
@@ -86,12 +83,19 @@ export default function SplitWithImage() {
             </Stack>
           </Stack>
           <Flex flex={1}>
-            <Image
-              rounded={'md'}
-              alt={'綠色和平的走塑訴求是？'}
-              src={`${process.env.PUBLIC_URL}/assets/images/GP0STTWGP_High_res.jpg`}
-              objectFit={'cover'}
-            />
+            <ImageWrapper>
+              <Image
+                rounded={'md'}
+                alt={'綠色和平的走塑訴求是？'}
+                src={`${process.env.PUBLIC_URL}/assets/images/GP0STTWGP_High_res.jpg`}
+                objectFit={'cover'}
+                transform='scale(1.0)'
+                transition='0.3s ease-in-out'
+                _hover={{
+                  transform: 'scale(1.05)',
+                }}
+              />
+            </ImageWrapper>
           </Flex>
         </Stack>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} py={4}>
@@ -118,12 +122,19 @@ export default function SplitWithImage() {
             </Stack>
           </Stack>
           <Flex>
-            <Image
-              rounded={'md'}
-              alt={'feature image'}
-              src={`${process.env.PUBLIC_URL}/assets/images/shutterstock_1464698738.jpg`}
-              objectFit={'cover'}
-            />
+            <ImageWrapper>
+              <Image
+                rounded={'md'}
+                alt={'feature image'}
+                src={`${process.env.PUBLIC_URL}/assets/images/shutterstock_1464698738.jpg`}
+                objectFit={'cover'}
+                transform='scale(1.0)'
+                transition='0.3s ease-in-out'
+                _hover={{
+                  transform: 'scale(1.05)',
+                }}
+              />
+            </ImageWrapper>
           </Flex>
         </SimpleGrid>
       </Stack>
