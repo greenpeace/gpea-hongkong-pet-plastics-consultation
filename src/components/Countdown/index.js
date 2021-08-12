@@ -54,7 +54,6 @@ export default function Countdown() {
       color='gray.700'
       bgColor="#FFF"
       borderRadius={8}
-      px={4}
     >
       <Text>最後:</Text>
       {countDown}

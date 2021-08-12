@@ -8,6 +8,10 @@ import {
   Heading,
   Image,
   Stack,
+  Grid, 
+  GridItem,
+  Text,
+  Divider,
 } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import { HelmetProvider } from 'react-helmet-async'
@@ -15,6 +19,7 @@ import SEO from './components/SEO/SEO'
 import theme from './theme'
 import Form from './components/form'
 
+import Nav from './components/Nav'
 import Countdown from './components/Countdown'
 import Testimonials from './components/Testimonials'
 import SplitWithImage from './components/SplitWithImage/SplitWithImage'
@@ -25,6 +30,13 @@ import SmallWithSocial from './components/Footer/SmallWithSocial'
 import '@fontsource/noto-sans-tc'
 import './notosans-regular-normal.js'
 
+const rightBottomCorner = {
+  bottom: "0px",
+  right: "-30px",
+  borderBottom: "800px solid #F5F5F5",
+  borderLeft: "120px solid transparent",
+};
+
 const Footer = styled.footer`
   font-size: 0.85rem;
 `
@@ -34,49 +46,36 @@ const App = (props) => {
     <ChakraProvider resetCSS={true} theme={theme}>
       <HelmetProvider>
         <SEO />
-        <Box fontSize='xl' bgColor='#D7EEF3' py={10}>
-          <Flex flexDirection={{ base: 'column', sm: 'row' }}>
-            <Box flex={1}>
-              <Center h={`100%`} px={12}>
-                <Stack direction='column'>
-                  <Image
-                    src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`}
-                  />
-                  <Countdown />
+        <Nav/>
+          <Box className={'hero'}>
+          <Grid templateColumns="repeat(2, 1fr)" gap={6} overflow={'hidden'}>
+            <Box w="100%" pos="relative">
+              <Center h={'100%'}>
+                <Stack direction="column">
+                  {/* <Text fontSize={'24px'} fontWeight={500} color='gray.700'>急需你參與「管制即棄膠餐具計劃」公眾諮詢</Text> */}
+                  <Image src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`} maxW={'480px'}/><br/>
+                  <Countdown/>
+                  {/* <Box pos='absolute' {...rightBottomCorner}></Box> */}
                 </Stack>
               </Center>
             </Box>
-            <Box flex={1} mx={10}>
+            <Box w="100%" h="80vh" bg="#F5F5F5" position={'relative'}>
               <Center>
-                <Box
-                  bgColor={'#FFF'}
-                  borderRadius={8}
-                  mx={{ base: 0, sm: 2 }}
-                  maxW={'640px'}
-                >
-                  <Box
-                    bgColor='orange'
-                    borderTopRadius={8}
-                    textAlign={'center'}
-                  >
-                    <Heading
-                      py={4}
-                      fontWeight={600}
-                      color='#FFF'
-                      fontSize={{ base: 16, sm: 20, md: 24 }}
-                      lineHeight={'110%'}
-                    >
-                      加速香港禁膠餐具 3步完成
-                    </Heading>
-                  </Box>
-                  <Box w={'100%'}>
-                    <Form />
-                  </Box>
+                <Box maxW={'540px'}>
+                  <Form/>
                 </Box>
               </Center>
+              <Box pos={'absolute'} bottom={0} right={0} p={6}>
+                <Stack direction="row" color={'gray.500'} alignItems={'center'}>
+                  <Box>步驟</Box>
+                  <Box bgColor={'green.300'} w={'40px'} h={'40px'} borderRadius={'50%'} fontWeight={700} fontSize={18} color="#FFF" textAlign={'center'} fontFamily={'arial'} lineHeight={'40px'}>1</Box>
+                  <Box fontFamily={'arial'}>2</Box>
+                  <Box fontFamily={'arial'}>3</Box>
+                </Stack>
+              </Box>
             </Box>
-          </Flex>
-        </Box>
+          </Grid>
+          </Box>
         <Box>
           <Testimonials />
         </Box>
