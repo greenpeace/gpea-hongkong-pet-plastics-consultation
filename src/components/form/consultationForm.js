@@ -50,7 +50,7 @@ const FormWrapper = (props) =>{
             <Box pos='absolute' {...leftBottomCorner}></Box>
             <Box pos='absolute' {...rightBottomCorner}></Box>
           </Box>
-          <Box flex={1}>
+          <Box flex={1} alignSelf={'center'}>
           {status === 'submitted' ? <Box><Text color='gray.500' fontSize={{base: 16}}>接下來，您將會收到電郵附上意見書文件範本，轉寄郵件即可完成諮詢。</Text></Box>
           :
           isSubmitting ? 
@@ -63,17 +63,16 @@ const FormWrapper = (props) =>{
           </Box>
           </Stack> : (
           <Form onSubmit={handleSubmit}>
+
             <Box pb={space}>
               <FormControl id='email' isInvalid={errors.Email && touched.Email}>
                 <Flex>
-                  <Box minW={20}>
-                    <Center h="100%">
-                      <FormLabel {...labelStyle}>
-                        {formContent.label_email}
-                      </FormLabel>                
-                    </Center>
-                  </Box>
                   <Box flex={1}>
+                  <Box minW={20}>
+                  <FormLabel {...labelStyle}>
+                        {formContent.label_email}
+                      </FormLabel> 
+                  </Box>
                   <Input
                     name='Email'
                     type='email'
@@ -95,14 +94,17 @@ const FormWrapper = (props) =>{
               <Box flex={1} pb={space}>
                 <FormControl id='lastName' isInvalid={errors.LastName && touched.LastName}>
                   <Flex>
-                    <Box minW={12}>
+                    {/* <Box minW={12}>
                       <Center h="100%">
                         <FormLabel {...labelStyle}>
                           {formContent.label_last_name}
                         </FormLabel>                
                       </Center>
-                    </Box>
+                    </Box> */}
                     <Box flex={1}>
+                    <FormLabel {...labelStyle}>
+                          {formContent.label_last_name}
+                        </FormLabel>  
                     <Input
                       name='LastName'
                       type='text'
@@ -123,14 +125,17 @@ const FormWrapper = (props) =>{
                 <FormControl id='firstName'
                   isInvalid={errors.FirstName && touched.FirstName}>
                   <Flex>
-                    <Box minW={12}>
+                    {/* <Box minW={12}>
                       <Center h="100%">
                         <FormLabel {...labelStyle}>
                           {formContent.label_first_name}
                         </FormLabel>                
                       </Center>
-                    </Box>
+                    </Box> */}
                     <Box flex={1}>
+                    <FormLabel {...labelStyle}>
+                          {formContent.label_first_name}
+                        </FormLabel>        
                     <Input
                       name='FirstName'
                       type='text'
@@ -148,6 +153,7 @@ const FormWrapper = (props) =>{
               </Box>
 
               </HStack>
+              
 
               <Box py={2}>
                 <Button
@@ -165,17 +171,15 @@ const FormWrapper = (props) =>{
                   提交聯絡資料
                 </Button>
               </Box>
-              <Box>
-                <HStack align='flex-start'>
-                  <Box pb={4}>
-                    <FormControl id='optIn'>
-                      <Checkbox name='OptIn' onChange={handleChange}>
-                        <Text fontSize='xs' color='gray.500'>{formContent.form_remind}</Text>
-                      </Checkbox>
-                    </FormControl>
-                  </Box>
-                </HStack>
-                </Box>
+
+              <Box pb={4}>
+                <Stack spacing={10} direction="row">
+                  <Checkbox id={'OptIn'} name={'OptIn'} colorScheme="whatsapp" onChange={handleChange}>
+                    <Text fontSize='xs' color='gray.500'>{formContent.form_remind}</Text>
+                  </Checkbox>
+                </Stack>
+              </Box>
+              
           </Form>
           )}
           </Box>
@@ -233,30 +237,30 @@ const ConsultationForm = withFormik({
   validate: (values) => {
     const errors = {};
 
-    // if (!values.Email) {
-    //   errors.Email = formContent.empty_data_alert;
-    // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
-    //   errors.Email = formContent.invalid_email_alert;
-    // }
+    if (!values.Email) {
+      errors.Email = formContent.empty_data_alert;
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
+      errors.Email = formContent.invalid_email_alert;
+    }
 
-    // if (!values.FirstName) {
-    //   errors.FirstName = formContent.empty_data_alert;
-    // }
+    if (!values.FirstName) {
+      errors.FirstName = formContent.empty_data_alert;
+    }
 
-    // if (!values.LastName) {
-    //   errors.LastName = formContent.empty_data_alert;
-    // }
+    if (!values.LastName) {
+      errors.LastName = formContent.empty_data_alert;
+    }
 
     return errors;
   },
 
   handleSubmit: (values, { setSubmitting, setStatus, props }) => {
     setStatus('processing')
-    setTimeout(() => {
-      alert('Fake submit');
-      setSubmitting(false)
-      setStatus('submitted')
-    }, 3000);
+    // setTimeout(() => {
+    //   alert('Fake submit');
+    //   setSubmitting(false)
+    //   setStatus('submitted')
+    // }, 3000);
     const md5 = require('md5');
     const {p29ContentOne, p29ContentTwo, p30ContentOne, p30ContentTwo} = props
 
@@ -281,9 +285,21 @@ const ConsultationForm = withFormik({
     doc.setFontSize(15)
     doc.text(45, 115, values.Email)
 
-      [{x:25,y:101},{x:60,y:142},{x:76,y:177},{x:76,y:187},{x:76,y:197},{x:76,y:208},{x:76,y:219},{x:76,y:230},{x:76,y:240},{x:76,y:251},{x:76,y:261}]
-      .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
+    // Not sure why cant map loop in first page
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 101, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 27, 142, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 177, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 187, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 197, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 208, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 219, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 230, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 240, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 251, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 261, 5, 5)
 
+    // [{x:25,y:101},{x:27,y:142},{x:76,y:177},{x:76,y:187},{x:76,y:197},{x:76,y:208},{x:76,y:219},{x:76,y:230},{x:76,y:240},{x:76,y:251},{x:76,y:261}]
+    // .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
 
     /**
      * PAGE 2
@@ -301,8 +317,8 @@ const ConsultationForm = withFormik({
     doc.addPage()
     doc.addImage(`${process.env.PUBLIC_URL}/assets/p29.png`, 'PNG', 0, 0, width, height);
 
-      [{x:76,y:55},{x:76,y:64},{x:76,y:73},{x:76,y:82},{x:76,y:91},{x:76,y:121},{x:76,y:130},{x:76,y:139},{x:76,y:148}]
-      .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
+    [{x:76,y:55},{x:76,y:64},{x:76,y:73},{x:76,y:82},{x:76,y:91},{x:76,y:121},{x:76,y:130},{x:76,y:139},{x:76,y:148}]
+    .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
 
     doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 207, 5, 5);
     doc.addImage(p29ContentOne, 'PNG', 99, 194, 155, 40);
@@ -325,27 +341,29 @@ const ConsultationForm = withFormik({
     // PREVIEW
     // window.open(doc.output('bloburl'), '_blank');
 
-    // formData.append("file", uploadPDF)
-    // formData.append("upload_preset", "r7ksxsfb")
-    // formData.append("resource_type", "raw")
-    // formData.append("public_id", md5(values.Email))
+    formData.append("file", uploadPDF)
+    formData.append("upload_preset", "r7ksxsfb")
+    formData.append("resource_type", "raw")
+    formData.append("public_id", md5(values.Email))
 
     // JSON.stringify(formData);
 
-    // Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
-    //   const {statusText, data} = res
-    //   if(statusText==='OK'){
-    //     setSubmitting(false)
-    //     const submitData = {
-    //       ...hiddenFormValue,
-    //       ...values,
-    //       pdfFile: data.url
-    //     };
-    //     alert(JSON.stringify(submitData, null, 4))
-    //   } else {
-    //     alert('Something errors')
-    //   }
-    // })
+    Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
+      const {statusText, data} = res
+      console.log('data-',data)
+      if(statusText==='OK'){
+        setSubmitting(false)
+        const submitData = {
+          ...hiddenFormValue,
+          ...values,
+          pdfFile: data.url
+        };
+        // alert(JSON.stringify(submitData, null, 4))
+        setStatus('submitted')
+      } else {
+        alert('Something errors')
+      }
+    })
   },
 
   displayName: "ConsultationForm",
