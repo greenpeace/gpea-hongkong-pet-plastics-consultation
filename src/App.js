@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import { HelmetProvider } from 'react-helmet-async'
-import SEO from './components/seo'
+import SEO from './components/SEO/SEO'
 import theme from './theme'
 import Form from './components/form'
 
