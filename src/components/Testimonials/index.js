@@ -1,13 +1,4 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  Stack,
-  Container,
-  useColorModeValue,
-  Button,
-} from '@chakra-ui/react'
+import { Box, Heading, Text, Stack, Container, Button } from '@chakra-ui/react'
 
 const Testimonial = ({ children }) => {
   return (
