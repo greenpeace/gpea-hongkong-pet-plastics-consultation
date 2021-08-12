@@ -10,22 +10,15 @@ import {
 } from '@chakra-ui/react'
 
 const Testimonial = ({ children }) => {
-  return <Box flex={1}>{children}</Box>
+  return (
+    <Box bg={'white'} px={4} pt={6} pb={8} rounded={'xl'} flex={1}>
+      {children}
+    </Box>
+  )
 }
 
 const TestimonialContent = ({ children }) => {
-  return (
-    <Stack
-      bg={'#C7EBFB'}
-      flexDirection={'column'}
-      px={4}
-      py={6}
-      rounded={'md'}
-      pos={'relative'}
-    >
-      {children}
-    </Stack>
-  )
+  return <Box height={'100%'}>{children}</Box>
 }
 
 const TestimonialHeading = ({ children, number }) => {
@@ -33,25 +26,25 @@ const TestimonialHeading = ({ children, number }) => {
     <Stack
       direction='row'
       color={'#004566'}
-      mb={2}
+      mb={6}
+      spacing={2}
       align={'center'}
       pos={'relative'}
     >
-      <Heading
-        as={'h4'}
-        fontSize={'2xl'}
+      <Box
         borderRadius={'full'}
-        bgColor='#FFF'
-        w={12}
-        h={12}
+        bg={'gray.100'}
+        w={8}
+        h={8}
         display={'inline-flex'}
         alignItems={'center'}
         justifyContent={'center'}
-        lineHeight={'100%'}
       >
-        {number}
-      </Heading>
-      <Heading as={'h4'} fontSize={'2xl'} alignSelf={'center'}>
+        <Text as={'span'} fontSize={'xl'} fontWeight={'700'}>
+          {number}
+        </Text>
+      </Box>
+      <Heading as={'h4'} fontSize={'xl'} alignSelf={'center'}>
         <b>{children}</b>
       </Heading>
     </Stack>
@@ -60,7 +53,7 @@ const TestimonialHeading = ({ children, number }) => {
 
 const TestimonialText = ({ children }) => {
   return (
-    <Text color={useColorModeValue('gray.600', 'gray.400')} fontSize={'sm'}>
+    <Text color={'gray.700'} fontSize={'sm'}>
       {children}
     </Text>
   )
@@ -68,10 +61,14 @@ const TestimonialText = ({ children }) => {
 
 export default function WithSpeechBubbles() {
   return (
-    <Box bg={useColorModeValue('gray.100', 'gray.700')}>
-      <Container maxW={'6xl'} py={16} as={Stack} spacing={12}>
+    <Box bg={'gray.50'}>
+      <Container maxW={'6xl'} py={16} as={Stack} spacing={8}>
         <Stack align={'center'}>
-          <Heading>「管制即棄膠餐具計劃」公眾諮詢懶人包</Heading>
+          <Heading color={'#004566'} textAlign={'center'} lineHeight={'120%'}>
+            「管制即棄膠餐具計劃」
+            <br />
+            公眾諮詢懶人包
+          </Heading>
         </Stack>
         <Stack
           direction={{ base: 'column', md: 'row' }}
@@ -111,6 +108,7 @@ export default function WithSpeechBubbles() {
                 as='a'
                 href={'https://www.rdpt.hk/tc/form/'}
                 target={'_blank'}
+                mt={4}
                 bgColor={'#FF8100'}
                 color={'#FFF'}
                 _hover={{
