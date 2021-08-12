@@ -8,6 +8,8 @@ import {
   Heading,
   Image,
   Stack,
+  Grid, 
+  GridItem
 } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import { HelmetProvider } from 'react-helmet-async'
@@ -15,6 +17,7 @@ import SEO from './components/seo'
 import theme from './theme'
 import Form from './components/form'
 
+import Nav from './components/Nav'
 import Countdown from './components/Countdown'
 import Testimonials from './components/Testimonials'
 import SplitWithImage from './components/SplitWithImage/SplitWithImage'
@@ -34,49 +37,28 @@ const App = (props) => {
     <ChakraProvider resetCSS={true} theme={theme}>
       <HelmetProvider>
         <SEO />
-        <Box fontSize='xl' bgColor='#D7EEF3' py={10}>
-          <Flex flexDirection={{ base: 'column', sm: 'row' }}>
-            <Box flex={1}>
-              <Center h={`100%`} px={12}>
-                <Stack direction='column'>
-                  <Image
-                    src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`}
-                  />
-                  <Countdown />
-                </Stack>
-              </Center>
-            </Box>
-            <Box flex={1} mx={10}>
-              <Center>
-                <Box
-                  bgColor={'#FFF'}
-                  borderRadius={8}
-                  mx={{ base: 0, sm: 2 }}
-                  maxW={'640px'}
-                >
-                  <Box
-                    bgColor='orange'
-                    borderTopRadius={8}
-                    textAlign={'center'}
-                  >
-                    <Heading
-                      py={4}
-                      fontWeight={600}
-                      color='#FFF'
-                      fontSize={{ base: 16, sm: 20, md: 24 }}
-                      lineHeight={'110%'}
-                    >
-                      加速香港禁膠餐具 3步完成
-                    </Heading>
-                  </Box>
-                  <Box w={'100%'}>
-                    <Form />
-                  </Box>
+        <Nav/>
+          <Box className={'hero'}>
+          <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+            <Box w="100%">
+              <Center h={'100%'}>
+                <Box px={20}>
+                資料請求（無料でお届け）<br/><br/>
+                ホームページだけではわからない学校の想いや、<br/>
+                詳しい情報が掲載されているパンフレットをお届けします。<br/>
+                必要事項をご入力の上、確認画面へお進みください。
                 </Box>
               </Center>
             </Box>
-          </Flex>
-        </Box>
+            <Box w="100%" h="80vh" bg="#F5F5F5">
+              <Center h={'100%'}>
+                <Box maxW={'640px'}>
+                  <Form/>
+                </Box>
+              </Center>
+            </Box>
+          </Grid>
+          </Box>
         <Box>
           <Testimonials />
         </Box>

@@ -12,13 +12,13 @@ const FormWrapper = (props) =>{
   const leftBottomCorner = {
     bottom: "0px",
     left: "0px",
-    borderBottom: "20px solid #FFF",
+    borderBottom: "20px solid #F5F5F5",
     borderRight: "50px solid transparent",
   };
   const rightBottomCorner = {
     bottom: "0px",
     right: "0px",
-    borderBottom: "20px solid #FFF",
+    borderBottom: "20px solid #F5F5F5",
     borderLeft: "50px solid transparent",
   };
 
