@@ -50,6 +50,11 @@ const FormWrapper = (props) =>{
   }, [status]);
 
   return (
+    <Box>
+      {status !== 'submitted' && <Box px={4} pb={12}>
+        <Text fontSize={'36px'} fontWeight={500}>加速香港禁膠餐具 <Text as={'span'} fontSize={'72px'} fontWeight={700}><i>3</i> </Text>步完成</Text> 
+        <Text>急需你參與「管制即棄膠餐具計劃」公眾諮詢</Text>
+      </Box>}
     <Box px={2} py={4}>
         {/** STEP 1 */}
         <Stack direction={{base: 'row'}} spacing={2} px={2}>
@@ -58,12 +63,30 @@ const FormWrapper = (props) =>{
             <Box pos='absolute' {...leftBottomCorner}></Box>
             <Box pos='absolute' {...rightBottomCorner}></Box>
           </Box> */}
-          <Box flex={1} alignSelf={'center'}>
-          {status === 'submitted' ? <Box><Text color='gray.500' fontSize={{base: 16}}>接下來，您將會收到電郵附上意見書文件範本，轉寄郵件即可完成諮詢。</Text></Box>
+          <Box flex={1}>
+          {status === 'submitted' ? <Box>
+          
+          <Stack spacing={4} direction={'column'}>
+          <Box flex={1} alignSelf="center">
+            <Stack spacing={2} direction={'column'}>
+              <Box>
+                <Text color='gray.500' fontSize={{base: 16}}>開啟你的電子郵箱，打開由綠色和平發出，附有意見書範本的電郵。</Text>
+              </Box>
+              <Box>
+                <Text color='gray.500' fontSize={{base: 16}}>轉寄該電郵，在「收件人」一欄輸入<u>rdpt@epd.gov.hk</u>，按下發送，完成諮詢！</Text>
+                <Box><Text color='gray.500' fontSize={12}><sup>**</sup>如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘</Text></Box>
+              </Box>
+            </Stack>
+          </Box>
+          </Stack>
+          
+          {/* <Text color='gray.500' fontSize={{base: 16}}>接下來，您將會收到電郵附上意見書文件範本，轉寄郵件即可完成諮詢。</Text> */}
+          
+          </Box>
           :
           isSubmitting ? 
-          <Stack>
-            <Skeleton height="20px" />
+          <Stack maxW={'640px'} w={'100%'}>
+            <Skeleton height="20px" w={'100%'} />
             <Skeleton height="20px" />
             <Skeleton height="20px" />
           <Box>
@@ -229,6 +252,7 @@ const FormWrapper = (props) =>{
           </Box>
         </Stack> */}
     </Box>
+  </Box>
   );
 }
 
@@ -243,30 +267,30 @@ const ConsultationForm = withFormik({
   validate: (values) => {
     const errors = {};
 
-    if (!values.Email) {
-      errors.Email = formContent.empty_data_alert;
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
-      errors.Email = formContent.invalid_email_alert;
-    }
+    // if (!values.Email) {
+    //   errors.Email = formContent.empty_data_alert;
+    // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
+    //   errors.Email = formContent.invalid_email_alert;
+    // }
 
-    if (!values.FirstName) {
-      errors.FirstName = formContent.empty_data_alert;
-    }
+    // if (!values.FirstName) {
+    //   errors.FirstName = formContent.empty_data_alert;
+    // }
 
-    if (!values.LastName) {
-      errors.LastName = formContent.empty_data_alert;
-    }
+    // if (!values.LastName) {
+    //   errors.LastName = formContent.empty_data_alert;
+    // }
 
     return errors;
   },
 
   handleSubmit: (values, { setSubmitting, setStatus, props }) => {
     setStatus('processing')
-    // setTimeout(() => {
-    //   alert('Fake submit');
-    //   setSubmitting(false)
-    //   setStatus('submitted')
-    // }, 3000);
+    setTimeout(() => {
+      alert('Fake submit');
+      setSubmitting(false)
+      setStatus('submitted')
+    }, 3000);
     const md5 = require('md5');
     const {p29ContentOne, p29ContentTwo, p30ContentOne, p30ContentTwo} = props
 
@@ -287,22 +311,22 @@ const ConsultationForm = withFormik({
     /**
      * PAGE 1
      */
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/p27.jpg`, 'JPEG', 0, 0, width, height);
-    doc.setFontSize(15)
-    doc.text(45, 115, values.Email)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/p27.jpg`, 'JPEG', 0, 0, width, height);
+    // doc.setFontSize(15)
+    // doc.text(45, 115, values.Email)
 
     // Not sure why cant map loop in first page
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 101, 5, 5)
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 27, 142, 5, 5)
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 177, 5, 5)
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 187, 5, 5)
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 197, 5, 5)
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 208, 5, 5)
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 219, 5, 5)
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 230, 5, 5)
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 240, 5, 5)
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 251, 5, 5)
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 261, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 101, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 27, 142, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 177, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 187, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 197, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 208, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 219, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 230, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 240, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 251, 5, 5)
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 261, 5, 5)
 
     // [{x:25,y:101},{x:27,y:142},{x:76,y:177},{x:76,y:187},{x:76,y:197},{x:76,y:208},{x:76,y:219},{x:76,y:230},{x:76,y:240},{x:76,y:251},{x:76,y:261}]
     // .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
@@ -310,66 +334,66 @@ const ConsultationForm = withFormik({
     /**
      * PAGE 2
      */
-    doc.addPage()
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/p28.png`, 'PNG', 0, 0, width, height);
+    // doc.addPage()
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/p28.png`, 'PNG', 0, 0, width, height);
 
-      [{x:27,y:50},{x:27,y:89},{x:27,y:133},{x:27,y:172},{x:27,y:215}]
-      .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
+    //   [{x:27,y:50},{x:27,y:89},{x:27,y:133},{x:27,y:172},{x:27,y:215}]
+    //   .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
 
 
     /**
      * PAGE 3
      */
-    doc.addPage()
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/p29.png`, 'PNG', 0, 0, width, height);
+    // doc.addPage()
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/p29.png`, 'PNG', 0, 0, width, height);
 
-    [{x:76,y:55},{x:76,y:64},{x:76,y:73},{x:76,y:82},{x:76,y:91},{x:76,y:121},{x:76,y:130},{x:76,y:139},{x:76,y:148}]
-    .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
+    // [{x:76,y:55},{x:76,y:64},{x:76,y:73},{x:76,y:82},{x:76,y:91},{x:76,y:121},{x:76,y:130},{x:76,y:139},{x:76,y:148}]
+    // .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
 
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 207, 5, 5);
-    doc.addImage(p29ContentOne, 'PNG', 99, 194, 155, 40);
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 239, 5, 5);
-    doc.addImage(p29ContentTwo, 'PNG', 99, 225, 155, 42);
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 207, 5, 5);
+    // doc.addImage(p29ContentOne, 'PNG', 99, 194, 155, 40);
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 239, 5, 5);
+    // doc.addImage(p29ContentTwo, 'PNG', 99, 225, 155, 42);
 
     /**
      * PAGE 4
      */
-    doc.addPage()
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/p30.png`, 'PNG', 0, 0, width, height);
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 57, 5, 5);
-    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 80, 5, 5);
+    // doc.addPage()
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/p30.png`, 'PNG', 0, 0, width, height);
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 57, 5, 5);
+    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 80, 5, 5);
 
-    doc.addImage(p30ContentOne, 'PNG', 50, 72, 155, 50);
-    doc.addImage(p30ContentTwo, 'PNG', 30, 110, 155, 50);
+    // doc.addImage(p30ContentOne, 'PNG', 50, 72, 155, 50);
+    // doc.addImage(p30ContentTwo, 'PNG', 30, 110, 155, 50);
 
     const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf; charset=utf-8'});
 
     // PREVIEW
     // window.open(doc.output('bloburl'), '_blank');
 
-    formData.append("file", uploadPDF)
-    formData.append("upload_preset", "r7ksxsfb")
-    formData.append("resource_type", "raw")
-    formData.append("public_id", md5(values.Email))
+    // formData.append("file", uploadPDF)
+    // formData.append("upload_preset", "r7ksxsfb")
+    // formData.append("resource_type", "raw")
+    // formData.append("public_id", md5(values.Email))
 
     // JSON.stringify(formData);
 
-    Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
-      const {statusText, data} = res
-      console.log('data-',data)
-      if(statusText==='OK'){
-        setSubmitting(false)
-        const submitData = {
-          ...hiddenFormValue,
-          ...values,
-          pdfFile: data.url
-        };
-        // alert(JSON.stringify(submitData, null, 4))
-        setStatus('submitted')
-      } else {
-        alert('Something errors')
-      }
-    })
+    // Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
+    //   const {statusText, data} = res
+    //   console.log('data-',data)
+    //   if(statusText==='OK'){
+    //     setSubmitting(false)
+    //     const submitData = {
+    //       ...hiddenFormValue,
+    //       ...values,
+    //       pdfFile: data.url
+    //     };
+    //     // alert(JSON.stringify(submitData, null, 4))
+    //     setStatus('submitted')
+    //   } else {
+    //     alert('Something errors')
+    //   }
+    // })
   },
 
   displayName: "ConsultationForm",

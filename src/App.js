@@ -30,6 +30,13 @@ import SmallWithSocial from './components/Footer/SmallWithSocial'
 import '@fontsource/noto-sans-tc'
 import './notosans-regular-normal.js'
 
+const rightBottomCorner = {
+  bottom: "0px",
+  right: "-30px",
+  borderBottom: "800px solid #F5F5F5",
+  borderLeft: "120px solid transparent",
+};
+
 const Footer = styled.footer`
   font-size: 0.85rem;
 `
@@ -41,23 +48,20 @@ const App = (props) => {
         <SEO />
         <Nav/>
           <Box className={'hero'}>
-          <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-            <Box w="100%">
+          <Grid templateColumns="repeat(2, 1fr)" gap={6} overflow={'hidden'}>
+            <Box w="100%" pos="relative">
               <Center h={'100%'}>
                 <Stack direction="column">
                   {/* <Text fontSize={'24px'} fontWeight={500} color='gray.700'>急需你參與「管制即棄膠餐具計劃」公眾諮詢</Text> */}
                   <Image src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`}/><br/>
                   <Countdown/>
+                  <Box pos='absolute' {...rightBottomCorner}></Box>
                 </Stack>
               </Center>
             </Box>
             <Box w="100%" h="80vh" bg="#F5F5F5" position={'relative'}>
-              <Center>
+              <Center h="100%">
                 <Box maxW={'640px'}>
-                  <Box px={4} pb={12}>
-                    <Text fontSize={'36px'} fontWeight={500}>加速香港禁膠餐具 <Text as={'span'} fontSize={'72px'} fontWeight={700}><i>3</i> </Text>步完成</Text> 
-                    <Text>急需你參與「管制即棄膠餐具計劃」公眾諮詢</Text>
-                  </Box>
                   <Form/>
                 </Box>
               </Center>
