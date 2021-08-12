@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import { HelmetProvider } from 'react-helmet-async'
+import Sticky from 'react-sticky-el'
 import SEO from './components/SEO/SEO'
 import theme from './theme'
 import Form from './components/form'
@@ -143,105 +144,6 @@ const App = (props) => {
                   <Form />
                 </Box>
               </Sticky>
-              {/* <Center>
-                <Box maxW={'540px'} pos={'relative'}>
-                  <Box>
-
-                  </Box>
-                </Box>
-              </Center> */}
-              {/* <Box pos={'absolute'} bottom={0} right={0} p={6}>
-                <Stack direction="row" color={'gray.500'} alignItems={'center'}>
-        <Nav />
-        <Box className={'hero'} position={'relative'}>
-          <Grid templateColumns='repeat(2, 1fr)'>
-            <Stack>
-              <Center h={'80vh'}>
-                <Stack
-                  as={Box}
-                  h={'100%'}
-                  spacing={6}
-                  py={{ base: 8, md: 12 }}
-                  px={4}
-                  position={'relative'}
-                >
-                  <Countdown />
-                  <Heading
-                    fontWeight={'bold'}
-                    fontSize={{ base: '3xl', sm: '5xl' }}
-                    lineHeight={'120%'}
-                  >
-                    <Text>急需您的參與</Text>
-                    <Text color={'#ff8100'}>管制即棄膠餐具計劃</Text>
-                    <Text>公眾諮詢</Text>
-                  </Heading>
-                  <Text color={'gray.700'} lineHeight={'220%'}>
-                    環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。
-                    <br />
-                    立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
-                  </Text>
-                  <ForkWrapper>
-                    <Image src={Fork} objectFit='contain' />
-                  </ForkWrapper>
-                </Stack>
-              </Center>
-              <Center h={'80vh'}>
-                <Stack
-                  as={Box}
-                  h={'100%'}
-                  spacing={6}
-                  py={{ base: 8, md: 12 }}
-                  px={4}
-                  position={'relative'}
-                >
-                  <Countdown />
-                  <Heading
-                    fontWeight={'bold'}
-                    fontSize={{ base: '3xl', sm: '5xl' }}
-                    lineHeight={'120%'}
-                  >
-                    <Text>急需您的參與</Text>
-                    <Text color={'#ff8100'}>管制即棄膠餐具計劃</Text>
-                    <Text>公眾諮詢</Text>
-                  </Heading>
-                  <Text color={'gray.700'} lineHeight={'220%'}>
-                    環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。
-                    <br />
-                    立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
-                  </Text>
-                  <ForkWrapper>
-                    <Image src={Fork} objectFit='contain' />
-                  </ForkWrapper>
-                </Stack>
-              </Center>
-            </Stack>
-            <Box w='100%' h='100vh' bg='#F5F5F5' position={'sticky'} top='0'>
-              <Center>
-                <Box maxW={'540px'}>
-                  <Form />
-                </Box>
-              </Center>
-              <Box pos={'absolute'} bottom={0} right={0} p={6}>
-                <Stack direction='row' color={'gray.500'} alignItems={'center'}>
-                  <Box>步驟</Box>
-                  <Box
-                    bgColor={'green.300'}
-                    w={'40px'}
-                    h={'40px'}
-                    borderRadius={'50%'}
-                    fontWeight={700}
-                    fontSize={18}
-                    color='#FFF'
-                    textAlign={'center'}
-                    fontFamily={'arial'}
-                    lineHeight={'40px'}
-                  >
-                    1
-                  </Box>
-                  <Box fontFamily={'arial'}>2</Box>
-                  <Box fontFamily={'arial'}>3</Box>
-                </Stack>
-              </Box> */}
             </Box>
           </Grid>
         </Box>
