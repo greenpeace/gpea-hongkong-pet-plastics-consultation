@@ -203,7 +203,7 @@ const FormWrapper = (props) =>{
 
               <Box pb={4}>
                 <Stack spacing={10} direction="row">
-                  <Checkbox id={'OptIn'} name={'OptIn'} colorScheme="whatsapp" onChange={handleChange}>
+                  <Checkbox id={'OptIn'} name={'OptIn'} colorScheme="whatsapp" onChange={handleChange} defaultChecked>
                     <Text fontSize='xs' color='gray.500'>{formContent.form_remind}</Text>
                   </Checkbox>
                 </Stack>
@@ -261,7 +261,7 @@ const ConsultationForm = withFormik({
     Email: "",
     FirstName: "",
     LastName: "",
-    OptIn: false
+    OptIn: true
   }),
 
   validate: (values) => {
@@ -311,22 +311,22 @@ const ConsultationForm = withFormik({
     /**
      * PAGE 1
      */
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/p27.jpg`, 'JPEG', 0, 0, width, height);
-    // doc.setFontSize(15)
-    // doc.text(45, 115, values.Email)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/p27.jpg`, 'JPEG', 0, 0, width, height);
+    doc.setFontSize(15)
+    doc.text(45, 115, values.Email)
 
     // Not sure why cant map loop in first page
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 101, 5, 5)
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 27, 142, 5, 5)
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 177, 5, 5)
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 187, 5, 5)
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 197, 5, 5)
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 208, 5, 5)
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 219, 5, 5)
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 230, 5, 5)
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 240, 5, 5)
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 251, 5, 5)
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 261, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 101, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 27, 142, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 177, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 187, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 197, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 208, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 219, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 230, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 240, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 251, 5, 5)
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 76, 261, 5, 5)
 
     // [{x:25,y:101},{x:27,y:142},{x:76,y:177},{x:76,y:187},{x:76,y:197},{x:76,y:208},{x:76,y:219},{x:76,y:230},{x:76,y:240},{x:76,y:251},{x:76,y:261}]
     // .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
@@ -334,66 +334,66 @@ const ConsultationForm = withFormik({
     /**
      * PAGE 2
      */
-    // doc.addPage()
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/p28.png`, 'PNG', 0, 0, width, height);
+    doc.addPage()
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/p28.png`, 'PNG', 0, 0, width, height);
 
-    //   [{x:27,y:50},{x:27,y:89},{x:27,y:133},{x:27,y:172},{x:27,y:215}]
-    //   .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
+      [{x:27,y:50},{x:27,y:89},{x:27,y:133},{x:27,y:172},{x:27,y:215}]
+      .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
 
 
     /**
      * PAGE 3
      */
-    // doc.addPage()
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/p29.png`, 'PNG', 0, 0, width, height);
+    doc.addPage()
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/p29.png`, 'PNG', 0, 0, width, height);
 
-    // [{x:76,y:55},{x:76,y:64},{x:76,y:73},{x:76,y:82},{x:76,y:91},{x:76,y:121},{x:76,y:130},{x:76,y:139},{x:76,y:148}]
-    // .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
+    [{x:76,y:55},{x:76,y:64},{x:76,y:73},{x:76,y:82},{x:76,y:91},{x:76,y:121},{x:76,y:130},{x:76,y:139},{x:76,y:148}]
+    .map((d,i)=>doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', d.x, d.y, 5, 5))
 
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 207, 5, 5);
-    // doc.addImage(p29ContentOne, 'PNG', 99, 194, 155, 40);
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 239, 5, 5);
-    // doc.addImage(p29ContentTwo, 'PNG', 99, 225, 155, 42);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 207, 5, 5);
+    doc.addImage(p29ContentOne, 'PNG', 99, 194, 155, 40);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 239, 5, 5);
+    doc.addImage(p29ContentTwo, 'PNG', 99, 225, 155, 42);
 
     /**
      * PAGE 4
      */
-    // doc.addPage()
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/p30.png`, 'PNG', 0, 0, width, height);
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 57, 5, 5);
-    // doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 80, 5, 5);
+    doc.addPage()
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/p30.png`, 'PNG', 0, 0, width, height);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 25, 57, 5, 5);
+    doc.addImage(`${process.env.PUBLIC_URL}/assets/tick.png`, 'PNG', 66, 80, 5, 5);
 
-    // doc.addImage(p30ContentOne, 'PNG', 50, 72, 155, 50);
-    // doc.addImage(p30ContentTwo, 'PNG', 30, 110, 155, 50);
+    doc.addImage(p30ContentOne, 'PNG', 50, 72, 155, 50);
+    doc.addImage(p30ContentTwo, 'PNG', 30, 110, 155, 50);
 
     const uploadPDF = new Blob([doc.output('blob')], {type: 'application/pdf; charset=utf-8'});
 
     // PREVIEW
     // window.open(doc.output('bloburl'), '_blank');
 
-    // formData.append("file", uploadPDF)
-    // formData.append("upload_preset", "r7ksxsfb")
-    // formData.append("resource_type", "raw")
-    // formData.append("public_id", md5(values.Email))
+    formData.append("file", uploadPDF)
+    formData.append("upload_preset", "r7ksxsfb")
+    formData.append("resource_type", "raw")
+    formData.append("public_id", md5(values.Email))
 
     // JSON.stringify(formData);
 
-    // Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
-    //   const {statusText, data} = res
-    //   console.log('data-',data)
-    //   if(statusText==='OK'){
-    //     setSubmitting(false)
-    //     const submitData = {
-    //       ...hiddenFormValue,
-    //       ...values,
-    //       pdfFile: data.url
-    //     };
-    //     // alert(JSON.stringify(submitData, null, 4))
-    //     setStatus('submitted')
-    //   } else {
-    //     alert('Something errors')
-    //   }
-    // })
+    Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
+      const {statusText, data} = res
+      console.log('data-',data)
+      if(statusText==='OK'){
+        setSubmitting(false)
+        const submitData = {
+          ...hiddenFormValue,
+          ...values,
+          CampaignData1__c: data.url,
+        };
+        alert(JSON.stringify(submitData, null, 4))
+        setStatus('submitted')
+      } else {
+        alert('Something errors')
+      }
+    })
   },
 
   displayName: "ConsultationForm",

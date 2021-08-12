@@ -53,15 +53,15 @@ const App = (props) => {
               <Center h={'100%'}>
                 <Stack direction="column">
                   {/* <Text fontSize={'24px'} fontWeight={500} color='gray.700'>急需你參與「管制即棄膠餐具計劃」公眾諮詢</Text> */}
-                  <Image src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`}/><br/>
+                  <Image src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`} maxW={'480px'}/><br/>
                   <Countdown/>
-                  <Box pos='absolute' {...rightBottomCorner}></Box>
+                  {/* <Box pos='absolute' {...rightBottomCorner}></Box> */}
                 </Stack>
               </Center>
             </Box>
             <Box w="100%" h="80vh" bg="#F5F5F5" position={'relative'}>
-              <Center h="100%">
-                <Box maxW={'640px'}>
+              <Center>
+                <Box maxW={'540px'}>
                   <Form/>
                 </Box>
               </Center>
@@ -79,8 +79,8 @@ const App = (props) => {
         <Box>
           <Testimonials />
         </Box>
-        {/* <SplitWithImage />
-        <GridListWithHeading /> */}
+        <SplitWithImage />
+        <GridListWithHeading />
         <Footer>
           <LargeWithLogoLeft />
           <SmallWithSocial />
