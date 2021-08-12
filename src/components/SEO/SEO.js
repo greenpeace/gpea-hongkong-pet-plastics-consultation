@@ -8,30 +8,30 @@ const SEO = () => {
         {`
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: "",
-            gBasket: "",
+            gCampaign: "plastics",
+            gBasket: "rdpt",
           });
         `}
       </script>
       {/* title */}
-      <title>Greenpeace 綠色和平 | 香港</title>
+      <title>餐具走塑 關鍵一步 - Greenpeace 綠色和平 | 香港</title>
       <meta
         property='og:title'
-        content='Greenpeace 綠色和平 | 香港'
+        content='餐具走塑 關鍵一步 - Greenpeace 綠色和平 | 香港'
       />
       {/* description */}
       <meta
         name='description'
-        content=''
+        content='急需你參與諮詢，立即提交意見書，促盡快管制即棄膠餐具！'
       />
       <meta
         property='og:description'
-        content=''
+        content='急需你參與諮詢，立即提交意見書，促盡快管制即棄膠餐具！'
       />
       {/* meta image */}
       <meta
         property='og:image'
-        content=''
+        content='https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/54a6dd0a-20210812_rdpt_launchvisual-01.jpg'
       />
     </Helmet>
   )

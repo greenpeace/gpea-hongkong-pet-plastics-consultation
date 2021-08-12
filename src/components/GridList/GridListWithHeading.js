@@ -12,23 +12,21 @@ import {
 import { CheckIcon } from '@chakra-ui/icons'
 
 // Replace test data with your own
-const features = Array.apply(null, Array(8)).map(function (x, i) {
+const features = Array.apply(null, Array(6)).map(function (x, i) {
   return {
     id: i,
-    title: 'Lorem ipsum dolor sit amet',
-    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.',
+    title: '管制即棄膠餐具計劃公眾諮詢',
+    text: '請於2021年9月8日或之前以下述方式提交你的意見。',
   }
 })
 
 export default function GridListWithHeading() {
   return (
     <Box p={4}>
-      <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
-        <Heading fontSize={'3xl'}>This is the headline</Heading>
-        <Text color={'gray.600'} fontSize={'xl'}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
+      <Stack spacing={4} as={Container} maxW={'2xl'} textAlign={'center'}>
+        <Heading fontSize={'3xl'}>管制即棄膠餐具計劃公眾諮詢</Heading>
+        <Text color={'gray.600'} fontSize={'md'}>
+          請於2021年9月8日或之前以下述方式提交你的意見。
         </Text>
       </Stack>
 

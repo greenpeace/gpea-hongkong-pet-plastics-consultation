@@ -76,10 +76,8 @@ export default function SplitWithImage() {
         <Flex>
           <Image
             rounded={'md'}
-            alt={'feature image'}
-            src={
-              'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            }
+            alt={'綠色和平的走塑訴求是？'}
+            src={`${process.env.PUBLIC_URL}/assets/images/GP0STPYWJ_High_res.jpg`}
             objectFit={'cover'}
           />
         </Flex>
@@ -118,29 +116,19 @@ export default function SplitWithImage() {
         <Flex>
           <Image
             rounded={'md'}
-            alt={'feature image'}
-            src={
-              'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            }
+            alt={'綠色和平的走塑訴求是？'}
+            src={`${process.env.PUBLIC_URL}/assets/images/GP0STTWGP_High_res.jpg`}
             objectFit={'cover'}
           />
         </Flex>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} py={4}>
         <Stack spacing={4}>
-          <Text
-            textTransform={'uppercase'}
-            color={'blue.400'}
-            fontWeight={600}
-            fontSize={'sm'}
-            bg={useColorModeValue('blue.50', 'blue.900')}
-            p={2}
-            alignSelf={'flex-start'}
-            rounded={'md'}
-          >
-            Our Story
-          </Text>
-          <Heading>其他地區都成功限塑，我們也可以！</Heading>
+          <Heading>
+            其他地區都成功限塑
+            <br />
+            我們也可以！
+          </Heading>
           <Stack spacing={4}>
             <p>
               <UnorderedList spacing={4}>
@@ -163,9 +151,7 @@ export default function SplitWithImage() {
           <Image
             rounded={'md'}
             alt={'feature image'}
-            src={
-              'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            }
+            src={`${process.env.PUBLIC_URL}/assets/images/shutterstock_1464698738.jpg`}
             objectFit={'cover'}
           />
         </Flex>
