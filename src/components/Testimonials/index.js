@@ -17,11 +17,11 @@ const TestimonialContent = ({ children }) => {
   return (
     <Stack
       bg={'#C7EBFB'}
-      mx={2}
-      p={4}
-      rounded={'xl'}
+      flexDirection={'column'}
+      px={4}
+      py={6}
+      rounded={'md'}
       pos={'relative'}
-      minH={'280px'}
     >
       {children}
     </Stack>
@@ -30,20 +30,28 @@ const TestimonialContent = ({ children }) => {
 
 const TestimonialHeading = ({ children, number }) => {
   return (
-    <Stack direction='row' color={'#004566'}>
+    <Stack
+      direction='row'
+      color={'#004566'}
+      mb={2}
+      align={'center'}
+      pos={'relative'}
+    >
       <Heading
-        as={'h3'}
-        fontSize={'3xl'}
-        borderRadius={'50%'}
+        as={'h4'}
+        fontSize={'2xl'}
+        borderRadius={'full'}
         bgColor='#FFF'
-        w={50}
-        h={50}
-        textAlign={'center'}
-        lineHeight={'50px'}
+        w={12}
+        h={12}
+        display={'inline-flex'}
+        alignItems={'center'}
+        justifyContent={'center'}
+        lineHeight={'100%'}
       >
         {number}
       </Heading>
-      <Heading as={'h3'} fontSize={'2xl'} alignSelf={'center'}>
+      <Heading as={'h4'} fontSize={'2xl'} alignSelf={'center'}>
         <b>{children}</b>
       </Heading>
     </Stack>
@@ -61,13 +69,15 @@ const TestimonialText = ({ children }) => {
 export default function WithSpeechBubbles() {
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.700')}>
-      <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
-        <Stack spacing={0} align={'center'}>
+      <Container maxW={'6xl'} py={16} as={Stack} spacing={12}>
+        <Stack align={'center'}>
           <Heading>「管制即棄膠餐具計劃」公眾諮詢懶人包</Heading>
         </Stack>
-        <Flex
+        <Stack
           direction={{ base: 'column', md: 'row' }}
+          alignItems={'stretch'}
           justifyContent={'spaceBetween'}
+          spacing={6}
         >
           <Testimonial>
             <TestimonialContent>
@@ -98,6 +108,7 @@ export default function WithSpeechBubbles() {
                 3. 署方須同時訂立「可重用餐具社區配套時間表」。
               </TestimonialText>
               <Button
+                as='a'
                 href={'https://www.rdpt.hk/tc/form/'}
                 target={'_blank'}
                 bgColor={'#FF8100'}
@@ -134,7 +145,7 @@ export default function WithSpeechBubbles() {
               </TestimonialText>
             </TestimonialContent>
           </Testimonial>
-        </Flex>
+        </Stack>
       </Container>
     </Box>
   )

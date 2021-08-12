@@ -4,7 +4,6 @@ import {
   Container,
   Stack,
   Text,
-  useColorModeValue,
   VisuallyHidden,
 } from '@chakra-ui/react'
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
@@ -12,19 +11,20 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 const SocialButton = ({ children, label, href }) => {
   return (
     <chakra.button
-      bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+      bg={'blackAlpha.100'}
       rounded={'full'}
-      w={8}
-      h={8}
+      w={10}
+      h={10}
       cursor={'pointer'}
       as={'a'}
       href={href}
+      target={'_blank'}
       display={'inline-flex'}
       alignItems={'center'}
       justifyContent={'center'}
       transition={'background 0.3s ease'}
       _hover={{
-        bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
+        bg: 'whiteAlpha.200',
       }}
     >
       <VisuallyHidden>{label}</VisuallyHidden>
@@ -39,24 +39,37 @@ export default function SmallWithSocial() {
       <Container
         as={Stack}
         maxW={'6xl'}
-        py={4}
+        px={4}
+        py={8}
         direction={{ base: 'column', md: 'row' }}
         spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}
       >
         <Text>© GREENPEACE {new Date().getFullYear()}</Text>
-        <Stack direction={'row'} spacing={6}>
-          <SocialButton label={'Facebook'} href={'#'}>
+        <Stack direction={'row'} spacing={8}>
+          <SocialButton
+            label={'Facebook'}
+            href={'https://www.facebook.com/greenpeacehk/'}
+          >
             <FaFacebook />
           </SocialButton>
-          <SocialButton label={'YouTube'} href={'#'}>
+          <SocialButton
+            label={'YouTube'}
+            href={'https://www.instagram.com/greenpeace_hk'}
+          >
             <FaYoutube />
           </SocialButton>
-          <SocialButton label={'Instagram'} href={'#'}>
+          <SocialButton
+            label={'Instagram'}
+            href={'https://www.youtube.com/user/GreenpeaceChina'}
+          >
             <FaInstagram />
           </SocialButton>
-          <SocialButton label={'Twitter'} href={'#'}>
+          <SocialButton
+            label={'Twitter'}
+            href={'https://twitter.com/greenpeace_hk'}
+          >
             <FaTwitter />
           </SocialButton>
         </Stack>

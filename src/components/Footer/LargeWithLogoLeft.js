@@ -42,7 +42,7 @@ const SocialButton = ({ children, label, href }) => {
 export default function LargeWithLogoLeft() {
   return (
     <Box bg={'gray.800'} color={'gray.100'}>
-      <Container as={Stack} maxW={'6xl'} py={10}>
+      <Container as={Stack} maxW={'6xl'} py={8}>
         <SimpleGrid
           templateColumns={{ sm: '1fr', md: '1fr auto auto' }}
           spacing={8}

@@ -13,13 +13,6 @@ import {
   OrderedList,
   UnorderedList,
 } from '@chakra-ui/react'
-// import { ReactElement } from 'react'
-
-// interface FeatureProps {
-//   text: string;
-//   iconBg: string;
-//   icon?: ReactElement;
-// }
 
 const Feature = ({ text, icon, iconBg }) => {
   return (

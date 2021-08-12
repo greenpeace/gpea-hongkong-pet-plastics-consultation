@@ -27,7 +27,6 @@ import LargeWithLogoLeft from './components/Footer/LargeWithLogoLeft'
 import SmallWithSocial from './components/Footer/SmallWithSocial'
 
 import '@fontsource/noto-sans-tc'
-import './notosans-regular-normal.js'
 
 import Fork from './assets/images/20210805_RDPT_KV-03.png'
 
