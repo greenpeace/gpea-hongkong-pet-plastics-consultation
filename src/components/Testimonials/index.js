@@ -100,11 +100,9 @@ export default function WithSpeechBubbles() {
                 href={'https://www.rdpt.hk/tc/form/'}
                 target={'_blank'}
                 mt={4}
-                bgColor={'#FF8100'}
+                px={8}
+                bgColor={'#66cc00'}
                 color={'#FFF'}
-                _hover={{
-                  bg: 'orange.500',
-                }}
                 borderRadius={8}
               >
                 立即參與諮詢

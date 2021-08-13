@@ -164,8 +164,8 @@ const App = (props) => {
                 boundaryElement='.rightBlock'
                 hideOnBoundaryHit={false}
               >
-                <Stack alignItems={'center'} justifyContent={'center'}>
-                  <Box maxW={'2xl'} p={4}>
+                <Stack alignItems={'flex-start'} justifyContent={'center'}>
+                  <Box maxW={'xl'} p={6}>
                     <Form />
                   </Box>
                 </Stack>

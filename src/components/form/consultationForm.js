@@ -9,12 +9,11 @@ import {
   Flex,
   Button,
   FormErrorMessage,
-  Center,
   Text,
   Checkbox,
   Link,
-  Image,
   Stack,
+  Spinner,
   Skeleton,
   SkeletonCircle,
   SkeletonText,
@@ -28,6 +27,7 @@ import { Form, withFormik } from 'formik'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import formContent from './content.json'
 import * as helper from '../../helper'
+import MiniDonateForm from '../Donate/MiniDonateForm'
 import Axios from 'axios'
 
 import sourcePage1 from '../../assets/images/tableware-form-tc_Page_1.jpg'
@@ -101,7 +101,7 @@ const FormWrapper = (props) => {
 
   return (
     <Box>
-      <Box px={4} pb={8}>
+      <Box px={4} pb={6}>
         <Text fontSize={'36px'} fontWeight={500}>
           加速香港禁膠餐具{' '}
           <Text as={'span'} fontSize={'72px'} fontWeight={700}>
@@ -113,7 +113,7 @@ const FormWrapper = (props) => {
           環保署現正展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。我們急需你參與「管制即棄膠餐具計劃」公眾諮詢，與綠色和平一起推動香港走塑進程！
         </Text>
       </Box>
-      <Box px={2} py={4}>
+      <Box px={4} py={4}>
         {/** STEP 1 */}
         <Stack
           direction={{ base: 'row' }}
@@ -336,7 +336,6 @@ const FormWrapper = (props) => {
             <Divider orientation='horizontal' />
           )}
         </Stack>
-
         {/** STEP 3 */}
         <Stack
           direction={{ base: 'row' }}
@@ -393,6 +392,24 @@ const FormWrapper = (props) => {
             <Divider orientation='horizontal' />
           )}
         </Stack>
+
+        {/** DONATE **/}
+        {submittedStatus && (
+          <Stack spacing={4} py={6}>
+            <Divider py={4} />
+            <Box>
+              <Text lineHeight={'200%'}>
+                即棄塑膠帶來的一時便利，換來充斥塑膠垃圾的海洋、環境永久的傷害。
+                <br />
+                請幫助綠色和平以公正獨立的身份，推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，源頭減少即棄塑膠！
+                <b>
+                  綠色和平從不接受政商界資助，因此您的捐助，就是推動項目工作的關鍵！
+                </b>
+              </Text>
+            </Box>
+            <MiniDonateForm />
+          </Stack>
+        )}
       </Box>
     </Box>
   )
@@ -526,7 +543,7 @@ const ConsultationForm = withFormik({
     })
 
     // PREVIEW
-    window.open(doc.output('bloburl'), '_blank')
+    // window.open(doc.output('bloburl'), '_blank')
 
     formData.append('file', uploadPDF)
     formData.append('upload_preset', 'r7ksxsfb')
