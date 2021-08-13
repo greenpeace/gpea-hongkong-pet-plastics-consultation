@@ -30,11 +30,33 @@ import formContent from './content.json'
 import * as helper from '../../helper'
 import Axios from 'axios'
 
-import page1 from '../../assets/images/tableware-form-tc_Page_1.jpg'
-import page2 from '../../assets/images/tableware-form-tc_Page_2.jpg'
-import page3 from '../../assets/images/tableware-form-tc_Page_3.jpg'
-import page4 from '../../assets/images/tableware-form-tc_Page_4.jpg'
-import tick from '../../assets/images/tick.png'
+import sourcePage1 from '../../assets/images/tableware-form-tc_Page_1.jpg'
+import sourcePage2 from '../../assets/images/tableware-form-tc_Page_2.jpg'
+import sourcePage3 from '../../assets/images/tableware-form-tc_Page_3.jpg'
+import sourcePage4 from '../../assets/images/tableware-form-tc_Page_4.jpg'
+import sourceTick from '../../assets/images/tick.png'
+
+let page1
+let page2
+let page3
+let page4
+let tick
+
+if (process.env.NODE_ENV === 'production') {
+  const corsAnywhere = 'https://cors-anywhere.small-service.gpeastasia.org/'
+
+  page1 = `${corsAnywhere}${sourcePage1}`
+  page2 = `${corsAnywhere}${sourcePage2}`
+  page3 = `${corsAnywhere}${sourcePage3}`
+  page4 = `${corsAnywhere}${sourcePage4}`
+  tick = sourceTick // skip corsAnywhere because it will be rendered in base64 format
+} else {
+  page1 = sourcePage1
+  page2 = sourcePage2
+  page3 = sourcePage3
+  page4 = sourcePage4
+  tick = sourceTick
+}
 
 const FormWrapper = (props) => {
   const {
@@ -543,7 +565,6 @@ const ConsultationForm = withFormik({
             CampaignData1__c: data.url,
           })
           // Tracking
-          console.log('submitted:', 'rdpt')
           helper.sendPetitionTracking('rdpt')
         } else {
           alert('Server errors')
