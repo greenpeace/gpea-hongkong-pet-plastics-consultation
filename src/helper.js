@@ -2,7 +2,7 @@
  * Retrieve the form POST URL
  * @return {string} URL
  */
- export const getPostURL = () => {
+export const getPostURL = () => {
   return document.querySelector("#mc-form").action;
 };
 
