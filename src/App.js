@@ -23,19 +23,19 @@ import SplitWithImage from './components/SplitWithImage/SplitWithImage'
 import LargeWithLogoLeft from './components/Footer/LargeWithLogoLeft'
 import SmallWithSocial from './components/Footer/SmallWithSocial'
 
-import '@fontsource/noto-sans-tc'
-
 import Fork from './assets/images/20210805_RDPT_KV-03.png'
-
-const rightBottomCorner = {
-  bottom: '0px',
-  right: '-30px',
-  borderBottom: '800px solid #F5F5F5',
-  borderLeft: '120px solid transparent',
-}
 
 const Footer = styled.footer`
   font-size: 0.85rem;
+`
+
+const FixedCountdown = styled.div`
+  z-index: 1;
+  position: fixed;
+  color: #fff;
+  background-color: #292f47;
+  padding: 4px 20px;
+  border-radius: 0px 24px 24px 0px;
 `
 
 const ForkWrapper = styled.div`
@@ -65,29 +65,39 @@ const App = (props) => {
           <Grid templateColumns='repeat(2, 1fr)'>
             <Box>
               <Center h={'100%'}>
-                <Stack direction='column'>
-                  <Center h={'80vh'}>
+                <Stack direction='column' position={'relative'}>
+                  <FixedCountdown>
+                    <Countdown />
+                  </FixedCountdown>
+                  <Center h={'75vh'}>
                     <Stack
                       as={Box}
                       h={'100%'}
                       spacing={6}
-                      py={{ base: 8, md: 12 }}
-                      px={4}
+                      py={12}
+                      px={8}
                       position={'relative'}
                       alignItems={'flex-start'}
+                      maxW={'2xl'}
                     >
-                      <Countdown />
                       <Heading
                         fontSize={{ base: '2xl', sm: '4xl' }}
+                        letterSpacing={'5%'}
                         lineHeight={'130%'}
                       >
-                        <Text mb={1} fontSize={{ base: '5xl' }}>
+                        <Text fontWeight={'300'} fontSize={{ base: '4xl' }}>
                           急需您的參與
                         </Text>
-                        <Text color={'#ff8100'} fontWeight={'700'}>
+                        <Text
+                          mt={1}
+                          mb={2}
+                          color={'#ff8100'}
+                          fontSize={{ base: '5xl' }}
+                          fontWeight={'700'}
+                        >
                           管制即棄膠餐具計劃
                         </Text>
-                        <Text>公眾諮詢</Text>
+                        <Text fontWeight={'300'}>公眾諮詢</Text>
                       </Heading>
                       <Text color={'gray.700'} lineHeight={'200%'}>
                         環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
@@ -122,11 +132,6 @@ const App = (props) => {
                       </ForkWrapper>
                     </Stack>
                   </Center>
-                  <Image
-                    src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`}
-                    maxW={'480px'}
-                  />
-                  <br />
                   <Image
                     src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`}
                     maxW={'480px'}

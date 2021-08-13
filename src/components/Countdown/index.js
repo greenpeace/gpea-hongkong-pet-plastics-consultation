@@ -47,15 +47,7 @@ export default function Countdown() {
   }, [])
 
   return (
-    <Stack
-      direction={{ base: 'column', sm: 'row' }}
-      align={'center'}
-      color='gray.700'
-      bgColor='gray.50'
-      borderRadius={'3xl'}
-      px={4}
-      py={2}
-    >
+    <Stack direction={{ base: 'column', sm: 'row' }} align={'center'}>
       <Text>最後：</Text>
       {countDown}
     </Stack>
