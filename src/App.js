@@ -115,30 +115,39 @@ const App = (props) => {
                       as={Box}
                       h={'100%'}
                       spacing={6}
-                      py={{ base: 8, md: 12 }}
-                      px={4}
+                      py={12}
+                      px={8}
                       position={'relative'}
                       alignItems={'flex-start'}
+                      maxW={'2xl'}
                     >
                       <Heading
-                        fontWeight={'bold'}
                         fontSize={{ base: '2xl', sm: '4xl' }}
-                        lineHeight={'120%'}
+                        letterSpacing={'5%'}
+                        lineHeight={'130%'}
                       >
-                        <Text>電郵您的意見書範本</Text>
+                        <Text fontWeight={'300'} fontSize={{ base: '4xl' }}>
+                          急需您的參與
+                        </Text>
+                        <Text
+                          mt={1}
+                          mb={2}
+                          color={'#ff8100'}
+                          fontSize={{ base: '5xl' }}
+                          fontWeight={'700'}
+                        >
+                          管制即棄膠餐具計劃
+                        </Text>
+                        <Text fontWeight={'300'}>公眾諮詢</Text>
                       </Heading>
                       <Text color={'gray.700'} lineHeight={'200%'}>
-                        開啟你的電子郵箱，打開由綠色和平發出，附有意見書範本的電郵。轉寄該電郵，在「收件人」一欄輸入rdpt@epd.gov.hk，按下發送。
+                        環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
                       </Text>
                       <ForkWrapper>
                         <Image src={Fork} objectFit='contain' />
                       </ForkWrapper>
                     </Stack>
                   </Center>
-                  <Image
-                    src={`${process.env.PUBLIC_URL}/assets/20210805_RDPT_KV-02.png`}
-                    maxW={'480px'}
-                  />
                 </Stack>
               </Center>
             </Box>
@@ -155,8 +164,10 @@ const App = (props) => {
                 boundaryElement='.rightBlock'
                 hideOnBoundaryHit={false}
               >
-                <Stack alignItems={'center'}>
-                  <Form />
+                <Stack alignItems={'center'} justifyContent={'center'}>
+                  <Box maxW={'2xl'} p={4}>
+                    <Form />
+                  </Box>
                 </Stack>
               </Sticky>
             </Box>

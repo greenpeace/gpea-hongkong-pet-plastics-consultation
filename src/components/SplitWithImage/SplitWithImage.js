@@ -70,16 +70,14 @@ export default function SplitWithImage() {
               <Text>
                 現時當局「管制即棄膠餐具計劃」時間表進程太慢且矇糊不清，推行首階段管制措施需要等到2025年，第二階段更是遙遙無期，我們的環境不可再等！綠色和平促請當局：
               </Text>
-              <Text>
-                <OrderedList spacing={4}>
-                  <ListItem>
-                    加快走塑步伐，要求第一階段管制措施提前於2023年實施；第二階段推前至2025年實施；
-                  </ListItem>
-                  <ListItem>
-                    設立「可重用餐具配套時間表」，措施及時間表推動可重用餐具的普及以防止污染轉移，達至終極走塑。
-                  </ListItem>
-                </OrderedList>
-              </Text>
+              <OrderedList spacing={4}>
+                <ListItem>
+                  加快走塑步伐，要求第一階段管制措施提前於2023年實施；第二階段推前至2025年實施；
+                </ListItem>
+                <ListItem>
+                  設立「可重用餐具配套時間表」，措施及時間表推動可重用餐具的普及以防止污染轉移，達至終極走塑。
+                </ListItem>
+              </OrderedList>
             </Stack>
           </Stack>
           <Flex flex={1}>
@@ -104,21 +102,19 @@ export default function SplitWithImage() {
               其他地區都成功限塑，我們也可以！
             </Heading>
             <Stack spacing={4}>
-              <Text>
-                <UnorderedList spacing={4}>
-                  <ListItem>
-                    澳洲
-                    南澳州：2021年起禁止銷售即棄膠飲管、進食用具和攪拌棒；2022年起禁止銷售發泡膠杯、碗、碟及翻蓋式容器等。
-                  </ListItem>
-                  <ListItem>
-                    加拿大
-                    溫哥華：2020年起餐飲業禁止使用發泡膠食物容器和杯，以及塑膠飲管，堂食外賣只可應客人要求提供即棄進食用具。
-                  </ListItem>
-                  <ListItem>
-                    歐盟：2021年，歐盟成員國要全面禁止塑膠飲管、棉簽、塑膠盤、塑膠刀叉等一次性塑膠製品及發泡膠食物容器和杯。
-                  </ListItem>
-                </UnorderedList>
-              </Text>
+              <UnorderedList spacing={4}>
+                <ListItem>
+                  澳洲
+                  南澳州：2021年起禁止銷售即棄膠飲管、進食用具和攪拌棒；2022年起禁止銷售發泡膠杯、碗、碟及翻蓋式容器等。
+                </ListItem>
+                <ListItem>
+                  加拿大
+                  溫哥華：2020年起餐飲業禁止使用發泡膠食物容器和杯，以及塑膠飲管，堂食外賣只可應客人要求提供即棄進食用具。
+                </ListItem>
+                <ListItem>
+                  歐盟：2021年，歐盟成員國要全面禁止塑膠飲管、棉簽、塑膠盤、塑膠刀叉等一次性塑膠製品及發泡膠食物容器和杯。
+                </ListItem>
+              </UnorderedList>
             </Stack>
           </Stack>
           <Flex>
