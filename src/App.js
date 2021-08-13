@@ -23,6 +23,8 @@ import SplitWithImage from './components/SplitWithImage/SplitWithImage'
 import LargeWithLogoLeft from './components/Footer/LargeWithLogoLeft'
 import SmallWithSocial from './components/Footer/SmallWithSocial'
 
+import { RiNumber1, RiNumber2, RiNumber3 } from 'react-icons/ri'
+
 import Fork from './assets/images/20210805_RDPT_KV-03.png'
 
 const Footer = styled.footer`

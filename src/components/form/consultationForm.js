@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import { Box, HStack, FormControl, FormLabel, Input, Flex, Button, FormErrorMessage, Center, Text, Checkbox, Image, Stack, Skeleton, SkeletonCircle, SkeletonText, InputRightElement, InputGroup, Divider} from '@chakra-ui/react';
+import { Box, chakra, HStack, FormControl, FormLabel, Input, Flex, Button, FormErrorMessage, Center, Text, Checkbox, Link, Image, Stack, Skeleton, SkeletonCircle, SkeletonText, InputRightElement, InputGroup, Divider, useToast} from '@chakra-ui/react';
 import { jsPDF } from "jspdf";
 import { Form, withFormik } from "formik";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import formContent from './content.json';
 import Axios from 'axios'
 
@@ -19,6 +20,8 @@ const FormWrapper = (props) =>{
     borderRadius: 0
   }
 
+  const toast = useToast()
+
   useEffect(() => {
     if(status){
       setSubmittedStatus(status==='submitted')
@@ -27,9 +30,9 @@ const FormWrapper = (props) =>{
 
   return (
     <Box>
-      <Box px={4} pb={12}>
-        <Text fontSize={'36px'} fontWeight={500}>加速香港禁膠餐具 <Text as={'span'} fontSize={'72px'} fontWeight={700}><i>3</i> </Text>步完成</Text> 
-        <Text>急需你參與「管制即棄膠餐具計劃」公眾諮詢</Text>
+      <Box px={4} pb={8}>
+        <Text fontSize={'36px'} fontWeight={500}>加速香港禁膠餐具 <Text as={'span'} fontSize={'72px'} fontWeight={700}><i>3</i> </Text>步完成</Text>
+        <Text>環保署現正展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。我們急需你參與「管制即棄膠餐具計劃」公眾諮詢，與綠色和平一起推動香港走塑進程！</Text>
       </Box>
     <Box px={2} py={4}>
         {/** STEP 1 */}
@@ -41,17 +44,15 @@ const FormWrapper = (props) =>{
           </Box>
           <Box flex={1}>
           {submittedStatus ? <Box>
-            <Text color='gray.500' fontSize={{base: 16}}>完成第一步</Text>   
+            <Text>您已完成第一步！</Text>
           </Box>
           :
-          isSubmitting ? 
+          isSubmitting ?
           <Stack maxW={'640px'} w={'100%'}>
             <Skeleton height="20px" w={'100%'} />
             <Skeleton height="20px" />
             <Skeleton height="20px" />
-          <Box>
-            <Text fontSize='xs' color='gray.500'>請耐心稍候，我們正在處理您的資料</Text>
-          </Box>
+            <Text fontSize='sm' py={4}>請耐心稍候，我們正在處理您的資料</Text>
           </Stack> : (
           <Form onSubmit={handleSubmit}>
 
@@ -62,7 +63,7 @@ const FormWrapper = (props) =>{
                   <Box minW={20}>
                   <FormLabel {...labelStyle}>
                         {formContent.label_email}
-                      </FormLabel> 
+                      </FormLabel>
                   </Box>
                   <InputGroup>
                     <Input
@@ -75,8 +76,8 @@ const FormWrapper = (props) =>{
                       <InputRightElement w={'auto'} mr={2} pt={2}>
                         <Box {...tagStyle}>{errors.Email}</Box>
                       </InputRightElement>
-                    </FormErrorMessage> 
-                  </InputGroup>         
+                    </FormErrorMessage>
+                  </InputGroup>
                   </Box>
                 </Flex>
               </FormControl>
@@ -89,7 +90,7 @@ const FormWrapper = (props) =>{
                     <Box flex={1}>
                     <FormLabel {...labelStyle}>
                           {formContent.label_last_name}
-                        </FormLabel>  
+                        </FormLabel>
                         <InputGroup>
                     <Input
                       name='LastName'
@@ -101,8 +102,8 @@ const FormWrapper = (props) =>{
                       <InputRightElement w={'auto'} mr={2} pt={2}>
                         <Box {...tagStyle}>{errors.LastName}</Box>
                       </InputRightElement>
-                    </FormErrorMessage> 
-                    </InputGroup>                
+                    </FormErrorMessage>
+                    </InputGroup>
                     </Box>
                   </Flex>
                 </FormControl>
@@ -116,13 +117,13 @@ const FormWrapper = (props) =>{
                       <Center h="100%">
                         <FormLabel {...labelStyle}>
                           {formContent.label_first_name}
-                        </FormLabel>                
+                        </FormLabel>
                       </Center>
                     </Box> */}
                     <Box flex={1}>
                     <FormLabel {...labelStyle}>
                           {formContent.label_first_name}
-                        </FormLabel>        
+                        </FormLabel>
                         <InputGroup>
                     <Input
                       name='FirstName'
@@ -134,7 +135,7 @@ const FormWrapper = (props) =>{
                       <InputRightElement w={'auto'} mr={2} pt={2}>
                         <Box {...tagStyle}>{errors.FirstName}</Box>
                       </InputRightElement>
-                    </FormErrorMessage>  
+                    </FormErrorMessage>
                     </InputGroup>
                     </Box>
                   </Flex>
@@ -142,9 +143,9 @@ const FormWrapper = (props) =>{
               </Box>
 
               </HStack>
-              
 
-              <Box py={2}>
+
+              <Box py={4}>
                 <Button
                   w='100%'
                   type='submit'
@@ -161,14 +162,14 @@ const FormWrapper = (props) =>{
                 </Button>
               </Box>
 
-              <Box pb={4}>
+              <Box py={4}>
                 <Stack spacing={10} direction="row">
-                  <Checkbox id={'OptIn'} name={'OptIn'} colorScheme="whatsapp" onChange={handleChange} defaultChecked>
-                    <Text fontSize='xs' color='gray.500'>{formContent.form_remind}</Text>
+                  <Checkbox id={'OptIn'} name={'OptIn'} colorScheme="whatsapp" alignItems={'flex-start'} onChange={handleChange} defaultChecked>
+                    <Text fontSize='sm' color='gray.600'>{formContent.form_remind}</Text>
                   </Checkbox>
                 </Stack>
               </Box>
-              
+
           </Form>
           )}
           </Box>
@@ -181,7 +182,7 @@ const FormWrapper = (props) =>{
             </Box>
           </Box>
           {submittedStatus ? <Box>
-            <Text color='gray.700' fontSize={{base: 16}}><Text as="span" color="#ff8100" fontWeight={500}>開啟你的電子郵箱</Text>，打開由綠色和平發出，附有意見書範本的電郵。</Text>
+            <Text color='gray.700' fontSize={{base: 16}}><Text as="p" color="#ff8100" fontWeight={700}>開啟你的電子郵箱</Text>，打開由綠色和平發出，附有<Link href={`data.url`} color={'#ff8100'} isExternal>意見書範本</Link>的電郵。</Text>
           </Box> : <Divider orientation="horizontal"/> }
         </Stack>
 
@@ -192,10 +193,22 @@ const FormWrapper = (props) =>{
               <Text fontFamily={'arial'} fontSize={'24px'} lineHeight={'48px'} color={'#FFF'}>3</Text>
             </Box>
           </Box>
-          {submittedStatus ? 
+          {submittedStatus ?
             <Box>
-            <Text color='gray.700' fontSize={{base: 16}}><Text as="span" color="#ff8100" fontWeight={500}>轉寄該電郵</Text>，在「收件人」一欄輸入<u>rdpt@epd.gov.hk</u>，按下發送，完成諮詢！</Text>
-            <Box><Text color='gray.700' fontSize={12}><sup>**</sup>如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘</Text></Box>
+            <Text color='gray.700' fontSize={{base: 16}}>
+              <Text as="p" color="#ff8100" fontWeight={700}>轉寄該電郵
+              </Text>在「收件人」一欄輸入<chakra.button cursor={'pointer'}
+      as={'a'} color="#ff8100"><CopyToClipboard text={'rdpt@epd.gov.hk'} onCopy={() =>
+        toast({
+          title: "DONE",
+          description: "您已複製公眾諮詢電郵地址",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        })
+      }><u>rdpt@epd.gov.hk</u></CopyToClipboard></chakra.button>，按下發送，完成諮詢！
+              </Text>
+              <Text color='gray.700'><sup>*</sup> 如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘</Text>
           </Box> :
           <Divider orientation="horizontal"/> }
         </Stack>
