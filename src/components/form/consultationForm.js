@@ -28,7 +28,7 @@ const FormWrapper = (props) =>{
       setSubmittedStatus(status==='submitted')
     }
   }, [status]);
-  
+
   return (
     <Box>
       <Box px={4} pb={8}>
@@ -367,8 +367,8 @@ const ConsultationForm = withFormik({
             CampaignData1__c: data.url
           })
           // Tracking
-          console.log("submitted:", `PROJECT NAME`);
-          helper.sendPetitionTracking(`PROJECT NAME`);
+          console.log("submitted:", 'rdpt');
+          helper.sendPetitionTracking('rdpt');
         } else {
           alert('Server errors');
         }
