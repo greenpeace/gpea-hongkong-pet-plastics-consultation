@@ -4,10 +4,11 @@ import { jsPDF } from "jspdf";
 import { Form, withFormik } from "formik";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import formContent from './content.json';
+import * as helper from "../../helper";
 import Axios from 'axios'
 
 const FormWrapper = (props) =>{
-  const { touched, errors, handleChange, handleBlur, handleSubmit, isSubmitting, status} = props;
+  const { touched, errors, handleChange, handleBlur, handleSubmit, isSubmitting, status, values} = props;
   const [submittedStatus, setSubmittedStatus] = useState(status==='submitted');
   const space = 4;
   const labelStyle = { fontSize: "md", color: "#000", fontWeight: 500, fontFamily: 'Noto Sans TC'};
@@ -27,7 +28,7 @@ const FormWrapper = (props) =>{
       setSubmittedStatus(status==='submitted')
     }
   }, [status]);
-
+  
   return (
     <Box>
       <Box px={4} pb={8}>
@@ -182,7 +183,7 @@ const FormWrapper = (props) =>{
             </Box>
           </Box>
           {submittedStatus ? <Box>
-            <Text color='gray.700' fontSize={{base: 16}}><Text as="p" color="#ff8100" fontWeight={700}>開啟你的電子郵箱</Text>，打開由綠色和平發出，附有<Link href={`data.url`} color={'#ff8100'} isExternal>意見書範本</Link>的電郵。</Text>
+            <Text color='gray.700' fontSize={{base: 16}}><Text as="p" color="#ff8100" fontWeight={700}>開啟你的電子郵箱</Text>，打開由綠色和平發出，附有<Link href={values.CampaignData1__c} color={'#ff8100'} isExternal>意見書範本</Link>的電郵。</Text>
           </Box> : <Divider orientation="horizontal"/> }
         </Stack>
 
@@ -222,35 +223,36 @@ const ConsultationForm = withFormik({
     Email: "",
     FirstName: "",
     LastName: "",
+    CampaignData1__c: "",
     OptIn: true
   }),
 
   validate: (values) => {
     const errors = {};
 
-    // if (!values.Email) {
-    //   errors.Email = formContent.empty_data_alert;
-    // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
-    //   errors.Email = formContent.invalid_email_alert;
-    // }
+    if (!values.Email) {
+      errors.Email = formContent.empty_data_alert;
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
+      errors.Email = formContent.invalid_email_alert;
+    }
 
-    // if (!values.FirstName) {
-    //   errors.FirstName = formContent.empty_data_alert;
-    // }
+    if (!values.FirstName) {
+      errors.FirstName = formContent.empty_data_alert;
+    }
 
-    // if (!values.LastName) {
-    //   errors.LastName = formContent.empty_data_alert;
-    // }
+    if (!values.LastName) {
+      errors.LastName = formContent.empty_data_alert;
+    }
 
     return errors;
   },
 
-  handleSubmit: (values, { setSubmitting, setStatus, props }) => {
+  handleSubmit: (values, { setSubmitting, setStatus, setValues, props }) => {
     setStatus('processing')
-    setTimeout(() => {
-      setSubmitting(false)
-      setStatus('submitted')
-    }, 3000);
+    // setTimeout(() => {
+    //   setSubmitting(false)
+    //   setStatus('submitted')
+    // }, 3000);
     const md5 = require('md5');
     const {p29ContentOne, p29ContentTwo, p30ContentOne, p30ContentTwo} = props
 
@@ -338,17 +340,39 @@ const ConsultationForm = withFormik({
 
     // JSON.stringify(formData);
 
-    Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then((res)=>{
+    Axios.post("https://api.cloudinary.com/v1_1/gpea/image/upload", formData).then(async (res)=>{
+      const FORM_URL = helper.getPostURL();
+      const CAMPAIGN_ID = helper.getCampaignID();
       const {statusText, data} = res
-      console.log('data-',data)
       if(statusText==='OK'){
-        setSubmitting(false)
-        const submitData = {
+        const formData = {
           ...hiddenFormValue,
           ...values,
+          CampaignId: `${CAMPAIGN_ID}`,
           CampaignData1__c: data.url,
         };
-        alert(JSON.stringify(submitData, null, 4))
+
+        const response = await fetch(`${FORM_URL}`, {
+          method: "POST",
+          body: Object.keys(formData).reduce((postData, key) => {
+            postData.append(key, formData[key]);
+            return postData;
+          }, new FormData()),
+        })
+
+        if (response.statusText === "OK") {
+          setSubmitting(false)
+          setValues({
+            ...values,
+            CampaignData1__c: data.url
+          })
+          // Tracking
+          console.log("submitted:", `PROJECT NAME`);
+          helper.sendPetitionTracking(`PROJECT NAME`);
+        } else {
+          alert('Server errors');
+        }
+
         setStatus('submitted')
       } else {
         alert('Something errors')

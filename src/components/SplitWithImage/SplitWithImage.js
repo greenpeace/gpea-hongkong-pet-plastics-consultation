@@ -28,7 +28,7 @@ export default function SplitWithImage() {
       <Stack spacing={10}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} py={4}>
           <Stack py={6} spacing={6}>
-            <Heading fontSize={'2xl'} lineHeigh={'120%'}>
+            <Heading fontSize={'2xl'} lineHeight={'120%'}>
               塑膠餐具為我們帶來甚麼惡果？
             </Heading>
             <Stack spacing={4}>
@@ -63,7 +63,7 @@ export default function SplitWithImage() {
           py={4}
         >
           <Stack flex={1} py={6} spacing={6}>
-            <Heading fontSize={'2xl'} lineHeigh={'120%'}>
+            <Heading fontSize={'2xl'} lineHeight={'120%'}>
               綠色和平的走塑訴求是？
             </Heading>
             <Stack spacing={4}>
@@ -100,7 +100,7 @@ export default function SplitWithImage() {
         </Stack>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} py={4}>
           <Stack py={6} spacing={6}>
-            <Heading fontSize={'2xl'} lineHeigh={'120%'}>
+            <Heading fontSize={'2xl'} lineHeight={'120%'}>
               其他地區都成功限塑，我們也可以！
             </Heading>
             <Stack spacing={4}>
