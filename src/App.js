@@ -20,6 +20,7 @@ import Nav from './components/Nav'
 import Countdown from './components/Countdown'
 import Testimonials from './components/Testimonials'
 import SplitWithImage from './components/SplitWithImage/SplitWithImage'
+import CallToActionWithIllustration from './components/CTA/CallToActionWithIllustration'
 import LargeWithLogoLeft from './components/Footer/LargeWithLogoLeft'
 import SmallWithSocial from './components/Footer/SmallWithSocial'
 
@@ -164,7 +165,12 @@ const App = (props) => {
         <Box>
           <Testimonials />
         </Box>
-        <SplitWithImage />
+        <Box>
+          <SplitWithImage />
+        </Box>
+        <Box>
+          <CallToActionWithIllustration />
+        </Box>
         <Footer>
           <LargeWithLogoLeft />
           <SmallWithSocial />
