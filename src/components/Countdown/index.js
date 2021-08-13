@@ -48,7 +48,7 @@ export default function Countdown() {
 
   return (
     <Stack direction={{ base: 'column', sm: 'row' }} align={'center'}>
-      <Text>最後：</Text>
+      <Text>距離諮詢完結：</Text>
       {countDown}
     </Stack>
   )

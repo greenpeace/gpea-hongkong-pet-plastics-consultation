@@ -24,9 +24,9 @@ import CallToActionWithIllustration from './components/CTA/CallToActionWithIllus
 import LargeWithLogoLeft from './components/Footer/LargeWithLogoLeft'
 import SmallWithSocial from './components/Footer/SmallWithSocial'
 
-import { RiNumber1, RiNumber2, RiNumber3 } from 'react-icons/ri'
+// import { RiNumber1, RiNumber2, RiNumber3 } from 'react-icons/ri'
 
-import Fork from './assets/images/20210805_RDPT_KV-03.png'
+import Fork from './assets/images/20200813_rdpt_web_layout-02.png'
 
 const Footer = styled.footer`
   font-size: 0.85rem;
@@ -37,17 +37,20 @@ const FixedCountdown = styled.div`
   position: fixed;
   color: #fff;
   background-color: #292f47;
-  padding: 4px 20px;
+  padding: 8px 20px;
   border-radius: 0px 24px 24px 0px;
+  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
+  font-weight: bold;
 `
 
 const ForkWrapper = styled.div`
   z-index: -1;
   position: absolute;
-  right: -20%;
+  right: -30%;
   bottom: -20%;
-  width: 80%;
-  height: 80%;
+  width: 140%;
+  height: 100%;
   > img {
     opacity: 0.5;
     position: absolute;
@@ -77,7 +80,7 @@ const App = (props) => {
                       as={Box}
                       h={'100%'}
                       spacing={6}
-                      py={12}
+                      py={14}
                       px={8}
                       position={'relative'}
                       alignItems={'flex-start'}

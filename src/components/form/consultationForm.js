@@ -154,7 +154,7 @@ const FormWrapper = (props) => {
                 <Skeleton height='20px' />
                 <Skeleton height='20px' />
                 <Text fontSize='sm' py={4}>
-                  請耐心稍候，我們正在處理您的資料
+                  請耐心稍候，我們正在準備您的意見書範本...
                 </Text>
               </Stack>
             ) : (
