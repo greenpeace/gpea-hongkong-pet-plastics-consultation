@@ -93,7 +93,7 @@ const FormWrapper = (props) => {
     fontFamily: 'arial',
     fontSize: {base: '18px', sm: '24px'},
     lineHeight: {base: '36px', sm: '48px'},
-    color:'#FFF'
+    color:'#FFF',
   }
 
   useEffect(() => {
@@ -112,7 +112,7 @@ const FormWrapper = (props) => {
           px={{base:0, sm: 2}}
           pb={6}
         >
-          <Box textAlign={'center'} pos={'relative'} w={{base: '38px', sm: '48px'}} mr={2}>
+          <Box textAlign={'center'} pos={'relative'} w={{base: '38px', sm: '48px'}} mr={4}>
             <Box
               borderRadius={'50%'}
               bgColor={submittedStatus ? 'gray.200' : 'green.400'}
@@ -277,7 +277,7 @@ const FormWrapper = (props) => {
           pb={6}
           align={'center'}
         >
-          <Box textAlign={'center'} pos={'relative'}  pos={'relative'} w={{base: '38px', sm: '48px'}} mr={2}>
+          <Box textAlign={'center'} pos={'relative'}  pos={'relative'} w={{base: '38px', sm: '48px'}} mr={4}>
             <Box
               bgColor={submittedStatus ? 'green.300' : 'gray.200'}
               borderRadius={'50%'}
@@ -315,7 +315,7 @@ const FormWrapper = (props) => {
           px={{base:0, sm: 2}}
           pb={6}
         >
-        <Box textAlign={'center'} pos={'relative'}  pos={'relative'} w={{base: '38px', sm: '48px'}} mr={2}>
+        <Box textAlign={'center'} pos={'relative'}  pos={'relative'} w={{base: '38px', sm: '48px'}} mr={4}>
             <Box
               bgColor={submittedStatus ? 'green.400' : 'gray.200'}
               borderRadius={'50%'}

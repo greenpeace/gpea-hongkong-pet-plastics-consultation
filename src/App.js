@@ -1,17 +1,10 @@
-import React from 'react'
-import {
-  ChakraProvider,
-  Box,
-} from '@chakra-ui/react'
+import React, { useRef } from 'react'
+import { ChakraProvider, Box} from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import { HelmetProvider } from 'react-helmet-async'
-import Sticky from 'react-sticky-el'
 import SEO from './components/SEO/SEO'
 import theme from './theme'
-import Form from './components/form'
-
 import Nav from './components/Nav'
-import Countdown from './components/Countdown'
 import HeroSection from './components/Hero'
 import Testimonials from './components/Testimonials'
 import SplitWithImage from './components/SplitWithImage/SplitWithImage'
@@ -25,20 +18,24 @@ const Footer = styled.footer`
   font-size: 0.85rem;
 `
 
-const App = (props) => {
+const App = () => {
+  const imageSection = useRef()
+  const illustrationSection = useRef()
+  const testimonials = useRef()
+
   return (
     <ChakraProvider resetCSS={true} theme={theme}>
       <HelmetProvider>
         <SEO />
-        <Nav />
+        <Nav imageSection={imageSection} illustrationSection={illustrationSection} testimonials={testimonials}/>
         <HeroSection/>
-        <Box>
-          <Testimonials />
+        <Box ref={testimonials}>
+          <Testimonials/>
         </Box>
-        <Box>
+        <Box ref={imageSection}>
           <SplitWithImage />
         </Box>
-        <Box>
+        <Box ref={illustrationSection}>
           <CallToActionWithIllustration />
         </Box>
         <Footer>
