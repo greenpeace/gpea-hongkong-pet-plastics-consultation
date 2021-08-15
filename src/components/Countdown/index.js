@@ -7,8 +7,8 @@ export default function Countdown() {
   const renderLayout = (count, unit) => {
     return (
       <HStack align='center'>
-        <Text fontSize='md'>{count}</Text>
-        <Text fontSize='md'>{unit}</Text>
+        <Text fontSize={{base: 'xs', sm: 'md'}}>{count}</Text>
+        <Text fontSize={{base: 'xs', sm: 'md'}}>{unit}</Text>
       </HStack>
     )
   }
@@ -47,8 +47,8 @@ export default function Countdown() {
   }, [])
 
   return (
-    <Stack direction={{ base: 'column', sm: 'row' }} align={'center'}>
-      <Text>距離諮詢完結：</Text>
+    <Stack direction={{ base: 'row' }} align={'center'} spacing={{base: 0, sm: 2}}>
+      <Text fontSize={{base: 'xs', sm: 'md'}}>距離諮詢完結：</Text>
       {countDown}
     </Stack>
   )
