@@ -85,7 +85,7 @@ const MiniDonateForm = () => {
       <Box py={4} overflow='hidden'>
         <Flex direction='column'>
           <Box>
-            <Grid templateColumns='repeat(3, 1fr)' gap={2}>
+            <Grid templateColumns='repeat(3, 1fr)' gap={{base: 1, sm: 2}}>
               {amountOption.map((d, i) => {
                 const colSpan = amountOption.length === i + 1 ? 3 : 1
 

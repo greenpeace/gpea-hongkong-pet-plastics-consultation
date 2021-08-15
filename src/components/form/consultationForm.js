@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import {
   Box,
   chakra,
-  HStack,
   FormControl,
   FormLabel,
   Input,
@@ -13,10 +12,7 @@ import {
   Checkbox,
   Link,
   Stack,
-  Spinner,
   Skeleton,
-  SkeletonCircle,
-  SkeletonText,
   InputRightElement,
   InputGroup,
   Divider,
@@ -25,6 +21,7 @@ import {
 import { jsPDF } from 'jspdf'
 import { Form, withFormik } from 'formik'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import TopSection from './TopSection'
 import formContent from './content.json'
 import * as helper from '../../helper'
 import MiniDonateForm from '../Donate/MiniDonateForm'
@@ -92,6 +89,12 @@ const FormWrapper = (props) => {
   }
 
   const toast = useToast()
+  const numberProps = {
+    fontFamily: 'arial',
+    fontSize: {base: '18px', sm: '24px'},
+    lineHeight: {base: '36px', sm: '48px'},
+    color:'#FFF'
+  }
 
   useEffect(() => {
     if (status) {
@@ -101,44 +104,20 @@ const FormWrapper = (props) => {
 
   return (
     <Box>
-      <Box px={4} pb={6}>
-        <Text fontSize={'36px'} fontWeight={500}>
-          加速香港禁膠餐具{' '}
-          <Text as={'span'} fontSize={'72px'} fontWeight={700}>
-            <i>3</i>{' '}
-          </Text>
-          步完成
-        </Text>
-        <Text>
-          環保署現正展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。我們急需你參與「管制即棄膠餐具計劃」公眾諮詢，與綠色和平一起推動香港走塑進程！
-        </Text>
-      </Box>
+      <TopSection/>
       <Box px={4} py={4}>
         {/** STEP 1 */}
-        <Stack
+        <Flex
           direction={{ base: 'row' }}
-          spacing={2}
-          px={2}
-          alignItems={'center'}
+          px={{base:0, sm: 2}}
           pb={6}
         >
-          <Box
-            w={{ base: 16 }}
-            textAlign={'center'}
-            pos={'relative'}
-            alignSelf='flex-start'
-          >
+          <Box textAlign={'center'} pos={'relative'} w={{base: '38px', sm: '48px'}} mr={2}>
             <Box
               borderRadius={'50%'}
               bgColor={submittedStatus ? 'gray.200' : 'green.400'}
-              w={'48px'}
             >
-              <Text
-                fontFamily={'arial'}
-                fontSize={'24px'}
-                lineHeight={'48px'}
-                color={'#FFF'}
-              >
+              <Text {...numberProps}>
                 1
               </Text>
             </Box>
@@ -146,7 +125,7 @@ const FormWrapper = (props) => {
           <Box flex={1}>
             {submittedStatus ? (
               <Box>
-                <Text>您已完成第一步！</Text>
+                <Text lineHeight={8}>您已完成第一步！</Text>
               </Box>
             ) : isSubmitting ? (
               <Stack maxW={'640px'} w={'100%'}>
@@ -189,7 +168,7 @@ const FormWrapper = (props) => {
                   </FormControl>
                 </Box>
 
-                <HStack>
+                <Stack direction={{base: 'column', sm: 'row'}}>
                   <Box flex={1} pb={space}>
                     <FormControl
                       id='lastName'
@@ -252,7 +231,7 @@ const FormWrapper = (props) => {
                       </Flex>
                     </FormControl>
                   </Box>
-                </HStack>
+                </Stack>
 
                 <Box py={4}>
                   <Button
@@ -290,33 +269,26 @@ const FormWrapper = (props) => {
               </Form>
             )}
           </Box>
-        </Stack>
+        </Flex>
         {/** STEP 2 */}
-        <Stack
+        <Flex
           direction={{ base: 'row' }}
-          spacing={2}
-          px={2}
-          alignItems={'center'}
+          px={{base:0, sm: 2}}
           pb={6}
+          align={'center'}
         >
-          <Box w={{ base: 16 }} textAlign={'center'} pos={'relative'}>
+          <Box textAlign={'center'} pos={'relative'}  pos={'relative'} w={{base: '38px', sm: '48px'}} mr={2}>
             <Box
               bgColor={submittedStatus ? 'green.300' : 'gray.200'}
               borderRadius={'50%'}
-              w={'48px'}
             >
-              <Text
-                fontFamily={'arial'}
-                fontSize={'24px'}
-                lineHeight={'48px'}
-                color={'#FFF'}
-              >
+              <Text {...numberProps}>
                 2
               </Text>
             </Box>
           </Box>
           {submittedStatus ? (
-            <Box>
+            <Box flex={1}>
               <Text color='gray.700' fontSize={{ base: 16 }}>
                 <Text as='p' color='#ff8100' fontWeight={700}>
                   開啟你的電子郵箱
@@ -333,34 +305,28 @@ const FormWrapper = (props) => {
               </Text>
             </Box>
           ) : (
-            <Divider orientation='horizontal' />
+            <Divider flex={1} orientation='horizontal' />
           )}
-        </Stack>
+        </Flex>
         {/** STEP 3 */}
-        <Stack
+        <Flex
           direction={{ base: 'row' }}
-          spacing={2}
-          px={2}
-          alignItems={'center'}
+          align={'center'}
+          px={{base:0, sm: 2}}
+          pb={6}
         >
-          <Box w={{ base: 16 }} textAlign={'center'} pos={'relative'}>
+        <Box textAlign={'center'} pos={'relative'}  pos={'relative'} w={{base: '38px', sm: '48px'}} mr={2}>
             <Box
               bgColor={submittedStatus ? 'green.400' : 'gray.200'}
               borderRadius={'50%'}
-              w={'48px'}
             >
-              <Text
-                fontFamily={'arial'}
-                fontSize={'24px'}
-                lineHeight={'48px'}
-                color={'#FFF'}
-              >
+              <Text {...numberProps}>
                 3
               </Text>
             </Box>
           </Box>
           {submittedStatus ? (
-            <Box>
+            <Box flex={1}>
               <Text color='gray.700' fontSize={{ base: 16 }}>
                 <Text as='p' color='#ff8100' fontWeight={700}>
                   轉寄該電郵
@@ -389,9 +355,9 @@ const FormWrapper = (props) => {
               </Text>
             </Box>
           ) : (
-            <Divider orientation='horizontal' />
+            <Divider flex={1} orientation='horizontal' />
           )}
-        </Stack>
+        </Flex>
 
         {/** DONATE **/}
         {submittedStatus && (
@@ -448,10 +414,10 @@ const ConsultationForm = withFormik({
 
   handleSubmit: (values, { setSubmitting, setStatus, setValues, props }) => {
     setStatus('processing')
-    // setTimeout(() => {
-    //   setSubmitting(false)
-    //   setStatus('submitted')
-    // }, 3000);
+    setTimeout(() => {
+      setSubmitting(false)
+      setStatus('submitted')
+    }, 3000);
     const md5 = require('md5')
     const { p29ContentOne, p29ContentTwo, p30ContentOne, p30ContentTwo } = props
 

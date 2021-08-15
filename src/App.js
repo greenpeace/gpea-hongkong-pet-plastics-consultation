@@ -32,7 +32,7 @@ const App = (props) => {
         <SEO />
         <Nav />
         <HeroSection/>
-        {/* <Box>
+        <Box>
           <Testimonials />
         </Box>
         <Box>
@@ -44,7 +44,7 @@ const App = (props) => {
         <Footer>
           <LargeWithLogoLeft />
           <SmallWithSocial />
-        </Footer> */}
+        </Footer>
       </HelmetProvider>
     </ChakraProvider>
   )
