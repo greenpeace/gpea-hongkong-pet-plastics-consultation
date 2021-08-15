@@ -491,7 +491,7 @@ const ConsultationForm = withFormik({
     doc.addImage(tick, 'PNG', 66, 207, 5, 5)
     doc.addImage(p29ContentOne, 'PNG', 99, 194, 155, 40)
     doc.addImage(tick, 'PNG', 66, 239, 5, 5)
-    doc.addImage(p29ContentTwo, 'PNG', 99, 225, 155, 42)
+    doc.addImage(p29ContentTwo, 'PNG', 99, 223, 155, 42)
 
     /**
      * PAGE 4
