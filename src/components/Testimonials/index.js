@@ -53,7 +53,7 @@ const TestimonialText = ({ children }) => {
 export default function WithSpeechBubbles() {
   return (
     <Box bg={'gray.50'}>
-      <Container maxW={'6xl'} py={16} as={Stack} spacing={8}>
+      <Container maxW={'6xl'} py={12} as={Stack} spacing={8}>
         <Stack align={'center'}>
           <Heading color={'#004566'} textAlign={'center'} lineHeight={'120%'}>
             「管制即棄膠餐具計劃」

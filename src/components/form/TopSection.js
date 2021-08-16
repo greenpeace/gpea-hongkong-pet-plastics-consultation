@@ -1,15 +1,16 @@
 import React from 'react'
-import {
-  Box,
-  Text,
-} from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 
 const TopSection = () => {
   return (
-    <Box px={{base: 2, sm: 4}} pb={6}>
-      <Text fontSize={{base: '24px', sm: '36px'}} fontWeight={500} noOfLines={1} whiteSpace={'nowrap'}>
+    <Box px={2} pb={6}>
+      <Text fontSize={{ base: '28px', sm: '36px' }} fontWeight={500} mb={4}>
         加速香港禁膠餐具{' '}
-        <Text as={'span'} fontSize={{base: '36px', sm: '72px'}} fontWeight={700}>
+        <Text
+          as={'span'}
+          fontSize={{ base: '36px', sm: '72px' }}
+          fontWeight={700}
+        >
           <i>3</i>{' '}
         </Text>
         步完成

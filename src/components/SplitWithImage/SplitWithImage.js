@@ -25,7 +25,7 @@ const ImageWrapper = ({ children }) => {
 export default function SplitWithImage() {
   return (
     <Container maxW={'6xl'} py={12}>
-      <Stack spacing={10}>
+      <Stack spacing={6}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} py={4}>
           <Stack py={6} spacing={6}>
             <Heading fontSize={'2xl'} lineHeight={'120%'}>
@@ -70,7 +70,7 @@ export default function SplitWithImage() {
               <Text>
                 現時當局「管制即棄膠餐具計劃」時間表進程太慢且矇糊不清，推行首階段管制措施需要等到2025年，第二階段更是遙遙無期，我們的環境不可再等！綠色和平促請當局：
               </Text>
-              <OrderedList spacing={4}>
+              <OrderedList spacing={4} pl={4}>
                 <ListItem>
                   加快走塑步伐，要求第一階段管制措施提前於2023年實施；第二階段推前至2025年實施；
                 </ListItem>

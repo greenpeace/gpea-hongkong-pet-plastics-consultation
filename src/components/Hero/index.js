@@ -15,7 +15,7 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  useDisclosure
+  useDisclosure,
 } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import Sticky from 'react-sticky-el'
@@ -25,7 +25,7 @@ import Countdown from '../../components/Countdown'
 import Fork from '../../assets/images/20200813_rdpt_web_layout-02.png'
 
 const TabItem = styled.div`
-  height : calc(20vh - 60px);
+  padding: 20px 8px;
   background-color: #292f47;
 `
 
@@ -59,167 +59,162 @@ const ForkWrapper = styled.div`
 `
 
 const Index = (props) => {
-
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
   return (
     <Box className={'hero'}>
-
-    <FixedCountdown>
-      <Countdown />
-    </FixedCountdown>
-
-    <Box h={{base: '80vh', sm: '100%'}} overflowY={{base: 'auto', sm: 'unset'}} overflowX={'clip'}>
-
-      <Grid templateColumns={{base: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)'}}>
-        <Box>
-          <Center>
-            <Stack direction={{base: 'column'}} position={'relative'}>
-              
-              <Center h={'75vh'}>
-                <Stack
-                  as={Box}
-                  h={'100%'}
-                  spacing={6}
-                  py={14}
-                  px={8}
-                  position={'relative'}
-                  alignItems={'flex-start'}
-                  maxW={'2xl'}
-                >
-                  <Heading
-                    fontSize={{ base: '2xl', sm: '4xl' }}
-                    letterSpacing={'5%'}
-                    lineHeight={{base: '200%', sm: '130%'}}
-                  >
-                    <Text fontWeight={'300'} fontSize={{ base: '4xl' }}>
-                      急需您的參與
-                    </Text>
-                    <Text
-                      mt={1}
-                      mb={2}
-                      color={'#ff8100'}
-                      fontSize={{ base: '5xl' }}
-                      fontWeight={'700'}
-                    >
-                      管制即棄膠餐具計劃
-                    </Text>
-                    <Text fontWeight={'300'}>公眾諮詢</Text>
-                  </Heading>
-                  <Text color={'gray.700'} lineHeight={'200%'}>
-                    環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
-                  </Text>
-                  <ForkWrapper>
-                    <Image src={Fork} objectFit='contain' />
-                  </ForkWrapper>
-                </Stack>
-              </Center>
-
-
-              <Center h={'80vh'}>
-                <Stack
-                  as={Box}
-                  h={'100%'}
-                  spacing={6}
-                  py={12}
-                  px={8}
-                  position={'relative'}
-                  alignItems={'flex-start'}
-                  maxW={'2xl'}
-                >
-                  <Heading
-                    fontSize={{ base: '2xl', sm: '4xl' }}
-                    letterSpacing={'5%'}
-                    lineHeight={{base: '200%', sm: '130%'}}
-                  >
-                    <Text fontWeight={'300'} fontSize={{ base: '4xl' }}>
-                      急需您的參與
-                    </Text>
-                    <Text
-                      mt={1}
-                      mb={2}
-                      color={'#ff8100'}
-                      fontSize={{ base: '5xl' }}
-                      fontWeight={'700'}
-                    >
-                      管制即棄膠餐具計劃
-                    </Text>
-                    <Text fontWeight={'300'}>公眾諮詢</Text>
-                  </Heading>
-                  <Text color={'gray.700'} lineHeight={'200%'}>
-                    環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
-                  </Text>
-                  <ForkWrapper>
-                    <Image src={Fork} objectFit='contain' />
-                  </ForkWrapper>
-                </Stack>
-              </Center>
-
-
-            </Stack>
-          </Center>
-        </Box>
-        <Box
-          w='100%'
-          h='100%'
-          bg='#F5F5F5'
-          position={'relative'}
-          className='rightBlock'
-          d={{base: 'none', sm: 'block'}}
+      <FixedCountdown>
+        <Countdown />
+      </FixedCountdown>
+      <Box
+        h={{ base: '80vh', sm: '100%' }}
+        overflowY={{ base: 'auto', sm: 'unset' }}
+        overflowX={'clip'}
+      >
+        <Grid
+          templateColumns={{ base: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)' }}
         >
-          <Sticky
-            stickyStyle={{ zIndex: 10 }}
-            bottomOffset={20}
-            boundaryElement='.rightBlock'
-            hideOnBoundaryHit={false}
-          >
-            <Stack alignItems={'flex-start'} justifyContent={'center'}>
-              <Box maxW={'xl'} p={6}>
-                <Form />
-              </Box>
-            </Stack>
-          </Sticky>
-        </Box>
-      </Grid>
-    
-    </Box>
+          <Box>
+            <Center>
+              <Stack direction={{ base: 'column' }} position={'relative'}>
+                <Center h={'75vh'}>
+                  <Stack
+                    as={Box}
+                    h={'100%'}
+                    spacing={6}
+                    py={14}
+                    px={8}
+                    position={'relative'}
+                    alignItems={'flex-start'}
+                    maxW={'2xl'}
+                  >
+                    <Heading
+                      fontSize={{ base: '2xl', sm: '4xl' }}
+                      letterSpacing={'5%'}
+                      lineHeight={{ base: '150%', sm: '130%' }}
+                    >
+                      <Text fontWeight={'300'} fontSize={{ base: '4xl' }}>
+                        急需您的參與
+                      </Text>
+                      <Text
+                        mt={1}
+                        mb={2}
+                        color={'#ff8100'}
+                        fontSize={{ base: '4xl', md: '5xl' }}
+                        fontWeight={'700'}
+                      >
+                        管制即棄膠餐具計劃
+                      </Text>
+                      <Text fontWeight={'300'} fontSize={{ base: '4xl' }}>
+                        公眾諮詢
+                      </Text>
+                    </Heading>
+                    <Text color={'gray.700'} lineHeight={'200%'}>
+                      環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
+                    </Text>
+                    <ForkWrapper>
+                      <Image src={Fork} objectFit='contain' />
+                    </ForkWrapper>
+                  </Stack>
+                </Center>
 
-    <Drawer
-      isOpen={isOpen}
-      placement="bottom"
-      onClose={onClose}
-      finalFocusRef={btnRef}
-    >
-      <DrawerOverlay />
-      <DrawerContent>
-        <DrawerCloseButton />
-        <DrawerBody>
-        <Box py={6}>
-          <Form />
-        </Box>
-        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
-
-    <Box d={{base: 'block', sm: 'none'}}>
-      <TabItem ref={btnRef} onClick={onOpen}>
-        <Center h={'100%'} pos={'relative'}>
-          <Box pos={'absolute'} color={'#FFF'} top={3} left={4} borderRadius={'2xl'} bgColor={'#ff8100'} fontSize={'12px'} py={1} px={2}>
-            按此參與
+                <Center h={'80vh'}>
+                  <Stack
+                    as={Box}
+                    h={'100%'}
+                    spacing={6}
+                    py={12}
+                    px={8}
+                    position={'relative'}
+                    alignItems={'flex-start'}
+                    maxW={'2xl'}
+                  >
+                    <Text color={'gray.700'} lineHeight={'200%'}>
+                      環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
+                    </Text>
+                    <ForkWrapper>
+                      <Image src={Fork} objectFit='contain' />
+                    </ForkWrapper>
+                  </Stack>
+                </Center>
+              </Stack>
+            </Center>
           </Box>
-          <Text color={'#FFF'} fontSize={'24px'} fontWeight={500} textAlign={'center'} noOfLines={1}>
-            加速香港禁膠餐具{' '}
-            <Text as={'span'} fontSize={'48px'} lineHeight={'48px'} fontWeight={700}>
-              <i>3</i>{' '}
-            </Text>
-            步完成
-          </Text>
-        </Center>
-      </TabItem>
-    </Box>
+          <Box
+            w='100%'
+            h='100%'
+            bg='#F5F5F5'
+            position={'relative'}
+            className='rightBlock'
+            d={{ base: 'none', sm: 'block' }}
+          >
+            <Sticky
+              stickyStyle={{ zIndex: 10 }}
+              bottomOffset={20}
+              boundaryElement='.rightBlock'
+              hideOnBoundaryHit={false}
+            >
+              <Stack alignItems={'flex-start'} justifyContent={'center'}>
+                <Box maxW={'xl'} px={4} py={6}>
+                  <Form />
+                </Box>
+              </Stack>
+            </Sticky>
+          </Box>
+        </Grid>
+      </Box>
 
-  </Box>
+      <Drawer
+        isOpen={isOpen}
+        placement='bottom'
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerBody>
+            <Box py={6}>
+              <Form />
+            </Box>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+
+      <Box d={{ base: 'block', sm: 'none' }}>
+        <TabItem ref={btnRef} onClick={onOpen}>
+          <Center h={'100%'} pos={'relative'}>
+            <Box
+              pos={'absolute'}
+              color={'#FFF'}
+              top={'-4px'}
+              left={'4px'}
+              borderRadius={'2xl'}
+              bgColor={'#ff8100'}
+              fontSize={'12px'}
+              py={1}
+              px={2}
+            >
+              按此參與
+            </Box>
+            <Text
+              color={'#FFF'}
+              fontSize={'24px'}
+              fontWeight={500}
+              textAlign={'center'}
+              noOfLines={1}
+            >
+              加速香港禁膠餐具{' '}
+              <Text as={'span'} fontSize={'48px'} fontWeight={700}>
+                <i>3</i>{' '}
+              </Text>
+              步完成
+            </Text>
+          </Center>
+        </TabItem>
+      </Box>
+    </Box>
   )
 }
 

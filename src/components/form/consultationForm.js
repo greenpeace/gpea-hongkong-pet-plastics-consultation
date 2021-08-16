@@ -91,9 +91,9 @@ const FormWrapper = (props) => {
   const toast = useToast()
   const numberProps = {
     fontFamily: 'arial',
-    fontSize: {base: '18px', sm: '24px'},
-    lineHeight: {base: '36px', sm: '48px'},
-    color:'#FFF',
+    fontSize: { base: '18px', sm: '24px' },
+    lineHeight: { base: '36px', sm: '48px' },
+    color: '#FFF',
   }
 
   useEffect(() => {
@@ -104,22 +104,21 @@ const FormWrapper = (props) => {
 
   return (
     <Box>
-      <TopSection/>
-      <Box px={4} py={4}>
+      <TopSection />
+      <Box px={2}>
         {/** STEP 1 */}
-        <Flex
-          direction={{ base: 'row' }}
-          px={{base:0, sm: 2}}
-          pb={6}
-        >
-          <Box textAlign={'center'} pos={'relative'} w={{base: '38px', sm: '48px'}} mr={4}>
+        <Flex direction={{ base: 'row' }} px={{ base: 0, sm: 2 }} pb={6}>
+          <Box
+            textAlign={'center'}
+            pos={'relative'}
+            w={{ base: '38px', sm: '48px' }}
+            mr={2}
+          >
             <Box
               borderRadius={'50%'}
               bgColor={submittedStatus ? 'gray.200' : 'green.400'}
             >
-              <Text {...numberProps}>
-                1
-              </Text>
+              <Text {...numberProps}>1</Text>
             </Box>
           </Box>
           <Box flex={1}>
@@ -168,7 +167,7 @@ const FormWrapper = (props) => {
                   </FormControl>
                 </Box>
 
-                <Stack direction={{base: 'column', sm: 'row'}}>
+                <Stack direction={{ base: 'column', sm: 'row' }}>
                   <Box flex={1} pb={space}>
                     <FormControl
                       id='lastName'
@@ -273,18 +272,21 @@ const FormWrapper = (props) => {
         {/** STEP 2 */}
         <Flex
           direction={{ base: 'row' }}
-          px={{base:0, sm: 2}}
+          px={{ base: 0, sm: 2 }}
           pb={6}
           align={'center'}
         >
-          <Box textAlign={'center'} pos={'relative'}  pos={'relative'} w={{base: '38px', sm: '48px'}} mr={4}>
+          <Box
+            textAlign={'center'}
+            pos={'relative'}
+            w={{ base: '38px', sm: '48px' }}
+            mr={2}
+          >
             <Box
               bgColor={submittedStatus ? 'green.300' : 'gray.200'}
               borderRadius={'50%'}
             >
-              <Text {...numberProps}>
-                2
-              </Text>
+              <Text {...numberProps}>2</Text>
             </Box>
           </Box>
           {submittedStatus ? (
@@ -312,17 +314,20 @@ const FormWrapper = (props) => {
         <Flex
           direction={{ base: 'row' }}
           align={'center'}
-          px={{base:0, sm: 2}}
+          px={{ base: 0, sm: 2 }}
           pb={6}
         >
-        <Box textAlign={'center'} pos={'relative'}  pos={'relative'} w={{base: '38px', sm: '48px'}} mr={4}>
+          <Box
+            textAlign={'center'}
+            pos={'relative'}
+            w={{ base: '38px', sm: '48px' }}
+            mr={2}
+          >
             <Box
               bgColor={submittedStatus ? 'green.400' : 'gray.200'}
               borderRadius={'50%'}
             >
-              <Text {...numberProps}>
-                3
-              </Text>
+              <Text {...numberProps}>3</Text>
             </Box>
           </Box>
           {submittedStatus ? (
@@ -417,7 +422,7 @@ const ConsultationForm = withFormik({
     setTimeout(() => {
       setSubmitting(false)
       setStatus('submitted')
-    }, 3000);
+    }, 3000)
     const md5 = require('md5')
     const { p29ContentOne, p29ContentTwo, p30ContentOne, p30ContentTwo } = props
 
