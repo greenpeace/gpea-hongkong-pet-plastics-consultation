@@ -16,6 +16,8 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
+  OrderedList,
+  ListItem,
 } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import Sticky from 'react-sticky-el'
@@ -82,7 +84,7 @@ const Index = (props) => {
                   <Stack
                     as={Box}
                     h={'100%'}
-                    spacing={6}
+                    spacing={8}
                     py={14}
                     px={8}
                     position={'relative'}
@@ -114,7 +116,7 @@ const Index = (props) => {
                   </Stack>
                 </Center>
 
-                <Center h={'80vh'}>
+                <Center>
                   <Stack
                     as={Box}
                     h={'100%'}
@@ -125,12 +127,20 @@ const Index = (props) => {
                     alignItems={'flex-start'}
                     maxW={'2xl'}
                   >
-                    <Text color={'gray.700'} lineHeight={'200%'}>
-                      環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
+                    <Text fontWeight={'300'} fontSize={{ base: '3xl' }}>
+                      3 步遞交意見書
                     </Text>
-                    <ForkWrapper>
-                      <Image src={Fork} objectFit='contain' />
-                    </ForkWrapper>
+                    <OrderedList lineHeight={'300%'} fontSize={'md'}>
+                      <ListItem>
+                        填妥綠色和平網站表格，輸入基本聯絡資料。
+                      </ListItem>
+                      <ListItem>
+                        檢查您的郵箱，打開由綠色和平發出，附有意見書範本的電郵。
+                      </ListItem>
+                      <ListItem>
+                        轉寄該電郵。在「收件人」一欄輸入rdpt@epd.gov.hk，最後按下發送，完成諮詢！
+                      </ListItem>
+                    </OrderedList>
                   </Stack>
                 </Center>
               </Stack>

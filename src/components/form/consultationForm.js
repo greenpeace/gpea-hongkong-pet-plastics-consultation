@@ -233,9 +233,9 @@ const FormWrapper = (props) => {
 
                 <Box py={4}>
                   <Button
+                    py={6}
                     w='100%'
                     type='submit'
-                    height='48px'
                     borderRadius='8'
                     fontSize='xl'
                     color='#FFF'
@@ -244,7 +244,7 @@ const FormWrapper = (props) => {
                     _hover={{ bg: 'campaign.climate' }}
                     isLoading={isSubmitting}
                   >
-                    提交聯絡資料
+                    立即行動
                   </Button>
                 </Box>
 
