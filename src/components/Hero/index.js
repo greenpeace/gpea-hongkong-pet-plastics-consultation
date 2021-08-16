@@ -27,7 +27,7 @@ import Countdown from '../../components/Countdown'
 import Fork from '../../assets/images/20200813_rdpt_web_layout-02.png'
 
 const TabItem = styled.div`
-  padding: 20px 8px;
+  padding: 12px 12px 16px;
   background-color: #292f47;
 `
 
@@ -80,7 +80,7 @@ const Index = (props) => {
           <Box>
             <Center>
               <Stack direction={{ base: 'column' }} position={'relative'}>
-                <Center h={'75vh'}>
+                <Center h={'75vh'} overflow={'hidden'}>
                   <Stack
                     as={Box}
                     h={'100%'}
@@ -115,8 +115,7 @@ const Index = (props) => {
                     </ForkWrapper>
                   </Stack>
                 </Center>
-
-                <Center>
+                {/* <Center>
                   <Stack
                     as={Box}
                     h={'100%'}
@@ -142,7 +141,7 @@ const Index = (props) => {
                       </ListItem>
                     </OrderedList>
                   </Stack>
-                </Center>
+                </Center> */}
               </Stack>
             </Center>
           </Box>
@@ -179,7 +178,7 @@ const Index = (props) => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerBody>
+          <DrawerBody px={4}>
             <Box py={6}>
               <Form />
             </Box>
@@ -187,36 +186,37 @@ const Index = (props) => {
         </DrawerContent>
       </Drawer>
 
-      <Box d={{ base: 'block', sm: 'none' }}>
+      <Box
+        pos='fixed'
+        bottom={0}
+        w={'100%'}
+        zIndex={2}
+        d={{ base: 'block', sm: 'none' }}
+      >
         <TabItem ref={btnRef} onClick={onOpen}>
-          <Center h={'100%'} pos={'relative'}>
-            <Box
-              pos={'absolute'}
-              color={'#FFF'}
-              top={'-4px'}
-              left={'4px'}
-              borderRadius={'2xl'}
-              bgColor={'#ff8100'}
-              fontSize={'12px'}
-              py={1}
-              px={2}
-            >
-              按此參與
+          <Stack justifyContent={'center'} spacing={4}>
+            <Box color={'#FFF'} fontSize={'14px'}>
+              <Text color={'#FFF'}>
+                加速香港禁膠餐具
+                <Text as={'span'} px={2} fontSize={'20px'} fontWeight={'700'}>
+                  <i>3</i>
+                </Text>
+                步完成
+              </Text>
             </Box>
             <Text
               color={'#FFF'}
               fontSize={'24px'}
-              fontWeight={500}
               textAlign={'center'}
-              noOfLines={1}
+              borderRadius={'full'}
+              bgColor={'#ff8100'}
+              letterSpacing={'4px'}
+              py={2}
+              px={12}
             >
-              加速香港禁膠餐具{' '}
-              <Text as={'span'} fontSize={'48px'} fontWeight={700}>
-                <i>3</i>{' '}
-              </Text>
-              步完成
+              按此參與
             </Text>
-          </Center>
+          </Stack>
         </TabItem>
       </Box>
     </Box>

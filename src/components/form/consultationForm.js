@@ -91,6 +91,7 @@ const FormWrapper = (props) => {
   const toast = useToast()
   const numberProps = {
     fontFamily: 'arial',
+    lineHeight: '150%',
     fontSize: { base: '16px', sm: '24px' },
     color: '#FFF',
   }
@@ -104,9 +105,9 @@ const FormWrapper = (props) => {
   return (
     <Box>
       <TopSection />
-      <Box>
+      <Stack px={2} spacing={6}>
         {/** STEP 1 */}
-        <Flex direction={{ base: 'row' }} pb={6}>
+        <Flex direction={{ base: 'row' }}>
           <Box
             textAlign={'center'}
             pos={'relative'}
@@ -114,13 +115,18 @@ const FormWrapper = (props) => {
             mr={2}
           >
             <Box
+              w={'36px'}
+              h={'36px'}
+              display={'inline-flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
               borderRadius={'full'}
               bgColor={submittedStatus ? 'gray.200' : '#66cc00'}
             >
               <Text {...numberProps}>1</Text>
             </Box>
           </Box>
-          <Box flex={1}>
+          <Box px={2} pt={2} flex={1}>
             {submittedStatus ? (
               <Box>
                 <Text lineHeight={8}>您已完成第一步！</Text>
@@ -269,7 +275,7 @@ const FormWrapper = (props) => {
           </Box>
         </Flex>
         {/** STEP 2 */}
-        <Flex direction={{ base: 'row' }} pb={6} align={'center'}>
+        <Flex direction={{ base: 'row' }} align={'center'}>
           <Box
             textAlign={'center'}
             pos={'relative'}
@@ -277,8 +283,13 @@ const FormWrapper = (props) => {
             mr={2}
           >
             <Box
-              bgColor={submittedStatus ? '#66cc00' : 'gray.200'}
+              w={'36px'}
+              h={'36px'}
+              display={'inline-flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
               borderRadius={'full'}
+              bgColor={submittedStatus ? '#66cc00' : 'gray.200'}
             >
               <Text {...numberProps}>2</Text>
             </Box>
@@ -305,7 +316,7 @@ const FormWrapper = (props) => {
           )}
         </Flex>
         {/** STEP 3 */}
-        <Flex direction={{ base: 'row' }} align={'center'} pb={6}>
+        <Flex direction={{ base: 'row' }} align={'center'}>
           <Box
             textAlign={'center'}
             pos={'relative'}
@@ -313,8 +324,13 @@ const FormWrapper = (props) => {
             mr={2}
           >
             <Box
-              bgColor={submittedStatus ? '#66cc00' : 'gray.200'}
+              w={'36px'}
+              h={'36px'}
+              display={'inline-flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
               borderRadius={'full'}
+              bgColor={submittedStatus ? '#66cc00' : 'gray.200'}
             >
               <Text {...numberProps}>3</Text>
             </Box>
@@ -356,7 +372,7 @@ const FormWrapper = (props) => {
         {/** DONATE **/}
         {submittedStatus && (
           <Stack spacing={4} py={6}>
-            <Divider py={4} />
+            <Divider my={4} />
             <Box>
               <Text lineHeight={'200%'}>
                 即棄塑膠帶來的一時便利，換來充斥塑膠垃圾的海洋、環境永久的傷害。
@@ -370,7 +386,7 @@ const FormWrapper = (props) => {
             <MiniDonateForm />
           </Stack>
         )}
-      </Box>
+      </Stack>
     </Box>
   )
 }
