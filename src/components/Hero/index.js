@@ -104,26 +104,28 @@ const Index = (props) => {
                     <Heading
                       fontSize={{ base: '2xl', sm: '4xl' }}
                       letterSpacing={'5%'}
-                      lineHeight={'150%'}
+                      lineHeight={'120%'}
                     >
                       <Text
                         color={'#004566'}
-                        fontWeight={'700'}
+                        fontWeight={'300'}
                         fontSize={{ base: '4xl' }}
                       >
                         急需您參與
                       </Text>
                       <Text
+                        mt={2}
                         color={'#ff8100'}
-                        fontSize={{ base: '3xl', md: '5xl' }}
+                        fontSize={{ base: '4xl', md: '5xl' }}
                         fontWeight={'700'}
                       >
-                        管制即棄膠餐具公眾諮詢
+                        管制即棄膠餐具諮詢
                       </Text>
                     </Heading>
                     <Stack spacing={4}>
                       <Text color={'gray.700'} lineHeight={'200%'}>
-                        環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。
+                        環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，
+                        <b>截止日期為2021年9月8日</b>。
                       </Text>
                       <Text color={'gray.700'} lineHeight={'200%'}>
                         綠色和平發現署方的計劃
@@ -224,8 +226,8 @@ const Index = (props) => {
       >
         <TabItem ref={btnRef} onClick={onOpen}>
           <Stack justifyContent={'center'} spacing={4}>
-            <Box color={'#FFF'} fontSize={'14px'}>
-              <Text color={'#FFF'} px={4}>
+            <Box color={'#FFF'} fontSize={'16px'}>
+              <Text color={'#FFF'} px={2}>
                 加速香港禁膠餐具
                 <Text as={'span'} px={2} fontSize={'20px'} fontWeight={'700'}>
                   <i>3</i>
@@ -244,7 +246,7 @@ const Index = (props) => {
               py={2}
               px={12}
             >
-              按此參與
+              立即行動
             </Text>
           </Stack>
         </TabItem>

@@ -275,7 +275,7 @@ const FormWrapper = (props) => {
           </Box>
         </Flex>
         {/** STEP 2 */}
-        <Flex direction={{ base: 'row' }} align={'center'}>
+        <Flex direction={{ base: 'row' }}>
           <Box
             textAlign={'center'}
             pos={'relative'}
@@ -319,7 +319,7 @@ const FormWrapper = (props) => {
           )}
         </Flex>
         {/** STEP 3 */}
-        <Flex direction={{ base: 'row' }} align={'center'}>
+        <Flex direction={{ base: 'row' }}>
           <Box
             textAlign={'center'}
             pos={'relative'}
@@ -368,7 +368,6 @@ const FormWrapper = (props) => {
             <Divider flex={1} orientation='horizontal' />
           )}
         </Flex>
-
         {/** DONATE **/}
         {submittedStatus && (
           <Stack spacing={4} pt={4} pb={6}>

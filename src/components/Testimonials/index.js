@@ -85,10 +85,10 @@ export default function WithSpeechBubbles() {
                   href={'https://www.rdpt.hk/tc/form/'}
                   target={'_blank'}
                   textDecoration={'underline'}
-                  color={'#ff8100'}
+                  color={'gray.900'}
                   fontSize={'sm'}
                 >
-                  「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日
+                  「管制即棄膠餐具計劃」公眾諮詢，截止日期為2021年9月8日
                 </Link>
                 。
                 <br />
@@ -132,7 +132,7 @@ export default function WithSpeechBubbles() {
             <TestimonialContent>
               <TestimonialHeading number={3}>立即行動</TestimonialHeading>
               <TestimonialText>
-                綠色和平認為全面禁膠餐具不容再拖，，政府應於2025年前，實施管制所有堂食及外賣塑膠即棄餐具。
+                綠色和平認為全面禁膠餐具不容再拖，政府應於2025年前，實施管制所有堂食及外賣塑膠即棄餐具。
                 <br />
                 <br />
                 請一起行動，填妥綠色和平網站表格，參與「管制即棄膠餐具計劃」諮詢，明確提出我們的走塑目標！
