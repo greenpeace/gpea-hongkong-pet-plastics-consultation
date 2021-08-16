@@ -218,9 +218,10 @@ const Index = (props) => {
         placement='bottom'
         onClose={onClose}
         finalFocusRef={btnRef}
+        autoFocus={false}
       >
-        <DrawerOverlay />
-        <DrawerContent>
+        <DrawerOverlay/>
+        <DrawerContent top={'60px'}>
           <DrawerCloseButton />
           <DrawerBody px={4}>
             <Box py={6}>
