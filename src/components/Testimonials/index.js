@@ -1,4 +1,13 @@
-import { Box, Heading, Text, Stack, Container, Button } from '@chakra-ui/react'
+import {
+  Box,
+  Heading,
+  Divider,
+  Text,
+  Stack,
+  Container,
+  Button,
+  Link,
+} from '@chakra-ui/react'
 
 const Testimonial = ({ children }) => {
   return (
@@ -71,7 +80,17 @@ export default function WithSpeechBubbles() {
             <TestimonialContent>
               <TestimonialHeading number={1}>背景資料</TestimonialHeading>
               <TestimonialText>
-                環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。
+                環保署已經展開
+                <Link
+                  href={'https://www.rdpt.hk/tc/form/'}
+                  target={'_blank'}
+                  textDecoration={'underline'}
+                  color={'gray.900'}
+                  fontSize={'sm'}
+                >
+                  「管制即棄膠餐具計劃」公眾諮詢
+                </Link>
+                ，截止日期為9月8日。
                 <br />
                 <br />
                 計劃提出分兩階段實行，但第一階段只管制堂食發泡膠、飲筒等膠餐具。
@@ -86,16 +105,18 @@ export default function WithSpeechBubbles() {
             <TestimonialContent>
               <TestimonialHeading number={2}>綠色和平倡議</TestimonialHeading>
               <TestimonialText>
-                綠色和平倡議：
+                <b>綠色和平倡議：</b>
                 <br />
                 <br />
                 1. 第一階段提前於2023年實施；
                 <br />
+                <br />
                 2. 最遲2025年實施第二階段管制措施；
+                <br />
                 <br />
                 3. 署方須同時訂立「可重用餐具社區配套時間表」。
               </TestimonialText>
-              <Button
+              {/* <Button
                 as='a'
                 href={'https://www.rdpt.hk/tc/form/'}
                 target={'_blank'}
@@ -106,7 +127,7 @@ export default function WithSpeechBubbles() {
                 borderRadius={8}
               >
                 立即參與諮詢
-              </Button>
+              </Button> */}
             </TestimonialContent>
           </Testimonial>
 

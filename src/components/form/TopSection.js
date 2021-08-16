@@ -1,10 +1,15 @@
 import React from 'react'
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Text, Heading } from '@chakra-ui/react'
 
 const TopSection = () => {
   return (
     <Box px={2} pb={6}>
-      <Text fontSize={{ base: '28px', sm: '36px' }} fontWeight={500} mb={4}>
+      <Heading
+        as={'h2'}
+        fontSize={{ base: '28px', sm: '36px' }}
+        fontWeight={500}
+        mb={2}
+      >
         加速香港禁膠餐具{' '}
         <Text
           as={'span'}
@@ -14,9 +19,10 @@ const TopSection = () => {
           <i>3</i>{' '}
         </Text>
         步完成
-      </Text>
+      </Heading>
       <Text>
-        環保署現正展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。我們急需你參與「管制即棄膠餐具計劃」公眾諮詢，與綠色和平一起推動香港走塑進程！
+        禁膠餐具，不容再拖！
+        我們急需你參與諮詢，立即提交意見書，促盡快管制即棄膠餐具！
       </Text>
     </Box>
   )

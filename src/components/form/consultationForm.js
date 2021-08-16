@@ -91,8 +91,7 @@ const FormWrapper = (props) => {
   const toast = useToast()
   const numberProps = {
     fontFamily: 'arial',
-    fontSize: { base: '18px', sm: '24px' },
-    lineHeight: { base: '36px', sm: '48px' },
+    fontSize: { base: '16px', sm: '24px' },
     color: '#FFF',
   }
 
@@ -105,18 +104,18 @@ const FormWrapper = (props) => {
   return (
     <Box>
       <TopSection />
-      <Box px={2}>
+      <Box>
         {/** STEP 1 */}
-        <Flex direction={{ base: 'row' }} px={{ base: 0, sm: 2 }} pb={6}>
+        <Flex direction={{ base: 'row' }} pb={6}>
           <Box
             textAlign={'center'}
             pos={'relative'}
-            w={{ base: '38px', sm: '48px' }}
+            w={{ base: '36px' }}
             mr={2}
           >
             <Box
-              borderRadius={'50%'}
-              bgColor={submittedStatus ? 'gray.200' : 'green.400'}
+              borderRadius={'full'}
+              bgColor={submittedStatus ? 'gray.200' : '#66cc00'}
             >
               <Text {...numberProps}>1</Text>
             </Box>
@@ -270,21 +269,16 @@ const FormWrapper = (props) => {
           </Box>
         </Flex>
         {/** STEP 2 */}
-        <Flex
-          direction={{ base: 'row' }}
-          px={{ base: 0, sm: 2 }}
-          pb={6}
-          align={'center'}
-        >
+        <Flex direction={{ base: 'row' }} pb={6} align={'center'}>
           <Box
             textAlign={'center'}
             pos={'relative'}
-            w={{ base: '38px', sm: '48px' }}
+            w={{ base: '36px' }}
             mr={2}
           >
             <Box
-              bgColor={submittedStatus ? 'green.300' : 'gray.200'}
-              borderRadius={'50%'}
+              bgColor={submittedStatus ? '#66cc00' : 'gray.200'}
+              borderRadius={'full'}
             >
               <Text {...numberProps}>2</Text>
             </Box>
@@ -311,21 +305,16 @@ const FormWrapper = (props) => {
           )}
         </Flex>
         {/** STEP 3 */}
-        <Flex
-          direction={{ base: 'row' }}
-          align={'center'}
-          px={{ base: 0, sm: 2 }}
-          pb={6}
-        >
+        <Flex direction={{ base: 'row' }} align={'center'} pb={6}>
           <Box
             textAlign={'center'}
             pos={'relative'}
-            w={{ base: '38px', sm: '48px' }}
+            w={{ base: '36px' }}
             mr={2}
           >
             <Box
-              bgColor={submittedStatus ? 'green.400' : 'gray.200'}
-              borderRadius={'50%'}
+              bgColor={submittedStatus ? '#66cc00' : 'gray.200'}
+              borderRadius={'full'}
             >
               <Text {...numberProps}>3</Text>
             </Box>

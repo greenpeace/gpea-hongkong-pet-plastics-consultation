@@ -57,7 +57,7 @@ export default function WithSubnavigation(props) {
 
           <Image src={'https://www.greenpeace.org/global/static/img/gp-logo.svg'} maxW={'120px'}/>
 
-          
+
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav illustrationSection={props.illustrationSection} imageSection={props.imageSection} testimonials={props.testimonials}/>
@@ -74,7 +74,7 @@ export default function WithSubnavigation(props) {
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
-            bg={'green.400'}
+            bg={'#66cc00'}
             href={'#'}
             _hover={{
               bg: 'green.300',

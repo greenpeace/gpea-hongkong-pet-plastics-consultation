@@ -92,22 +92,17 @@ const Index = (props) => {
                     <Heading
                       fontSize={{ base: '2xl', sm: '4xl' }}
                       letterSpacing={'5%'}
-                      lineHeight={{ base: '150%', sm: '130%' }}
+                      lineHeight={'150%'}
                     >
-                      <Text fontWeight={'300'} fontSize={{ base: '4xl' }}>
-                        急需您的參與
+                      <Text fontWeight={'300'} fontSize={{ base: '3xl' }}>
+                        急需您參與
                       </Text>
                       <Text
-                        mt={1}
-                        mb={2}
                         color={'#ff8100'}
-                        fontSize={{ base: '4xl', md: '5xl' }}
+                        fontSize={{ base: '3xl', md: '5xl' }}
                         fontWeight={'700'}
                       >
-                        管制即棄膠餐具計劃
-                      </Text>
-                      <Text fontWeight={'300'} fontSize={{ base: '4xl' }}>
-                        公眾諮詢
+                        管制即棄膠餐具公眾諮詢
                       </Text>
                     </Heading>
                     <Text color={'gray.700'} lineHeight={'200%'}>
