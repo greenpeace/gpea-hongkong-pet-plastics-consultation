@@ -77,10 +77,10 @@ const FormikWrapper = () => {
 
     if(inputEl){
       setTimeout(function(){
-        setP29ContentOne(canvasP29ContentOne.toDataURL('image/png'))
-        setP29ContentTwo(canvasP29ContentTwo.toDataURL('image/png'))
-        setP30ContentOne(canvasP30ContentOne.toDataURL('image/png'))
-        setP30ContentTwo(canvasP30ContentTwo.toDataURL('image/png'))
+        setP29ContentOne(canvasP29ContentOne.toDataURL('image/svg'))
+        setP29ContentTwo(canvasP29ContentTwo.toDataURL('image/svg'))
+        setP30ContentOne(canvasP30ContentOne.toDataURL('image/svg'))
+        setP30ContentTwo(canvasP30ContentTwo.toDataURL('image/svg'))
        }, 200);
     }
   }, []);
