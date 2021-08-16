@@ -300,7 +300,7 @@ const FormWrapper = (props) => {
                 <Text as='p' color='#ff8100' fontWeight={700}>
                   開啟你的電子郵箱
                 </Text>
-                ，打開由綠色和平發出，附有
+                打開由綠色和平發出，附有
                 <Link
                   href={values.CampaignData1__c}
                   color={'#ff8100'}
@@ -309,6 +309,9 @@ const FormWrapper = (props) => {
                   意見書範本
                 </Link>
                 的電郵。
+              </Text>
+              <Text mt={2} color='gray.500'>
+                <sup>*</sup> 如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘
               </Text>
             </Box>
           ) : (
@@ -360,9 +363,6 @@ const FormWrapper = (props) => {
                 </chakra.button>
                 ，按下發送，完成諮詢！
               </Text>
-              <Text color='gray.700'>
-                <sup>*</sup> 如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘
-              </Text>
             </Box>
           ) : (
             <Divider flex={1} orientation='horizontal' />
@@ -371,12 +371,12 @@ const FormWrapper = (props) => {
 
         {/** DONATE **/}
         {submittedStatus && (
-          <Stack spacing={4} py={6}>
-            <Divider my={4} />
+          <Stack spacing={4} pt={4} pb={6}>
             <Box>
               <Text lineHeight={'200%'}>
                 即棄塑膠帶來的一時便利，換來充斥塑膠垃圾的海洋、環境永久的傷害。
-                <br />
+              </Text>
+              <Text lineHeight={'200%'}>
                 請幫助綠色和平以公正獨立的身份，推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，源頭減少即棄塑膠！
                 <b>
                   綠色和平從不接受政商界資助，因此您的捐助，就是推動項目工作的關鍵！

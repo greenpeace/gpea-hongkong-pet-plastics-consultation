@@ -85,12 +85,12 @@ export default function WithSpeechBubbles() {
                   href={'https://www.rdpt.hk/tc/form/'}
                   target={'_blank'}
                   textDecoration={'underline'}
-                  color={'gray.900'}
+                  color={'#ff8100'}
                   fontSize={'sm'}
                 >
-                  「管制即棄膠餐具計劃」公眾諮詢
+                  「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日
                 </Link>
-                ，截止日期為9月8日。
+                。
                 <br />
                 <br />
                 計劃提出分兩階段實行，但第一階段只管制堂食發泡膠、飲筒等膠餐具。

@@ -34,7 +34,7 @@ const AMOUNT_MONTHLY = [
 
 const MiniDonateForm = () => {
   const [donateType, setDonateType] = useState('monthly')
-  const [amount, setAmount] = useState(200)
+  const [amount, setAmount] = useState(100)
   const [url, setURL] = useState({ type: donateType, amount: amount })
   const amountOption =
     donateType === 'monthly' ? AMOUNT_MONTHLY : AMOUNT_ONETIME
@@ -85,7 +85,7 @@ const MiniDonateForm = () => {
       <Box py={4} overflow='hidden'>
         <Flex direction='column'>
           <Box>
-            <Grid templateColumns='repeat(3, 1fr)' gap={{base: 1, sm: 2}}>
+            <Grid templateColumns='repeat(3, 1fr)' gap={{ base: 1, sm: 2 }}>
               {amountOption.map((d, i) => {
                 const colSpan = amountOption.length === i + 1 ? 3 : 1
 

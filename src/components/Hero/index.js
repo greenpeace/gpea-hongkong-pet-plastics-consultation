@@ -48,10 +48,10 @@ const ForkWrapper = styled.div`
   position: absolute;
   right: -30%;
   bottom: -20%;
-  width: 140%;
+  width: 150%;
   height: 100%;
   > img {
-    opacity: 0.5;
+    opacity: 0.4;
     position: absolute;
     left: 0;
     top: 0;
@@ -80,13 +80,16 @@ const Index = (props) => {
           <Box>
             <Center>
               <Stack direction={{ base: 'column' }} position={'relative'}>
-                <Center h={'75vh'} overflow={'hidden'}>
+                <Center
+                  h={'100vh'}
+                  py={14}
+                  px={{ base: 6, md: 12 }}
+                  overflow={'hidden'}
+                >
                   <Stack
                     as={Box}
                     h={'100%'}
                     spacing={8}
-                    py={14}
-                    px={8}
                     position={'relative'}
                     alignItems={'flex-start'}
                     maxW={'2xl'}
@@ -94,14 +97,14 @@ const Index = (props) => {
                     <Heading
                       fontSize={{ base: '2xl', sm: '4xl' }}
                       letterSpacing={'5%'}
-                      lineHeight={'150%'}
+                      lineHeight={'120%'}
                     >
-                      <Text fontWeight={'300'} fontSize={{ base: '3xl' }}>
+                      <Text fontWeight={'300'} fontSize={{ base: '2xl' }}>
                         急需您參與
                       </Text>
                       <Text
                         color={'#ff8100'}
-                        fontSize={{ base: '3xl', md: '5xl' }}
+                        fontSize={{ base: '3xl', md: '4xl' }}
                         fontWeight={'700'}
                       >
                         管制即棄膠餐具公眾諮詢
