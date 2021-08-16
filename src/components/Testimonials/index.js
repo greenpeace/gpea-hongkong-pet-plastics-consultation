@@ -62,7 +62,7 @@ const TestimonialText = ({ children }) => {
 export default function WithSpeechBubbles() {
   return (
     <Box bg={'gray.50'}>
-      <Container maxW={'6xl'} py={12} as={Stack} spacing={8}>
+      <Container maxW={'6xl'} py={12} as={Stack} spacing={6}>
         <Stack align={'center'}>
           <Heading color={'#004566'} textAlign={'center'} lineHeight={'120%'}>
             「管制即棄膠餐具計劃」
@@ -105,9 +105,6 @@ export default function WithSpeechBubbles() {
             <TestimonialContent>
               <TestimonialHeading number={2}>綠色和平倡議</TestimonialHeading>
               <TestimonialText>
-                <b>綠色和平倡議：</b>
-                <br />
-                <br />
                 1. 第一階段提前於2023年實施；
                 <br />
                 <br />
@@ -135,10 +132,10 @@ export default function WithSpeechBubbles() {
             <TestimonialContent>
               <TestimonialHeading number={3}>立即行動</TestimonialHeading>
               <TestimonialText>
-                填妥綠色和平網站表格後，您將會收到一封附有諮詢範本的電郵。
+                綠色和平認為全面禁膠餐具不容再拖，，政府應於2025年前，實施管制所有堂食及外賣塑膠即棄餐具。
                 <br />
                 <br />
-                請進入郵箱，並打開該電郵。
+                請一起行動，填妥綠色和平網站表格，參與「管制即棄膠餐具計劃」諮詢，明確提出我們的走塑目標！
               </TestimonialText>
             </TestimonialContent>
           </Testimonial>
@@ -147,9 +144,12 @@ export default function WithSpeechBubbles() {
             <TestimonialContent>
               <TestimonialHeading number={4}>完成發送</TestimonialHeading>
               <TestimonialText>
-                轉寄該電郵。在「收件人」一欄輸入rdpt@epd.gov.hk，最後按下發送，完成諮詢！
+                填妥綠色和平網站表格後，您將會收到一封附有意見書範本的電郵。
                 <br />
-                <br />* 如您有其他意見，歡迎前往環保署網站發表意見
+                <br />
+                請進入郵箱，轉寄該電郵。在「收件人」一欄輸入rdpt@epd.gov.hk，最後按下發送，完成諮詢！
+                <br />
+                <br />* 如您有其他意見，歡迎前往環保署網站發表意見。
               </TestimonialText>
             </TestimonialContent>
           </Testimonial>

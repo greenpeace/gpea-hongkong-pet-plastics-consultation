@@ -74,7 +74,6 @@ const MiniDonateForm = () => {
               borderRadius={0}
               bg={donateType === d.value ? 'brand.500' : '#FFF'}
               color={donateType === d.value ? '#FFF' : 'brand.500'}
-              _hover={{ bg: 'brand.500', color: '#FFF' }}
               onClick={() => handleSetDonateType(d.value)}
             >
               {d.label}

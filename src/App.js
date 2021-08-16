@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { ChakraProvider, Box} from '@chakra-ui/react'
+import { ChakraProvider, Box } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import { HelmetProvider } from 'react-helmet-async'
 import SEO from './components/SEO/SEO'
@@ -27,10 +27,14 @@ const App = () => {
     <ChakraProvider resetCSS={true} theme={theme}>
       <HelmetProvider>
         <SEO />
-        <Nav imageSection={imageSection} illustrationSection={illustrationSection} testimonials={testimonials}/>
-        <HeroSection/>
+        <Nav
+          imageSection={imageSection}
+          illustrationSection={illustrationSection}
+          testimonials={testimonials}
+        />
+        <HeroSection />
         <Box ref={testimonials}>
-          <Testimonials/>
+          <Testimonials />
         </Box>
         <Box ref={imageSection}>
           <SplitWithImage />

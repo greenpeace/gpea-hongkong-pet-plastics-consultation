@@ -6,8 +6,9 @@ const TopSection = () => {
     <Box px={2} mb={6}>
       <Heading
         as={'h2'}
-        fontSize={{ base: '2xl', sm: '3xl' }}
-        fontWeight={300}
+        color={'#004566'}
+        fontSize={{ base: '3xl', sm: '4xl' }}
+        fontWeight={700}
         mb={2}
       >
         加速香港禁膠餐具

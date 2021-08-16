@@ -15,16 +15,16 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
-} from '@chakra-ui/icons';
+} from '@chakra-ui/icons'
 
 export default function WithSubnavigation(props) {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle } = useDisclosure()
   return (
     <Box>
       <Flex
@@ -33,11 +33,13 @@ export default function WithSubnavigation(props) {
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
-        align={'center'}>
+        align={'center'}
+      >
         <Flex
           flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}>
+          display={{ base: 'flex', md: 'none' }}
+        >
           <IconButton
             onClick={onToggle}
             icon={
@@ -55,12 +57,17 @@ export default function WithSubnavigation(props) {
             Logo
           </Text> */}
 
-          <Image src={'https://www.greenpeace.org/global/static/img/gp-logo.svg'} maxW={'120px'}/>
-
-
+          <Image
+            src={'https://www.greenpeace.org/global/static/img/gp-logo.svg'}
+            maxW={'120px'}
+          />
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            <DesktopNav illustrationSection={props.illustrationSection} imageSection={props.imageSection} testimonials={props.testimonials}/>
+            <DesktopNav
+              illustrationSection={props.illustrationSection}
+              imageSection={props.imageSection}
+              testimonials={props.testimonials}
+            />
           </Flex>
         </Flex>
 
@@ -68,7 +75,8 @@ export default function WithSubnavigation(props) {
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
           direction={'row'}
-          spacing={6}>
+          spacing={6}
+        >
           {/* <Button
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
@@ -85,100 +93,119 @@ export default function WithSubnavigation(props) {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav isOpen={isOpen} onToggle={onToggle} illustrationSection={props.illustrationSection} imageSection={props.imageSection} testimonials={props.testimonials}/>
+        <MobileNav
+          isOpen={isOpen}
+          onToggle={onToggle}
+          illustrationSection={props.illustrationSection}
+          imageSection={props.imageSection}
+          testimonials={props.testimonials}
+        />
       </Collapse>
     </Box>
-  );
+  )
 }
 
-const DesktopNav = ({illustrationSection, imageSection, testimonials}) => {
+const DesktopNav = ({ illustrationSection, imageSection, testimonials }) => {
   const NAV_ITEMS = [
     {
-      label: '活動資訊',
+      label: '公眾諮詢',
       href: '#',
-      ref: testimonials
+      ref: testimonials,
     },
     {
       label: '了解更多',
       href: '#',
-      ref: imageSection
+      ref: imageSection,
     },
     {
-      label: '關於我們',
+      label: '捐助支持',
       href: '#',
-      ref: illustrationSection
+      ref: illustrationSection,
     },
-  ];
-  const linkColor = useColorModeValue('gray.600', 'gray.200');
-  const linkHoverColor = useColorModeValue('gray.800', 'white');
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+  ]
+  const linkColor = useColorModeValue('gray.600', 'gray.200')
+  const linkHoverColor = useColorModeValue('gray.800', 'white')
+  const popoverContentBgColor = useColorModeValue('white', 'gray.800')
 
   return (
     <Stack direction={'row'} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <Box fontSize={'sm'}
+          <Box
+            fontSize={'sm'}
             fontWeight={500}
             color={linkColor}
-            onClick={()=>navItem.ref.current.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() =>
+              navItem.ref.current.scrollIntoView({ behavior: 'smooth' })
+            }
             _hover={{
               textDecoration: 'none',
               color: linkHoverColor,
-              cursor: 'pointer'
-            }}>
+              cursor: 'pointer',
+            }}
+          >
             {navItem.label}
           </Box>
         </Box>
       ))}
     </Stack>
-  );
-};
+  )
+}
 
-const MobileNav = ({illustrationSection, imageSection, testimonials, isOpen, onToggle}) => {
+const MobileNav = ({
+  illustrationSection,
+  imageSection,
+  testimonials,
+  isOpen,
+  onToggle,
+}) => {
   const NAV_ITEMS = [
     {
-      label: '活動資訊',
+      label: '公眾諮詢',
       href: '#',
-      ref: testimonials
+      ref: testimonials,
     },
     {
       label: '了解更多',
       href: '#',
-      ref: imageSection
+      ref: imageSection,
     },
     {
-      label: '關於我們',
+      label: '捐助支持',
       href: '#',
-      ref: illustrationSection
+      ref: illustrationSection,
     },
-  ];
+  ]
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
-      display={{ md: 'none' }}>
+      display={{ md: 'none' }}
+    >
       {NAV_ITEMS.map((navItem) => (
-        <Stack key={navItem.label} spacing={4} onClick={()=>{
-          onToggle()
-          navItem.ref.current.scrollIntoView({ behavior: 'smooth' })
-        }}>
+        <Stack
+          key={navItem.label}
+          spacing={4}
+          onClick={() => {
+            onToggle()
+            navItem.ref.current.scrollIntoView({ behavior: 'smooth' })
+          }}
+        >
           <Flex
             py={2}
             justify={'space-between'}
             align={'center'}
             _hover={{
               textDecoration: 'none',
-            }}>
-            <Text
-              fontWeight={600}>
-              {navItem.label}
-            </Text>
+            }}
+          >
+            <Text fontWeight={600}>{navItem.label}</Text>
           </Flex>
         </Stack>
       ))}
     </Stack>
-  );
-};
+  )
+}
 //navItem.ref.current.scrollIntoView({ behavior: 'smooth' })
 // const MobileNavItem = ({ label, navItem }) => {
 //   const { isOpen, onToggle } = useDisclosure();

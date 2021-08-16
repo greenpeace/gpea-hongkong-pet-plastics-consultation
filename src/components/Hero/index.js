@@ -24,6 +24,7 @@ import Sticky from 'react-sticky-el'
 import Form from '../../components/form'
 import Countdown from '../../components/Countdown'
 
+import KV from '../../assets/images/kv1.jpg'
 import Fork from '../../assets/images/20200813_rdpt_web_layout-02.png'
 
 const TabItem = styled.div`
@@ -41,6 +42,22 @@ const FixedCountdown = styled.div`
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04),
     0px 0px 1px rgba(0, 0, 0, 0.04);
   font-weight: bold;
+`
+
+const KVWrapper = styled.div`
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  > img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
 `
 
 const ForkWrapper = styled.div`
@@ -69,50 +86,59 @@ const Index = (props) => {
       <FixedCountdown>
         <Countdown />
       </FixedCountdown>
-      <Box
-        h={{ base: '80vh', sm: '100%' }}
-        overflowY={{ base: 'auto', sm: 'unset' }}
-        overflowX={'clip'}
-      >
+      <Box overflowY={{ base: 'auto', sm: 'unset' }} overflowX={'clip'}>
         <Grid
           templateColumns={{ base: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)' }}
         >
           <Box>
             <Center>
               <Stack direction={{ base: 'column' }} position={'relative'}>
-                <Center
-                  h={'100vh'}
-                  py={14}
-                  px={{ base: 6, md: 12 }}
-                  overflow={'hidden'}
-                >
+                <Center py={14} px={{ base: 6, md: 12 }} overflow={'hidden'}>
                   <Stack
                     as={Box}
-                    h={'100%'}
+                    h={'90vh'}
                     spacing={8}
                     position={'relative'}
                     alignItems={'flex-start'}
-                    maxW={'2xl'}
                   >
                     <Heading
                       fontSize={{ base: '2xl', sm: '4xl' }}
                       letterSpacing={'5%'}
-                      lineHeight={'120%'}
+                      lineHeight={'150%'}
                     >
-                      <Text fontWeight={'300'} fontSize={{ base: '2xl' }}>
+                      <Text
+                        color={'#004566'}
+                        fontWeight={'700'}
+                        fontSize={{ base: '4xl' }}
+                      >
                         急需您參與
                       </Text>
                       <Text
                         color={'#ff8100'}
-                        fontSize={{ base: '3xl', md: '4xl' }}
+                        fontSize={{ base: '3xl', md: '5xl' }}
                         fontWeight={'700'}
                       >
                         管制即棄膠餐具公眾諮詢
                       </Text>
                     </Heading>
-                    <Text color={'gray.700'} lineHeight={'200%'}>
-                      環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。立即行動填妥綠色和平網站表格，參與公眾諮詢，推動香港走塑進程！
-                    </Text>
+                    <Stack spacing={4}>
+                      <Text color={'gray.700'} lineHeight={'200%'}>
+                        環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，截止日期為9月8日。
+                      </Text>
+                      <Text color={'gray.700'} lineHeight={'200%'}>
+                        綠色和平發現署方的計劃
+                        <b>
+                          <u>沒有為管制塑膠餐具訂下確切時間表及配套</u>
+                        </b>
+                        ，令香港禁膠之路成紙上談兵。
+                      </Text>
+                      <Text color={'gray.700'} lineHeight={'200%'}>
+                        我們認為政府應於2025年全面禁膠餐具，並緊急呼籲公眾參與「管制即棄膠餐具計劃」諮詢，向署方明確提出我們的目標：禁膠餐具，刻不容緩！
+                      </Text>
+                      <Text color={'gray.700'} lineHeight={'200%'}>
+                        立即行動填妥綠色和平網站表格，參與諮詢，推動香港走塑進程！
+                      </Text>
+                    </Stack>
                     <ForkWrapper>
                       <Image src={Fork} objectFit='contain' />
                     </ForkWrapper>
@@ -199,7 +225,7 @@ const Index = (props) => {
         <TabItem ref={btnRef} onClick={onOpen}>
           <Stack justifyContent={'center'} spacing={4}>
             <Box color={'#FFF'} fontSize={'14px'}>
-              <Text color={'#FFF'}>
+              <Text color={'#FFF'} px={4}>
                 加速香港禁膠餐具
                 <Text as={'span'} px={2} fontSize={'20px'} fontWeight={'700'}>
                   <i>3</i>
@@ -209,7 +235,8 @@ const Index = (props) => {
             </Box>
             <Text
               color={'#FFF'}
-              fontSize={'24px'}
+              fontSize={'20px'}
+              fontWeight={'700'}
               textAlign={'center'}
               borderRadius={'full'}
               bgColor={'#ff8100'}

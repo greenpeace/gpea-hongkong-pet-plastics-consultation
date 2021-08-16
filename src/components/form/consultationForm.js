@@ -126,7 +126,7 @@ const FormWrapper = (props) => {
               <Text {...numberProps}>1</Text>
             </Box>
           </Box>
-          <Box px={2} pt={2} flex={1}>
+          <Box pt={2} flex={1}>
             {submittedStatus ? (
               <Box>
                 <Text lineHeight={8}>您已完成第一步！</Text>
@@ -310,8 +310,8 @@ const FormWrapper = (props) => {
                 </Link>
                 的電郵。
               </Text>
-              <Text mt={2} color='gray.500'>
-                <sup>*</sup> 如果未能收到郵件，請查看垃圾桶或稍等1-2分鐘
+              <Text mt={2} fontSize={'14px'} color='gray.700'>
+                <sup>*</sup> 如未能收到郵件，請查看垃圾桶或稍等1-2分鐘
               </Text>
             </Box>
           ) : (
@@ -424,10 +424,10 @@ const ConsultationForm = withFormik({
 
   handleSubmit: (values, { setSubmitting, setStatus, setValues, props }) => {
     setStatus('processing')
-    setTimeout(() => {
-      setSubmitting(false)
-      setStatus('submitted')
-    }, 3000)
+    // setTimeout(() => {
+    //   setSubmitting(false)
+    //   setStatus('submitted')
+    // }, 1000)
     const md5 = require('md5')
     const { p29ContentOne, p29ContentTwo, p30ContentOne, p30ContentTwo } = props
 
@@ -553,6 +553,7 @@ const ConsultationForm = withFormik({
 
         if (response.statusText === 'OK') {
           setSubmitting(false)
+          setStatus('submitted')
           setValues({
             ...values,
             CampaignData1__c: data.url,
@@ -562,8 +563,6 @@ const ConsultationForm = withFormik({
         } else {
           alert('Server errors')
         }
-
-        setStatus('submitted')
       } else {
         alert('Something errors')
       }
