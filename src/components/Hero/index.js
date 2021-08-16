@@ -93,7 +93,12 @@ const Index = (props) => {
           <Box>
             <Center>
               <Stack direction={{ base: 'column' }} position={'relative'}>
-                <Center py={14} px={{ base: 6, md: 12 }} overflow={'hidden'}>
+                <Center
+                  pt={14}
+                  pb={8}
+                  px={{ base: 6, md: 12 }}
+                  overflow={'hidden'}
+                >
                   <Stack
                     as={Box}
                     h={'90vh'}
@@ -109,7 +114,7 @@ const Index = (props) => {
                       <Text
                         color={'#004566'}
                         fontWeight={'300'}
-                        fontSize={{ base: '4xl' }}
+                        fontSize={{ base: '4xl', md: '5xl' }}
                       >
                         急需您參與
                       </Text>
@@ -122,23 +127,34 @@ const Index = (props) => {
                         管制即棄膠餐具諮詢
                       </Text>
                     </Heading>
-                    <Stack spacing={4}>
-                      <Text color={'gray.700'} lineHeight={'200%'}>
+                    <Stack
+                      spacing={4}
+                      color={'gray.700'}
+                      fontSize={{ base: 'sm', md: 'md' }}
+                      lineHeight={'200%'}
+                    >
+                      <Text>
                         環保署已經展開「管制即棄膠餐具計劃」公眾諮詢，
-                        <b>截止日期為2021年9月8日</b>。
+                        <Text as={'span'} fontWeight={'700'}>
+                          截止日期為2021年9月8日
+                        </Text>
+                        。
                       </Text>
-                      <Text color={'gray.700'} lineHeight={'200%'}>
-                        綠色和平發現署方的計劃
-                        <b>
-                          <u>沒有為管制塑膠餐具訂下確切時間表及配套</u>
-                        </b>
-                        ，令香港禁膠之路成紙上談兵。
+                      <Text>
+                        可是，署方現時的計劃並
+                        <Text as={'span'} fontWeight={'700'}>
+                          沒有為全面管制塑膠餐具訂下確切時間表及配套
+                        </Text>
+                        ，「走塑」恐怕隨時變「走數」。
                       </Text>
-                      <Text color={'gray.700'} lineHeight={'200%'}>
-                        我們認為政府應於2025年全面禁膠餐具，並緊急呼籲公眾參與「管制即棄膠餐具計劃」諮詢，向署方明確提出我們的目標：禁膠餐具，刻不容緩！
+                      <Text>
+                        這次諮詢將對香港走塑進程影響深遠，因此我們緊急呼籲公眾積極參與「管制即棄膠餐具計劃」諮詢，推動政府於2025年落實全面禁膠餐具。
                       </Text>
-                      <Text color={'gray.700'} lineHeight={'200%'}>
-                        立即行動填妥綠色和平網站表格，參與諮詢，推動香港走塑進程！
+                      <Text>
+                        您今次的表態，將有助展現香港市民渴望全面減塑的民意力量，推動政府於2025年落實全面禁膠餐具。
+                        <Text as={'span'} fontWeight={'700'}>
+                          請把握關鍵時機，於9月8日前填妥表格，推動香港走塑進程！
+                        </Text>
                       </Text>
                     </Stack>
                     <ForkWrapper>
