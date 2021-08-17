@@ -96,7 +96,7 @@ const Index = (props) => {
                 <Center
                   pt={14}
                   pb={8}
-                  px={{ base: 6, md: 12 }}
+                  px={{ base: 6, lg: 12 }}
                   overflow={'hidden'}
                 >
                   <Stack
@@ -107,21 +107,21 @@ const Index = (props) => {
                     alignItems={'flex-start'}
                   >
                     <Heading
-                      fontSize={{ base: '2xl', sm: '4xl' }}
+                      fontSize={{ base: '2xl', lg: '4xl' }}
                       letterSpacing={'5%'}
                       lineHeight={'120%'}
                     >
                       <Text
                         color={'#004566'}
                         fontWeight={'300'}
-                        fontSize={{ base: '4xl', md: '5xl' }}
+                        fontSize={{ base: '4xl', lg: '5xl' }}
                       >
                         急需您參與
                       </Text>
                       <Text
                         mt={2}
                         color={'#ff8100'}
-                        fontSize={{ base: '4xl', md: '5xl' }}
+                        fontSize={{ base: '4xl', xl: '5xl' }}
                         fontWeight={'700'}
                       >
                         管制即棄膠餐具諮詢
@@ -220,7 +220,7 @@ const Index = (props) => {
         finalFocusRef={btnRef}
         autoFocus={false}
       >
-        <DrawerOverlay/>
+        <DrawerOverlay />
         <DrawerContent top={'60px'}>
           <DrawerCloseButton />
           <DrawerBody px={4}>

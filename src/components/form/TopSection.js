@@ -7,7 +7,7 @@ const TopSection = () => {
       <Heading
         as={'h2'}
         color={'#004566'}
-        fontSize={{ base: '3xl', sm: '4xl' }}
+        fontSize={{ base: '2xl', lg: '4xl' }}
         fontWeight={700}
         mb={2}
       >
