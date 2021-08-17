@@ -315,7 +315,7 @@ const FormWrapper = (props) => {
               </Text>
             </Box>
           ) : (
-            <Divider flex={1} orientation='horizontal' />
+            <Divider flex={1} alignSelf={'center'} orientation='horizontal' />
           )}
         </Flex>
         {/** STEP 3 */}
@@ -365,26 +365,26 @@ const FormWrapper = (props) => {
               </Text>
             </Box>
           ) : (
-            <Divider flex={1} orientation='horizontal' />
+            <Divider flex={1} alignSelf={'center'} orientation='horizontal' />
           )}
         </Flex>
         {/** DONATE **/}
-        {submittedStatus && (
-          <Stack spacing={4} pt={4} pb={6}>
-            <Box>
-              <Text lineHeight={'200%'}>
-                即棄塑膠帶來的一時便利，換來充斥塑膠垃圾的海洋、環境永久的傷害。
-              </Text>
-              <Text lineHeight={'200%'}>
-                請幫助綠色和平以公正獨立的身份，推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，源頭減少即棄塑膠！
-                <b>
-                  綠色和平從不接受政商界資助，因此您的捐助，就是推動項目工作的關鍵！
-                </b>
-              </Text>
-            </Box>
-            <MiniDonateForm />
-          </Stack>
-        )}
+        {submittedStatus &&
+          document.location.search.indexOf('utm_source=dd') == -1 && (
+            <Stack spacing={4} pt={4} pb={6}>
+              <Box>
+                <Text lineHeight={'200%'}>
+                  <b>
+                    綠色和平從不接受政商界資助，因此您的捐助，就是推動項目工作的關鍵！
+                  </b>
+                </Text>
+                <Text lineHeight={'200%'}>
+                  請幫助綠色和平督促政府，訂立更積極的減塑目標與政策，持續推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪，源頭減少即棄塑膠！
+                </Text>
+              </Box>
+              <MiniDonateForm />
+            </Stack>
+          )}
       </Stack>
     </Box>
   )
