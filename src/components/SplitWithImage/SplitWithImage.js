@@ -24,7 +24,7 @@ const ImageWrapper = ({ children }) => {
 
 export default function SplitWithImage() {
   return (
-    <Container maxW={'6xl'} py={12}>
+    <Container maxW={'6xl'} py={8}>
       <Stack spacing={6}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} py={4}>
           <Stack py={6} spacing={6}>
@@ -75,7 +75,7 @@ export default function SplitWithImage() {
                   加快走塑步伐，要求第一階段管制措施提前於2023年實施；第二階段推前至2025年實施；
                 </ListItem>
                 <ListItem>
-                  設立「可重用餐具配套時間表」，措施及時間表推動可重用餐具的普及以防止污染轉移，達至終極走塑。
+                  設立「可重用餐具配套時間表」，推動可重用餐具的普及以防止污染轉移，達至終極走塑。
                 </ListItem>
               </OrderedList>
             </Stack>

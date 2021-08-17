@@ -69,8 +69,8 @@ const FormWrapper = (props) => {
   const [submittedStatus, setSubmittedStatus] = useState(status === 'submitted')
   const space = 4
   const labelStyle = {
-    fontSize: 'md',
-    color: '#000',
+    fontSize: 'sm',
+    color: 'gray.700',
   }
   const tagStyle = {
     borderRadius: 12,
@@ -85,7 +85,7 @@ const FormWrapper = (props) => {
     onBlur: handleBlur,
     disabled: isSubmitting,
     bgColor: '#FFFFFF',
-    borderRadius: 0,
+    borderRadius: '4px',
   }
 
   const toast = useToast()
@@ -123,7 +123,7 @@ const FormWrapper = (props) => {
               borderRadius={'full'}
               bgColor={submittedStatus ? 'gray.200' : '#66cc00'}
             >
-              <Text {...numberProps}>1</Text>
+              <Text {...numberProps}>{submittedStatus ? `✓` : `1`}</Text>
             </Box>
           </Box>
           <Box pt={2} flex={1}>
@@ -132,11 +132,11 @@ const FormWrapper = (props) => {
                 <Text lineHeight={8}>您已完成第一步！</Text>
               </Box>
             ) : isSubmitting ? (
-              <Stack maxW={'640px'} w={'100%'}>
+              <Stack w={'100%'}>
                 <Skeleton height='20px' w={'100%'} />
                 <Skeleton height='20px' />
                 <Skeleton height='20px' />
-                <Text fontSize='sm' py={4}>
+                <Text fontSize='md' py={4}>
                   請耐心稍候，我們正在準備您的意見書範本...
                 </Text>
               </Stack>

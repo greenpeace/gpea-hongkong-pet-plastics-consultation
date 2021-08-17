@@ -13,12 +13,12 @@ import Heart from './cta_heart.svg'
 
 export default function CallToActionWithIllustration() {
   return (
-    <Container maxW={'4xl'}>
+    <Container maxW={'6xl'}>
       <Stack
         textAlign={'center'}
         align={'center'}
-        spacing={{ base: 10 }}
-        py={{ base: 8, md: 16 }}
+        spacing={{ base: 8 }}
+        py={{ base: 8 }}
       >
         <Heading
           fontWeight={700}
@@ -55,7 +55,7 @@ export default function CallToActionWithIllustration() {
             href='https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=plastics&ref=rdpt-illustration'
             target='_blank'
           >
-            <Image src={Heart} height={{ sm: '8rem', lg: '16rem' }} pl={6} />
+            <Image src={Heart} height={{ base: '8rem', md: '16rem' }} pl={6} />
           </Link>
         </Flex>
       </Stack>

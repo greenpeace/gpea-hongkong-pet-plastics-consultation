@@ -81,7 +81,7 @@ const FormikWrapper = () => {
         setP29ContentTwo(canvasP29ContentTwo.toDataURL('image/svg'))
         setP30ContentOne(canvasP30ContentOne.toDataURL('image/svg'))
         setP30ContentTwo(canvasP30ContentTwo.toDataURL('image/svg'))
-       }, 200);
+      }, 200);
     }
   }, []);
   return (
