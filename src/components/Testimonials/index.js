@@ -1,13 +1,4 @@
-import {
-  Box,
-  Heading,
-  Divider,
-  Text,
-  Stack,
-  Container,
-  Button,
-  Link,
-} from '@chakra-ui/react'
+import { Box, Heading, Text, Stack, Container, Link } from '@chakra-ui/react'
 
 const Testimonial = ({ children }) => {
   return (
@@ -147,9 +138,27 @@ export default function WithSpeechBubbles() {
                 填妥綠色和平網站表格後，您將會收到一封附有意見書範本的電郵。
                 <br />
                 <br />
-                請進入郵箱，轉寄該電郵。在「收件人」一欄輸入rdpt@epd.gov.hk，最後按下發送，完成諮詢！
+                請進入郵箱，轉寄該電郵。在「收件人」一欄輸入
+                <Link
+                  href={'mailto:rdpt@epd.gov.hk'}
+                  target={'_blank'}
+                  textDecoration={'underline'}
+                >
+                  rdpt@epd.gov.hk
+                </Link>
+                ，最後按下發送，完成諮詢！
                 <br />
-                <br />* 如您有其他意見，歡迎前往環保署網站發表意見。
+                <br />* 如您有其他意見，歡迎前往
+                <Link
+                  href={'https://www.rdpt.hk/tc/form/'}
+                  target={'_blank'}
+                  textDecoration={'underline'}
+                  color={'gray.900'}
+                  fontSize={'sm'}
+                >
+                  環保署網站發表意見
+                </Link>
+                。
               </TestimonialText>
             </TestimonialContent>
           </Testimonial>

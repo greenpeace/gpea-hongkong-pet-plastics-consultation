@@ -125,15 +125,13 @@ const DesktopNav = ({ illustrationSection, imageSection, testimonials }) => {
   ]
   const linkColor = useColorModeValue('gray.600', 'gray.200')
   const linkHoverColor = useColorModeValue('gray.800', 'white')
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800')
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack direction={'row'} spacing={8}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Box
             fontSize={'sm'}
-            fontWeight={500}
             color={linkColor}
             onClick={() =>
               navItem.ref.current.scrollIntoView({ behavior: 'smooth' })
