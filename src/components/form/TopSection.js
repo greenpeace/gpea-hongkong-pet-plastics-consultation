@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Text, Heading } from '@chakra-ui/react'
 
 const TopSection = () => {
+  const signupNumber = useState(
+    document.querySelector('input[name="numResponses"]').value,
+  )
+  const signupTarget = useState(
+    document.querySelector('input[name="numSignupTarget"]').value,
+  )
+
   return (
     <Box px={2} mb={6}>
       <Heading
@@ -21,6 +28,11 @@ const TopSection = () => {
         禁膠餐具，不容再拖！
         我們急需你參與諮詢，立即提交意見書，促盡快管制即棄膠餐具！
       </Text>
+      {signupNumber && signupTarget && (
+        <Text color={'#004566'} lineHeight={'200%'}>
+          <b>{signupNumber} 人</b>已參與聯署，目標人數：{signupTarget}
+        </Text>
+      )}
     </Box>
   )
 }
