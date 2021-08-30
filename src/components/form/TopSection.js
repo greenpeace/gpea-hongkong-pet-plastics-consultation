@@ -29,8 +29,15 @@ const TopSection = () => {
         我們急需你參與諮詢，立即提交意見書，促盡快管制即棄膠餐具！
       </Text>
       {signupNumber && signupTarget && (
-        <Text color={'#004566'} lineHeight={'200%'}>
-          <b>{signupNumber} 人</b>已參與聯署，目標人數：{signupTarget}
+        <Text
+          className='signup-number'
+          fontFamily='Arial'
+          color={'#004566'}
+          lineHeight={'200%'}
+        >
+          <b>{parseInt(signupNumber, 10).toLocaleString()} 人</b>
+          已參與聯署，目標人數：
+          {parseInt(signupTarget, 10).toLocaleString()}
         </Text>
       )}
     </Box>
