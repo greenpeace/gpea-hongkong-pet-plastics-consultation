@@ -105,9 +105,9 @@ const FormWrapper = (props) => {
   return (
     <Box>
       <TopSection />
-      <Stack px={2} spacing={6}>
+      <Stack px={2}>
         {/** STEP 1 */}
-        <Flex direction={{ base: 'row' }}>
+        <Flex display={'none'} direction={{ base: 'row' }}>
           <Box
             textAlign={'center'}
             pos={'relative'}
@@ -275,7 +275,7 @@ const FormWrapper = (props) => {
           </Box>
         </Flex>
         {/** STEP 2 */}
-        <Flex direction={{ base: 'row' }}>
+        <Flex display={'none'} direction={{ base: 'row' }}>
           <Box
             textAlign={'center'}
             pos={'relative'}
@@ -319,7 +319,7 @@ const FormWrapper = (props) => {
           )}
         </Flex>
         {/** STEP 3 */}
-        <Flex direction={{ base: 'row' }}>
+        <Flex display={'none'} direction={{ base: 'row' }}>
           <Box
             textAlign={'center'}
             pos={'relative'}
@@ -369,10 +369,13 @@ const FormWrapper = (props) => {
           )}
         </Flex>
         {/** DONATE **/}
-        {submittedStatus &&
-          document.location.search.indexOf('utm_source=dd') == -1 && (
-            <Stack spacing={4} pt={4} pb={6}>
+        {!submittedStatus &&
+          document.location.search.indexOf('utm_source=dd') === -1 && (
+            <Stack spacing={4} pb={6}>
               <Box>
+                <Text lineHeight={'200%'} mb={4}>
+                  <b>公眾諮詢期已完結，請繼續支持綠色和平的減塑工作！</b>
+                </Text>
                 <Text lineHeight={'200%'}>
                   <b>
                     綠色和平從不接受政商界資助，因此您的捐助，就是推動項目工作的關鍵！
