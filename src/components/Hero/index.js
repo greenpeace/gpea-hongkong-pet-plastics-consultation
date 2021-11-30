@@ -159,33 +159,6 @@ const Index = (props) => {
                     </ForkWrapper>
                   </Stack>
                 </Center>
-                {/* <Center>
-                  <Stack
-                    as={Box}
-                    h={'100%'}
-                    spacing={6}
-                    py={12}
-                    px={8}
-                    position={'relative'}
-                    alignItems={'flex-start'}
-                    maxW={'2xl'}
-                  >
-                    <Text fontWeight={'300'} fontSize={{ base: '3xl' }}>
-                      3 步遞交意見書
-                    </Text>
-                    <OrderedList lineHeight={'300%'} fontSize={'md'}>
-                      <ListItem>
-                        填妥綠色和平網站表格，輸入基本聯絡資料。
-                      </ListItem>
-                      <ListItem>
-                        檢查您的郵箱，打開由綠色和平發出，附有意見書範本的電郵。
-                      </ListItem>
-                      <ListItem>
-                        轉寄該電郵。在「收件人」一欄輸入rdpt@epd.gov.hk，最後按下發送，完成諮詢！
-                      </ListItem>
-                    </OrderedList>
-                  </Stack>
-                </Center> */}
               </Stack>
             </Center>
           </Box>

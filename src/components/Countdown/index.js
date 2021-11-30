@@ -4,6 +4,7 @@ import { Text, Box, HStack, Stack } from '@chakra-ui/react'
 export default function Countdown() {
   const countdownDate = new Date('September 9, 2021 00:00:00').getTime()
   const [countDown, setCountDown] = useState('Count')
+  const [isTimeUp, setIsTimeUp] = useState(false)
   const renderLayout = (count, unit) => {
     return (
       <HStack align='center'>
@@ -38,10 +39,11 @@ export default function Countdown() {
         </HStack>,
       )
 
-      // If the count down is finished, write some text
+      // times up
       if (distance < 0) {
         clearInterval(timer)
-        setCountDown(`已過期`)
+        // setCountDown(`公眾諮詢期已完結，請繼續支持綠色和平的減塑工作！`)
+        setIsTimeUp(true)
       }
     }, 1000)
   }, [])
@@ -52,8 +54,16 @@ export default function Countdown() {
       align={'center'}
       spacing={{ base: 0, sm: 2 }}
     >
-      <Text fontSize={{ base: 'xs', sm: 'md' }}>距離公眾諮詢完結尚餘：</Text>
-      {countDown}
+      {isTimeUp ? (
+        <Text>公眾諮詢期已完結，請繼續支持綠色和平的減塑工作</Text>
+      ) : (
+        <>
+          <Text fontSize={{ base: 'xs', sm: 'md' }}>
+            距離公眾諮詢完結尚餘：
+          </Text>
+          {countDown}
+        </>
+      )}
     </Stack>
   )
 }
